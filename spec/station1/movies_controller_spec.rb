@@ -4,7 +4,7 @@ RSpec.describe MoviesController, type: :controller do
   render_views
   describe 'Station1 GET /admin/movies' do
     before do
-      create_list(:movie, 4)
+      create_list(:movie, 3)
       get 'index'
     end
 
@@ -16,10 +16,9 @@ RSpec.describe MoviesController, type: :controller do
       expect(response.body).to include('<!DOCTYPE html>')
     end
 
-    # コントローラーでMovie.allして表示しないパターンはないと断定してしまっている
-    # FIXME HTMLの中にはmoviesテーブルのレコード数と同じ件数のデータがあるテストを書く
     it 'HTMLの中にはmoviesテーブルのレコード数と同じ件数のデータがあること' do
-      expect(controller.instance_variable_get("@movies")).to eq Movie.all
+      movies = Movie.all
+      expect(response.body).to include(movies[0].name).and include(movies[1].name).and include(movies[2].name).and include(movies[0].image_url).and include(movies[1].image_url).and include(movies[2].image_url)
     end
   end
 end
