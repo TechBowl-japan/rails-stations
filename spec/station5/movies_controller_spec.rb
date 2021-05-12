@@ -3,7 +3,7 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe MoviesController, type: :controller do
   render_views
-  describe 'Station5 GET /admin/movies' do
+  describe 'Station5 DELETE /movies/:id' do
     let!(:movie) { create(:movie) }
     it 'リクエストを送ると200が返り、movies(:id)のレコードが消えること' do
       expect do
