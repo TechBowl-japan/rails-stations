@@ -16,9 +16,13 @@ RSpec.describe MoviesController, type: :controller do
     it 'HTMLを返すこと' do
       expect(response.body).to include('<!DOCTYPE html>')
     end
-
+    
     it 'HTMLの中にはmoviesテーブルのレコード数と同じ件数のデータがあること' do
       expect(response.body).to include(movies[0].name).and include(movies[1].name).and include(movies[2].name).and include(movies[0].image_url).and include(movies[1].image_url).and include(movies[2].image_url)
+    end
+
+    it 'method = getのformがある' do
+      expect(response.body).to include('method="get"')
     end
 
     context '検索時' do
