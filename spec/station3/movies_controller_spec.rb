@@ -3,17 +3,6 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe MoviesController, type: :controller do
   render_views
-  describe 'Station3 GET /admin/movies' do
-    before do
-      create(:movie)
-      get 'index'
-    end
-
-    it '200を返すこと' do
-      expect(response.body).to include("<br")
-    end
-  end
-
   describe 'Station3 GET /admin/movies/new' do
     before do
       get 'new'
