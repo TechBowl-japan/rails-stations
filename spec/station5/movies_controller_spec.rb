@@ -5,7 +5,7 @@ RSpec.describe MoviesController, type: :controller do
   render_views
   describe 'Station5 DELETE /movies/:id' do
     let!(:movie) { create(:movie) }
-    it 'リクエストを送ると200が返り、movies(:id)のレコードが消えること' do
+    it 'リクエストを送ると320が返り、movies(:id)のレコードが消えること' do
       expect do
         delete :destroy, params: { id: movie.id }, session: {}
       end.to change(Movie, :count).by(-1)
