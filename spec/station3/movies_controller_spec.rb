@@ -39,7 +39,7 @@ RSpec.describe MoviesController, type: :controller do
   describe 'Station3 POST /admin/movies' do
     let(:movie_attributes) { attributes_for(:movie) }
 
-    it '200を返すこと' do
+    it '302を返すこと' do
       post :create, params: { movie: movie_attributes }, session: {}
       expect(response).to have_http_status(302)
     end
