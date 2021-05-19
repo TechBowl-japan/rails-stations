@@ -3,9 +3,18 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe MoviesController, type: :controller do
   render_views
-  describe 'Station2 GET /admin/movies' do
+  describe 'Station6 GET /admin/movies' do
     let!(:movies) { create_list(:movie, 3) }
-    before { get 'index' }
+    before do
+      @schedules = create_list(:schedule, 3, movie_id: movies[0].id)
+      get 'index'
+    end
+
+    it 'movies(:id)に対応するscheduleを表示していること' do
+      expect(response.body).to include(@schedules[0].start_time.to_s).and include(@schedules[2].start_time.to_s)
+    end
+
+    # 以下はStation2のテストも通ることを確認
 
     it '200を返すこと' do
       expect(response).to have_http_status(200)
