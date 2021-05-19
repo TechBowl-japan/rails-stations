@@ -29,4 +29,15 @@ RSpec.describe SchedulesController, type: :controller do
       expect(updatedSchedule.start_time).to eq setting_time
     end
   end
+
+  describe 'Station9 DELETE /schedule/:id' do
+    let(:movie) { create(:movie) }
+    let!(:schedule) { create(:schedule, movie_id: movie.id) }
+
+    it '渡された時刻でschedule(:id)が更新されること' do
+      expect do
+        delete :destroy, params: { id: schedule.id }, session: {}
+      end.to change(Schedule, :count).by(-1)
+    end
+  end
 end
