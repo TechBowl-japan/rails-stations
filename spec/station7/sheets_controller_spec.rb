@@ -17,7 +17,7 @@ RSpec.describe SheetsController, type: :controller do
     end
 
     it '実装の中でsheetsテーブルにアクセスしていること' do
-      expect(controller.instance_variable_get("@sheets")).to eq sheets
+      expect(response.body).to include("#{sheets.first.column}").and include("#{sheets.last.column}")
     end
   end
 end

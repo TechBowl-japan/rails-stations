@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SheetsController, type: :controller do
   render_views
-  describe 'Station10 GET /sheets' do
-    let!(:sheets) { create_list(:sheet, 5) } 
+  describe 'Station10 GET ' do
+    let!(:sheets) { create_list(:sheet, 15) } 
     let!(:movie) { create(:movie) } 
     let!(:schedule) { create(:schedule, movie_id: movie.id) } 
     let(:success_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id , date: "2019-04-16" }, session: {} } 
@@ -21,7 +21,7 @@ RSpec.describe SheetsController, type: :controller do
 
     it '実装の中でsheetsテーブルにアクセスしていること' do
       success_request
-      expect(controller.instance_variable_get("@sheets")).to eq sheets
+      expect(response.body).to include("#{sheets.first.column}").and include("#{sheets.last.column}")
     end
 
     it 'クエリパラメータがないときに500を返していない' do
