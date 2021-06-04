@@ -6,6 +6,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.3.0",
+    "@techtrain/cli-railway": "^0.1.0-alpha.9",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
@@ -13,5 +14,11 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "login:techtrain": "techtrain-railway login",
+    "hook:pre-commit": "techtrain-railway hook:pre-commit",
+    "hook:update": "simple-git-hooks",
+    "postinstall": "yarn hook:update && yarn login:techtrain"
   }
 }
