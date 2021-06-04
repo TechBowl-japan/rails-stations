@@ -1,0 +1,11 @@
+{
+  "name": "Station 10",
+  "id": 10,
+  "prepare": [],
+  "tests": [
+    {
+      "type": "rspec",
+      "specFile": "./spec/station10"
+    }
+  ]
+}

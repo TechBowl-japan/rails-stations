@@ -1,6 +1,7 @@
 FROM ruby:2.7
-RUN apt-get update -qq && apt-get install -y nodejs yarnpkg
-RUN ln -s /usr/bin/yarnpkg /usr/bin/yarn
+RUN apt-get update -qq
+RUN apt-get install -y nodejs npm && npm install n -g && n lts
+RUN npm install -g yarn
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
