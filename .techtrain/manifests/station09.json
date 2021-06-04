@@ -5,7 +5,7 @@
   "tests": [
     {
       "type": "rspec",
-      "specFile": "./tests/station09"
+      "specFile": "./spec/station09"
     }
   ]
 }
