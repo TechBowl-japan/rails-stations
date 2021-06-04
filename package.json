@@ -13,12 +13,17 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "simple-git-hooks": "^2.4.1",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
     "login:techtrain": "techtrain-railway login",
     "hook:pre-commit": "techtrain-railway hook:pre-commit",
     "hook:update": "simple-git-hooks",
+    "prepare": "simple-git-hooks",
     "postinstall": "yarn hook:update && yarn login:techtrain"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   }
 }
