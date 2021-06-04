@@ -35,5 +35,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-
+# For techtrain clie
 .techtrain/config.toml
