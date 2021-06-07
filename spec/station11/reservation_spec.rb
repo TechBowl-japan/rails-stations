@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
-  describe 'station10 attribute: email' do
+  describe 'station11 attribute: email' do
     let(:movie) { create(:movie) } 
     let(:sheet) { create(:sheet) } 
     let(:schedule) { create(:schedule, movie_id: movie.id) } 

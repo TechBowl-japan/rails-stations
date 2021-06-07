@@ -3,7 +3,7 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe ReservationsController, type: :controller do
   render_views
-  describe 'Station10 GET /movies/:movie_id/schedules/:schedule_id/reservations/new' do
+  describe 'Station11 GET /movies/:movie_id/schedules/:schedule_id/reservations/new' do
     let(:movie) { create(:movie) } 
     let(:sheets) { create_list(:sheet, 5) } 
     let(:schedule) { create(:schedule, movie_id: movie.id) } 
