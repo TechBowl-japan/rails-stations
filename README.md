@@ -9,6 +9,7 @@ Railway では Git で自分が取り組んだ内容を記録するときに、�
 
 Rails: 6.*
 Ruby: 2.7
+MySQL: 8.*
 
 ## 初期設定
 
@@ -68,8 +69,87 @@ GitHubでサインアップしており、パスワードがない方がいま�
 TechTrainの画面からチャレンジを始めることもお忘れなく！
 Rails Railway に取り組み始めてください。
 
+## DBと接続をしたいという方へ
+
+* Sequel Pro
+* Sequel Ace
+* Table Plus
+* MySQL Workbench
+
+などでDBの中身を確認したいという方は次の接続情報を利用してください
+
+|項目名|情報|説明|
+|:---:|:---:|:---|
+|Host|127.0.0.1|接続先のDBが存在するホストを指します。|
+|Port|3306|DB接続に利用するポート番号です。|
+|DB User|root|DB内のユーザーになります。他のユーザーも用意してあるので、勉強に使いたい時は使ってみてください。|
+|DB Password|password|DBに接続する際のパスワードです。root用のパスワードなので、他のユーザーを利用したい場合には、Dockerまわりの内容を勉強し、設定を確認してみてください。|
+|DB Name|app_development|接続するDB名です。他にapp_testというRailsのテストをする際に利用するDBを用意しています。|
+
+SSHという仕組みを利用して繋ぐこともできますが、基本的には上記の設定で繋ぐのが一番簡単です。
+接続されないという方は、Dockerのビルドと起動がされていないかもしれません。
+解決についての詳細は、このREADMEにある 
 
 ## トラブルシューティング
+
+### DBに接続して中身が見れないなのですが？
+
+#### Dockerが起動されているかを確かめる
+Macなら, iTerm.app, Terminal.app
+Windowsなら, PowerShell
+
+などのアプリケーションを立ち上げ、このリポジトリが存在するディレクトリに移動してください。
+わからない方は、 `カレントディレクトリ 移動` などで調べてみてください。(Macなら、cdコマンド、Windowsなら一部dirコマンドを利用します)
+このリポジトリをCloneしたディレクトリがカレントディレクトリになるように移動してください。
+その上で `docker compose ps` を実行して次のようにDockerが起動されていることを確認してください。
+
+```shell
+$ docker compose ps
+
+        Name                      Command               State                          Ports                       
+-------------------------------------------------------------------------------------------------------------------
+rails-stations_db_1    docker-entrypoint.sh --def ...   Up      0.0.0.0:3306->3306/tcp,:::3306->3306/tcp, 33060/tcp
+rails-stations_web_1   entrypoint.sh bash -c rm - ...   Up      0.0.0.0:3000->3000/tcp,:::3000->3000/tcp   
+```
+
+`Exit` という文字が見えたのであれば、何らかの原因でDockerの起動がうまく動作していません。
+`docker compose logs` コマンドを起動してその内容をコピペし、 RailwayのSlackワークスペースに入ってみてください。
+そちらで質問すると、回答があるかもしれません。自分で調べられるのがベストです。
+
+#### Dockerが起動されているが、接続されない
+
+Exitがない状態にも関わらず、接続できない場合は、Databaseの作成がうまくいっていない可能性があります。
+次のコマンドで動作するかどうかを確認してみてください。
+
+```
+docker compose exec db mysql -uroot -ppassword -e 'show databases;
+```
+
+次のような結果が返ってきていれば、正常です。
+
+```
+docker compose exec db mysql -uroot -ppassword -e 'show databases;'
+mysql: [Warning] Using a password on the command line interface can be insecure.
++--------------------+
+| Database           |
++--------------------+
+| app_development    |
+| app_test           |
+| information_schema |
+| message            |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+```
+
+もし、 `app_development` と `app_test` が作成されていないようであれば、次のコマンドを実行しましょう。
+
+```
+docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/001_ddl.sql
+```
+
+これで、 `app_development` と `app_test` が作成されていれば、問題なく接続できます。
 
 ### commitしたのにチェックが実行されていないようなのですが？
 
