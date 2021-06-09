@@ -66,8 +66,8 @@ cd rails-stations
 
 ```powershell
 docker compose build
+docker compose run web bundle install
 docker compose up -d
-docker compose exec web bundle install
 docker compose exec web yarn install // ←こちらを実行した後に「TechTrainにログインします。GitHubでサインアップした方はお手数ですが、パスワードリセットよりパスワードを発行してください」と出てくるため、ログインを実行してください。出てこない場合は、コマンドの実行に失敗している可能性があるため、TechTrainの問い合わせかRailwayのSlackより問い合わせをお願いいたします。
 ```
 
