@@ -4,7 +4,7 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 RSpec.describe MoviesController, type: :controller do
   render_views
   describe 'Station4 GET /admin/movies/:id/edit' do
-    let(:movie) { create(:movie) }
+    let!(:movie) { create(:movie) }
     before { get 'edit', params: {id: movie.id} }
 
     it '200を返すこと' do
@@ -25,8 +25,8 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe 'Station4 PUT /admin/movies/:id' do
-    let(:movie) { create(:movie) }
-    let(:movie_attributes) { { name: "TEST" } }
+    let!(:movie) { create(:movie) }
+    let!(:movie_attributes) { { name: "TEST" } }
 
     it '302を返すこと' do
       post :update, params: { id: movie.id, movie: movie_attributes }, session: {}
