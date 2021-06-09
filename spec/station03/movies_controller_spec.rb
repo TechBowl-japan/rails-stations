@@ -1,5 +1,4 @@
 require 'rails_helper'
-RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe MoviesController, type: :controller do
   render_views
@@ -26,7 +25,7 @@ RSpec.describe MoviesController, type: :controller do
   end
 
   describe 'Station3 POST /admin/movies' do
-    let(:movie_attributes) { attributes_for(:movie) }
+    let!(:movie_attributes) { attributes_for(:movie) }
 
     it '302を返すこと' do
       post :create, params: { movie: movie_attributes }, session: {}

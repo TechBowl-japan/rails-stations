@@ -27,8 +27,8 @@ RSpec.describe MoviesController, type: :controller do
 
     context '検索時' do
       # factoriesのis_showingのデフォルトでは1
-      let(:show_estimated) { create(:movie, is_showing: 0 ) }
-      let(:showed_movie) { create(:movie, is_showing: 1 ) }
+      let!(:show_estimated) { create(:movie, is_showing: 0 ) }
+      let!(:showed_movie) { create(:movie, is_showing: 1 ) }
   
       it '検索キーワードを指定するとそれを含むものだけ表示' do
         get :index, params: { name: show_estimated.name, is_showing: "" }

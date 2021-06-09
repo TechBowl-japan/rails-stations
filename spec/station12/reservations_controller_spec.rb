@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe ReservationsController, type: :controller do
   render_views
   describe 'Station12 GET /admin/reservations' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let(:reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
     before { get '/admin/reservations' }
 
     it ' 200が返ること' do
@@ -35,9 +35,9 @@ RSpec.describe ReservationsController, type: :controller do
   end
 
   describe 'Station12 POST /admin/reservations/' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
 
     it 'schedule_id, sheet_id, name, email, dateのすべてがあるときに302を返す' do
       post '/admin/reservations/', params: { reservation: { name: "TEST_NAME", email: "test@test.com", date: "2019-04-16", sheet_id: sheets.first.id , schedule_id: schedule.id, movie_id: movie.id }}, session: {}
@@ -53,10 +53,10 @@ RSpec.describe ReservationsController, type: :controller do
   end
 
   describe 'Station12 GET /admin/reservations/:id' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let(:reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
     before { get "/admin/reservations/:id", params: { id: reservation.id } }
 
     it 'schedule_id, sheet_id, name, emailのすべてを受け取るフォームがあること' do
@@ -69,10 +69,10 @@ RSpec.describe ReservationsController, type: :controller do
   end
 
   describe 'Station12 PUT /admin/reservations/:id' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
 
     it 'schedule_id, sheet_id, name, emailのすべてがあるときだけ302にすること' do
       put "/admin/reservations/:id", params: { id: reservation.id, schedule_id: reservation.schedule_id, sheet_id: reservation.sheet_id, name: reservation.name, email: reservation.email }
@@ -81,10 +81,10 @@ RSpec.describe ReservationsController, type: :controller do
   end
 
   describe 'Station12 DELETE /admin/reservations/:id' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
 
     it 'reservationテーブルから:idのレコードを物理削除していること' do
       expect do

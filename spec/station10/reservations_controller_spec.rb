@@ -1,14 +1,13 @@
 require 'rails_helper'
-RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe ReservationsController, type: :controller do
   render_views
   describe 'Station10 GET /movies/:movie_id/schedules/:schedule_id/reservations/new' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let(:success_request) { get :new, params: { date: "2019-04-16", sheet_id: sheets.first.id , movie_id: movie.id, schedule_id: schedule.id }, session: {} }
-    let(:failure_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} } 
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:success_request) { get :new, params: { date: "2019-04-16", sheet_id: sheets.first.id , movie_id: movie.id, schedule_id: schedule.id }, session: {} }
+    let!(:failure_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} } 
 
     it 'date, sheet_idの両方があるときだけ200を返すこと' do
       success_request
@@ -27,9 +26,9 @@ RSpec.describe ReservationsController, type: :controller do
   end
 
   describe 'Station10 POST /reservation/' do
-    let(:movie) { create(:movie) } 
-    let(:sheets) { create_list(:sheet, 5) } 
-    let(:schedule) { create(:schedule, movie_id: movie.id) } 
+    let!(:movie) { create(:movie) } 
+    let!(:sheets) { create_list(:sheet, 5) } 
+    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
 
     it 'schedule_id, sheet_id, name, email, dateのすべてがあるときに302を返す' do
       post :create, params: { reservation: { name: "TEST_NAME", email: "test@test.com", date: "2019-04-16", sheet_id: sheets.first.id , schedule_id: schedule.id, movie_id: movie.id }}, session: {}
