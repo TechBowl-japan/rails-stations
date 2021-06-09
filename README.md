@@ -11,6 +11,7 @@ Railway では Git で自分が取り組んだ内容を記録するときに、�
 1. Node.js( 14.* ) [ 12.* ,  16.* では動作しません]
 2. Yarn
 3. Docker
+4. Docker Compose
 
 ### 「必要な」インストール済みの場合
 
@@ -50,8 +51,8 @@ cd rails-stations
 ```
 
 ```powershell
-gem install
-yarn install
+docker compose build
+docker compose up -d
 ```
 
 上記のコマンドを実行すると、techtrainにログインするように表示が行われます。
