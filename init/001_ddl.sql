@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `app_test`;
+CREATE DATABASE IF NOT EXISTS `app_development`;
 CREATE TABLE IF NOT EXISTS `app_test`.`movies` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(160) NOT NULL COMMENT '映画のタイトル。邦題・洋題は一旦考えなくてOK',
