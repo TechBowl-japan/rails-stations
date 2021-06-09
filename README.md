@@ -67,6 +67,8 @@ cd rails-stations
 ```powershell
 docker compose build
 docker compose up -d
+docker compose exec web bundle install
+docker compose exec web yarn install
 ```
 
 上記のコマンドを実行すると、techtrainにログインするように表示が行われます。
