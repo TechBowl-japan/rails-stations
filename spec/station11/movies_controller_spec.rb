@@ -1,5 +1,4 @@
 require 'rails_helper'
-RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe MoviesController, type: :controller do
   render_views
