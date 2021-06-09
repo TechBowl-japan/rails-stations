@@ -4,10 +4,11 @@ RUN apt-get install -y nodejs npm && npm install n -g && n lts
 RUN npm install -g yarn
 RUN mkdir /app
 WORKDIR /app
+
+# このDockerfileでgemのインストールやyarnによるパッケージのインストールをしていないのは、
+# ログインなどの処理を挟む必要があるため。
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
-RUN yarn install
 COPY . /app
 
 COPY entrypoint.sh /usr/bin/
