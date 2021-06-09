@@ -1,25 +1,32 @@
 version: '3'
 services:
   db:
-    image: mysql@sha256:dce31fcdd15aaedb5591aa89f19ec37cb79981af46511781fa41287d88ed0abd
+    build:
+      context: ./infra/db
+      dockerfile: Dockerfile
     command: --default-authentication-plugin=mysql_native_password
     environment:
+      MYSQL_DATABASE: app_test
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
     ports:
       - "3306:3306"
     volumes:
-      - db-volume:/var/lib/mysql
+      - rails-railway-stations-volume:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: ./infra/web/Dockerfile
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
     ports:
       - "3000:3000"
-    depends_on:
+    links:
       - db
 
 volumes:
-  db-volume:
+  rails-railway-stations-volume:
