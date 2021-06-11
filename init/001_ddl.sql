@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `app_development`.`movies` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE
-)
+);
 CREATE TABLE IF NOT EXISTS `app_test`.`movies` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(160) NOT NULL COMMENT '映画のタイトル。邦題・洋題は一旦考えなくてOK',
@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS `app_test`.`movies` (
   `updated_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE
-)
+);
