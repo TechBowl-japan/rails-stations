@@ -167,7 +167,7 @@ docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/00
 1. 黒い画面（CLI,コマンドライン）からTechTrainへのログイン
 2. pre-commit hook と呼ばれるcommit時に実行されるGitの仕組みが仕込まれていること
 
-特に２については
+特に2については
 
 * SourceTreeやGitHubAppでクローンした
 * httpsでクローンした
