@@ -25,7 +25,8 @@ MySQL| 8.*
 |Docker|20.10.*|
 |Docker Compose|1.29.*|
 
-バージョンが異なる場合、動作しない場合があります。
+バージョンが異なる場合、動作しない場合があります。  
+使用PCがWindowsの場合は、WSLを[この記事](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10)を参考にインストールしてください。
 
 ### 「必要な」インストール済みの場合
 
