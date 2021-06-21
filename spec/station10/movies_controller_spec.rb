@@ -10,7 +10,7 @@ RSpec.describe MoviesController, type: :controller do
     end 
 
     it 'movies(:id)に対応するレコードの情報が含まれていること' do
-      expect(response.body).to include(movie.name).and include(movie.year).and include(movie.description).and include(movie.image_url)
+      expect(response.body).to include(movie.name).and include("#{movie.year}").and include(movie.description).and include(movie.image_url)
     end
 
     it 'movies(:id)に紐づくschedulesのレコード全件分のデータが出力されていること' do
