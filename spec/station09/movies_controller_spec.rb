@@ -38,7 +38,7 @@ RSpec.describe MoviesController, type: :controller do
 
     describe 'HTMLの中にはmoviesテーブルのカラムすべてが表示されていること' do
       it 'moviesテーブルのname,year,descriptionカラムが表示されていること' do
-        expect(response.body).to include(movies.first.name).and include(movies.first.year).and include(movies.first.description)
+        expect(response.body).to include(movies.first.name).and include("#{movies.first.year}").and include(movies.first.description)
       end
 
       it 'moviesテーブル内のimage_urlが画像として表示されていること' do
