@@ -134,7 +134,7 @@ Exitがない状態にも関わらず、接続できない場合は、Database�
 次のコマンドで動作するかどうかを確認してみてください。
 
 ```
-docker compose exec db mysql -uroot -ppassword -e 'show databases;
+docker compose exec db mysql -uroot -ppassword -e 'show databases;';
 ```
 
 次のような結果が返ってきていれば、正常です。
