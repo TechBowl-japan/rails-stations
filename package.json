@@ -25,7 +25,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": [
-      "if [ -e /.dockerenv ]; then \n\n echo execute in Docker\nyarn hook:pre-commit\nelse\necho execute in local\ndocker-compose exec -T web yarn hook:pre-commit\n\nfi"
+      ""
     ]
   }
 }

@@ -1,0 +1,15 @@
+current directory: /Users/miyamotosatoshi/Desktop/Screen_shot/techtrain/rails-stations/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/miyamotosatoshi/.rbenv/versions/2.7.3/bin/ruby -I /Users/miyamotosatoshi/.rbenv/versions/2.7.3/lib/ruby/site_ruby/2.7.0 -r ./siteconf20210819-10499-1jxulez.rb extconf.rb
+creating Makefile
+
+current directory: /Users/miyamotosatoshi/Desktop/Screen_shot/techtrain/rails-stations/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/miyamotosatoshi/Desktop/Screen_shot/techtrain/rails-stations/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/miyamotosatoshi/Desktop/Screen_shot/techtrain/rails-stations/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210819-10499-1rzya40/skiptrace/internal
