@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'movies/index'
   root 'application#hello'
-  resources :movies
+  resources :movies #path: '/admin/movies'
 end
