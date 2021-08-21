@@ -6,4 +6,8 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
   end
+
+  def create
+    redirect_to @user
+  end
 end
