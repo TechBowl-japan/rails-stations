@@ -34,6 +34,7 @@
           <% end %>
           <td><%= movie.description %></td>
           <td><%= link_to("画像", "#{movie.image_url}") %></td>
+          <td><img src="<%={movie.image_url}%>"></td>
           <td><%= movie.created_at %></td>
           <td><%= movie.updated_at %></td>
           <td></td>
