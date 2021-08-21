@@ -27,7 +27,11 @@
           <td><%= movie.id %></td>
           <td><%= movie.name %></td>
           <td><%= movie.year %></td>
-          <td><%= movie.is_showing %></td>
+          <%  if movie.is_showing %>
+            <td>上映中</td>
+          <% else %>
+            <td>上映終了</td>
+          <% end %>
           <td><%= movie.description %></td>
           <td><%= link_to("画像", "#{movie.image_url}") %></td>
           <td><%= movie.created_at %></td>
