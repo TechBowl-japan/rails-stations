@@ -4,5 +4,9 @@
 
 <% @movies.each do |movie| %>
   <%= movie.name %><br />
+  <%= movie.year %><br />
+  <%= movie.description %><br />
+  <%= movie.image_url %><br />
+  <%= movie.is_showing %><br />
   <img src="https://picsum.photos/210/143" alt="">
 <% end %>
