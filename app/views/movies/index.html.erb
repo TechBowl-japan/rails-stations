@@ -7,7 +7,7 @@
           <title><%= movie.name %></title>
           <p><%= movie.year %></p>
           <p><%= movie.description %></p>
-          <p><%= link_to("画像", "#{movie.image_url}") %></p>
+          <%= link_to("画像", "#{movie.image_url}") %>
           <div class="button">
               <button>予約</button>
           </div>
