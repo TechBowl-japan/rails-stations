@@ -33,8 +33,7 @@
             <td>上映終了</td>
           <% end %>
           <td><%= movie.description %></td>
-          <td><%= link_to("画像", "#{movie.image_url}") %></td>
-          <td><img src="<%={movie.image_url}%>"></td>
+          <td><a href="<% movie.image_url%>">画像</a></td>
           <td><%= movie.created_at %></td>
           <td><%= movie.updated_at %></td>
           <td></td>
