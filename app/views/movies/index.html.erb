@@ -14,21 +14,22 @@
             <th></th>
           </tr>
           <% @movies.each do |movie| %>
-            <tr>
-              <td><%= movie.id %></td>
-              <td><%= movie.name %></td>
-              <td><%= movie.year %></td>
-              <%  if movie.is_showing %>
-                <td>上映中</td>
-              <% else %>
-                <td>上映終了</td>
-              <% end %>
-              <td><%= movie.description %></td>
-              <td><a href="<%= movie.image_url%>">画像</a></td>
-              <td><%= movie.created_at %></td>
-              <td><%= movie.updated_at %></td>
-              <td></td>
-            </tr>
+          <tr>
+            <td><%= movie.id %></td>
+            <td><%= movie.name %></td>
+            <td><%= movie.year %></td>
+            <%  if movie.is_showing %>
+              <td>上映中</td>
+            <% else %> 
+              <td>上映終了</td>
+            <% end %>
+            <td><%= movie.description %></td>
+            <td><a href="<%= movie.image_url%>">画像</a>
+            <img src="<%= movie.image_url %>"</td>
+            <td><%= movie.created_at %></td>
+            <td><%= movie.updated_at %></td>
+            <td></td>
+          </tr>
           <% end %>
         </table>
     </div>
