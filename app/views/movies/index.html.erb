@@ -1,12 +1,21 @@
+<section id="about">
+	<div class="inner">
+		<div class='myGrid'>
+      <% @movies.each do |movie| %>
+        <div class="card">
+          <img src="https://picsum.photos/210/143" alt="">
+          <title><%= movie.name %></title>
+          <p><%= movie.year %></p>
+          <p><%= movie.description %></p>
+          <p><%= movie.image_url %></p>
+          <p><%= movie.is_showing %></p>
+          <div class="button">
+              <button>予約</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+	</div>
+</section>
 <h1>Movies#index</h1>
 <p>Find me in app/views/movies/index.html.erb</p>
-
-
-<% @movies.each do |movie| %>
-  <%= movie.name %><br />
-  <%= movie.year %><br />
-  <%= movie.description %><br />
-  <%= movie.image_url %><br />
-  <%= movie.is_showing %><br />
-  <img src="https://picsum.photos/210/143" alt="">
-<% end %>

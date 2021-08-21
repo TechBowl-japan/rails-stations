@@ -5,7 +5,7 @@ RSpec.describe MoviesController, type: :controller do
   describe 'Station6 GET /admin/movies' do
     let!(:movie) { create(:movie) }
     before do
-      @schedules = create_list(:schedule, 3, movie_id: movie.id)
+      @schedules = (:schedule, 3, movie_id: movie.id)
       get :show, params: { id: movie.id }, session: {}
     end 
 

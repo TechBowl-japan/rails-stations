@@ -1,3 +1,104 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #FFF url(../img/bg.gif) no-repeat left top;
+  font-family: Verdana, "ＭＳ Ｐゴシック", sans-serif;
+  font-size: 80%;
+}
+
+img {
+  border: 0;
+}
+#about {
+  background: #e0e0e0;
+}
+
+#about .inner {
+  width: 992px;
+  /* 好きな幅 */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fff59d;
+}
+
+.myGrid {
+  width: 100%;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-gap: 16px;
+  justify-content: center;
+  div {
+    background: gray;
+  }
+}
+
+.card {
+  width: 250px;
+  margin: 20px auto;
+  border: 3px solid rgba(0, 0, 0, .125);
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  opacity: 0.7;
+  transition: all 0.5s linear;
+}
+
+.card:hover {
+  opacity: 1;
+  border: 3px solid #e84444;
+}
+
+.card h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #e84444;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card p {
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  line-height: 23px;
+  color: #666;
+  transition: all 0.5s linear;
+}
+
+.card:hover p {
+  color: black;
+}
+
+.card .button {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -15px;
+}
+
+.card .button button {
+  font-size: 16px;
+  border-radius: 10px;
+  background: #e84444;
+  color: white;
+  padding: 5px;
+  border: 2px solid #e84444;
+  outline: 0;
+}
