@@ -1,3 +1,26 @@
 // Place all the styles related to the admin/Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.admin {
+  width: 1366px;
+  height: 768px;
+  display: grid;
+  grid:
+    "header header header"auto "leftSidebar body body"1fr "leftSidebar body body"auto / auto 1fr auto;
+  grid-gap: 16px;
+  div {
+    background: gray;
+  }
+  .header {
+    grid-area: header;
+  }
+
+  .leftSidebar {
+    grid-area: leftSidebar;
+  }
+
+  .body {
+    grid-area: body;
+  }
+}
