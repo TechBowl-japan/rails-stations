@@ -5,7 +5,7 @@ RSpec.describe MoviesController, type: :controller do
   render_views
   describe 'Station2 GET /admin/movies' do
     let!(:movies) { create_list(:movie, 3) }
-    before { get 'index' }
+    before { get 'admin/movies/index' }
 
     it '200を返すこと' do
       expect(response).to have_http_status(200)
