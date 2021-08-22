@@ -8,7 +8,18 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new
-    redirect_to new_movie_path
+    @movie = Movie.create(movie_params)
+    if @movie.save
+      redirect_to new_movie_path
+    else
+      render 'new'
+    end
   end
+
+  private
+
+    def movie_params
+        params.require(:movie).permit(:name, :year, :is_showing,
+                                     :description,:image_url)
+    end
 end

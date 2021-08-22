@@ -12,18 +12,22 @@
   </div>
   <div class='body'>
     <h2>Movies Create</h2>
-    <p>タイトル</p>
-    <p>公開年</p>
-    <p>上映中</p>
-    <p>概要</p>
-    <p>画像URL</p>
-    Save and close
 
-    <form accept-charset="UTF-8" action="/home/index" method="post">
+    <form accept-charset="UTF-8" action="/admin/movies" method="post">
       <div style="margin:0;padding:0">
         <input name="utf8" type="hidden" value="&#x2713;" />
         <input name="authenticity_token" type="hidden" value="f755bb0ed134b76c432144748a6d4b7a7ddf2b71" />
-        <%= text_area_tag(:message, "Hi, nice site", size: "24x6") %>
+        <%= label_tag(:name, "タイトル") %>
+        <%= text_field_tag(:name) %>
+        <%= label_tag(:year, "公開年") %>
+        <%= text_field_tag(:year) %>
+        <%= check_box_tag(:is_showing) %>
+        <%= label_tag(:is_showing, "上映中") %>
+        <%= label_tag(:description, "概要") %>
+        <%= text_area_tag(:description, "概要を書いてください") %>
+        <%= label_tag(:image_url, "画像URL") %>
+        <%= url_field(:movie, :image_url) %>
+        <%= submit_tag("Save") %>
       </div>
       Form contents
     </form>
