@@ -1,6 +1,6 @@
 <section id="about">
 	<div class="inner">
-		<div class='myGrid'>
+		<div class='indexGrid'>
         <table>
           <tr>
             <th>ID</th>
@@ -11,7 +11,7 @@
             <th>画像URL</th>
             <th>登録日時</th>
             <th>更新日時</th>
-            <th></th>
+            <th>編集/削除</th>
           </tr>
           <% @movies.each do |movie| %>
           <tr>
@@ -25,10 +25,12 @@
             <% end %>
             <td><%= movie.description %></td>
             <td><a href="<%= movie.image_url%>">画像</a>
-            <img src="<%= movie.image_url %>"</td>
             <td><%= movie.created_at %></td>
             <td><%= movie.updated_at %></td>
-            <td></td>
+            <td><%= link_to "編集", movie, method: :put%>/
+                <%= link_to "削除", movie, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+            </td>
           </tr>
           <% end %>
         </table>
