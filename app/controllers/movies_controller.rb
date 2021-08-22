@@ -9,6 +9,6 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new
-    redirect_to new_movie
+    redirect_to new_movie_path
   end
 end
