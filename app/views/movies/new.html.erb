@@ -12,27 +12,22 @@
   </div>
   <div class='body'>
     <h2>Movies Create</h2>
+    <%= form_with(model: @movie, local: true) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :year %>
+      <%= f.text_field :year, class: 'form-control' %>
 
-    <form accept-charset="UTF-8" action="/admin/movies" method="post">
-    <% if flash[:error] %>
-     <p><%= flash[:error] %></p>
+      <%= f.label :is_showing %>
+      <%= f.check_box :is_showing, class: 'form-control' %>
+
+      <%= f.label :description%>
+      <%= f.text_area :description, class: 'form-control' %>
+
+      <%= f.label :image_url %>
+      <%= f.url_field :image_url, class: 'form-control' %>
+
+      <%= f.submit "update", class: "btn btn-primary" %>
     <% end %>
-      <div style="margin:0;padding:0">
-        <input name="utf8" type="hidden" value="&#x2713;" />
-        <input name="authenticity_token" type="hidden" value="f755bb0ed134b76c432144748a6d4b7a7ddf2b71" />
-        <%= label_tag(:name, "タイトル") %>
-        <%= text_field_tag(:name) %>
-        <%= label_tag(:year, "公開年") %>
-        <%= text_field_tag(:year) %>
-        <%= check_box_tag(:is_showing) %>
-        <%= label_tag(:is_showing, "上映中") %>
-        <%= label_tag(:description, "概要") %>
-        <%= text_area_tag(:description, "概要を書いてください") %>
-        <%= label_tag(:image_url, "画像URL") %>
-        <%= url_field(:movie, :image_url) %>
-        <%= submit_tag("Save") %>
-      </div>
-      Form contents
-    </form>
   </div>
 </section>
