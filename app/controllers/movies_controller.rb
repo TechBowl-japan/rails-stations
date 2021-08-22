@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to new_movie_path
     else
+      flash.now[:error] = "Could not save client"
       render 'new'
     end
   end
