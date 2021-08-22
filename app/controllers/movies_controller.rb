@@ -17,6 +17,24 @@ class MoviesController < ApplicationController
     end
   end
 
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      flash[:success] = "Movie updated"
+      redirect_to @movie
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+    redirect_to edit_movie_path
+  end
+
   private
 
     def movie_params

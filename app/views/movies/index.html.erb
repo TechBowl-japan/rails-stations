@@ -15,7 +15,7 @@
           </tr>
           <% @movies.each do |movie| %>
           <tr>
-            <td><%= movie.id %></td>
+            <td><a href="/admin/movies/<%= movie.id %>/edit"><%= movie.id %> </a> </td>
             <td><%= movie.name %></td>
             <td><%= movie.year %></td>
             <%  if movie.is_showing %>

@@ -1,0 +1,33 @@
+<h1>edit page</h1>
+<section class='admin'>
+  <div class='header'>
+    <h1>TechTrain Cinema.</h1>
+  </div>
+  <div class='leftSidebar'>
+    <div class="menu">
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Showtime</a></li>
+      <li><a href="#">Reservations</a></li>
+    </div>
+  </div>
+  <div class='body'>
+    <h2>Movies Create</h2>
+    <%= form_with(model: @movie, local: true,method: :put) do |f| %>
+      <%= f.label :name,"#{@movie.name}" %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :year ,"#{@movie.year}"%>
+      <%= f.text_field :year, class: 'form-control' %>
+
+      <%= f.label :is_showing, "#{@movie.is_showing}" %>
+      <%= f.check_box :is_showing, class: 'form-control' %>
+
+      <%= f.label :description, "#{@movie.description}"%>
+      <%= f.text_area :description, class: 'form-control' %>
+
+      <%= f.label :image_url, "#{@movie.image_url}" %>
+      <%= f.url_field :image_url, class: 'form-control' %>
+
+      <%= f.submit "update", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</section>
