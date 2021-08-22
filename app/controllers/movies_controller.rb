@@ -18,7 +18,6 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.new
     @movie = Movie.find(params[:id])
   end
 
@@ -28,6 +27,7 @@ class MoviesController < ApplicationController
       flash[:success] = "Movie updated"
       redirect_to @movie
     else
+      flash.now[:error] = "Could not save client"
       render 'edit'
     end
   end
