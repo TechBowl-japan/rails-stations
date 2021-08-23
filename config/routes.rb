@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   #     resources :movies, only: [:index, :new, :create, :show,  :edit, :destroy]
   #   end
   root 'application#hello'
+  get '/movies', to: 'movies#view'
   resources :movies,path: '/admin/movies'
 end
