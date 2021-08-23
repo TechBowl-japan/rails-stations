@@ -1,1 +1,20 @@
 <h1>moviesユーザ側の一覧ページ</h1>
+<section id="about">
+	<div class="inner">
+		<div class='myGrid'>
+      <% @movies.each do |movie| %>
+        <div class="card">
+          <img src="https://picsum.photos/210/143" alt="">
+          <title><%= movie.name %></title>
+          <p><%= movie.year %></p>
+          <p><%= movie.description %></p>
+          <p><%= movie.image_url %></p>
+          <p><%= movie.is_showing %></p>
+          <div class="button">
+              <button>予約</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+	</div>
+</section>

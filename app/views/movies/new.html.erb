@@ -12,7 +12,7 @@
   </div>
   <div class='body'>
     <h2>Movies Create</h2>
-    <%= form_with(model: @movie, local: true) do |f| %>
+    <%= form_with(model: @movie,url: "/admin/movies", local: true) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
       <%= f.label :year %>
@@ -27,7 +27,7 @@
       <%= f.label :image_url %>
       <%= f.url_field :image_url, class: 'form-control' %>
 
-      <%= f.submit "update", class: "btn btn-primary" %>
+      <%= f.submit "create", class: "btn btn-primary" %>
     <% end %>
   </div>
 </section>

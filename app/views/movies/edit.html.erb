@@ -5,14 +5,14 @@
   </div>
   <div class='leftSidebar'>
     <div class="menu">
-      <li><a href="#">Movies</a></li>
+      <li><a href="/admin/movies">Movies</a></li>
       <li><a href="#">Showtime</a></li>
       <li><a href="#">Reservations</a></li>
     </div>
   </div>
   <div class='body'>
     <h2>Movies Create</h2>
-    <%= form_with(model: @movie, local: true,method: :put) do |f| %>
+    <%= form_with(model: @movie,url: "/admin/movies/#{@movie.id}", local: true,method: :put) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
       <%= f.label :year%>
