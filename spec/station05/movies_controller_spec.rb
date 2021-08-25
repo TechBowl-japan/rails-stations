@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe MoviesController, type: :controller do
+RSpec.describe Admin::MoviesController, type: :controller do
   render_views
-  describe 'Station5 DELETE /movies/:id' do
+  describe 'Station5 DELETE admin/movies/:id' do
     let!(:movie) { create(:movie) }
     it 'リクエストを送ると320が返り、movies(:id)のレコードが消えること' do
       expect do
@@ -12,9 +12,9 @@ RSpec.describe MoviesController, type: :controller do
     end
   
     it ':idのレコードが存在しないときRecordNotFound(400)が返る' do
-      nothingMovieId = movie.id + 1
+      nothing_movie_id = movie.id + 1
       expect do
-        delete :destroy, params: { id: nothingMovieId }, session: {}
+        delete :destroy, params: { id: nothing_movie_id }, session: {}
       end.to raise_exception(ActiveRecord::RecordNotFound)
     end
   end

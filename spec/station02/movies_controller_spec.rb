@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec::Matchers.define_negated_matcher :not_include, :include
 
-RSpec.describe MoviesController, type: :controller do
+RSpec.describe Admin::MoviesController, type: :controller do
   render_views
   describe 'Station2 GET /admin/movies' do
     let!(:movies) { create_list(:movie, 3) }

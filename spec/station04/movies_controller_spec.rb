@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MoviesController, type: :controller do
+RSpec.describe Admin::MoviesController, type: :controller do
   render_views
   describe 'Station4 GET /admin/movies/:id/edit' do
     let!(:movie) { create(:movie) }
