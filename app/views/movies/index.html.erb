@@ -1,5 +1,11 @@
 <h1>moviesユーザ側の一覧ページ</h1>
 <%= form_with(url: "/admin/movies", local: true,method: :get) do |f| %>
+  <%= f.label :is_showing, '公開予定' %>
+  <%= f.radio_button :is_showing , '0'%>
+  <%= f.label :is_showing, '公開中' %>
+  <%= f.radio_button :is_showing , '1'%>
+  <%= f.label :is_showing, '映画一覧' %>
+  <%= f.radio_button :is_showing , '2', checked: true%>
   <%= f.text_field :name %>
   <%= f.submit "search", name:nil %>
 <% end %>

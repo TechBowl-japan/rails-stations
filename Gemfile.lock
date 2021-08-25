@@ -183,6 +183,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    ruby-enum (0.6.0)
+      i18n
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -253,6 +255,7 @@ DEPENDENCIES
   rails (~> 6.1.3, >= 6.1.3.2)
   rails-controller-testing
   rspec-rails
+  ruby-enum (~> 0.6.0)
   sass-rails (>= 6)
   selenium-webdriver
   spring

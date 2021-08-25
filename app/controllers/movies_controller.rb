@@ -1,9 +1,17 @@
 class MoviesController < ApplicationController
   def index
-    if params[:name].present?
-      @movies = Movie.where("name LIKE?","%#{params[:name]}%")
+    if params[:is_showing] == "1"
+      @movies = Movie.where(is_showing: 1)
+      @movies = @movies.where("name LIKE?","%#{params[:name]}%")
+    elsif params[:is_showing] == "0"
+      @movies = Movie.where(is_showing: 0)
+      @movies = @movies.where("name LIKE?","%#{params[:name]}%")
     else
-      @movies = Movie.all
+      if params[:name].present?
+        @movies = Movie.where("name LIKE?","%#{params[:name]}%")
+      else
+        @movies = Movie.all
+      end
     end
   end
 
