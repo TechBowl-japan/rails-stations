@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MoviesController, type: :controller do
+RSpec.describe Admin::MoviesController, type: :controller do
   render_views
   describe 'Station3 GET /admin/movies/new' do
     before do
