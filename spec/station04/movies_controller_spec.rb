@@ -37,11 +37,5 @@ RSpec.describe Admin::MoviesController, type: :controller do
       post :update, params: { id: movie.id, image_url: "https://techbowl.co.jp/_nuxt/img/111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111lllllllllllll.png" }, session: {}
       expect(response).to have_http_status(:ok)
     end
-
-    it 'DBに保存されていること' do
-      expect do
-        post :update, params: { id: movie.id, movie: movie_attributes }, session: {}
-      end.to change(Movie, :count).by(1)
-    end
   end
 end
