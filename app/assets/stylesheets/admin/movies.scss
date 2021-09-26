@@ -1,0 +1,119 @@
+// Place all the styles related to the admin/movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+.debug_dump {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box_sizing;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0px;
+	display: grid;
+	grid-template:
+	"header header header" 100px
+	"nav main main" 1fr
+	/ 180px 1fr;
+}
+
+header {
+	background-color: #eeeeee;
+	border-bottom: 1px solid #cccccc;
+	display: flex;
+	align-items: center;
+	grid-area: header;
+}
+
+header p {
+	padding: 20px 20px;
+	font-size: 2em;
+	letter-spacing: -1px;
+}
+
+nav {
+	background-color: #eeeeee;
+	text-align: center;
+	grid-area: nav;
+}
+
+main {
+	grid-area: main;
+}
+
+main .table {
+	margin: 40px 40px;
+}
+
+table, td, tr, th {
+	border: 1px #333333 solid;
+	padding: 3px 10px;
+}
+
+table {
+	text-align: center;
+	border-collapse: collapse;
+}
+
+// new 新規登録ページ
+
+input, textarea, select {
+	border: 1px solid #bbb;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.registration-form {
+	width: 500px;
+	margin: 40px 60px;
+	.block{
+		display: flex;
+	}
+}
+
+label {
+	display: inline-block;
+	text-align: right;
+	width: 150px;
+	margin-right: 30px;
+}
+
+.btn {
+	text-align: right;
+}
+
+
+.btn-primary {
+	border-radius: 10%;
+	background-color: #007bff;
+	width: 100px;
+	color: white;
+	&:hover {
+		border-radius: 10%;
+		background-color: #469ffd;
+		width: 100px;
+		color: white;
+	}
+}
+
+.alert {
+	margin: 0 0 30px 0;
+}
+
+h2 {
+	margin: 30px 50px;
+}

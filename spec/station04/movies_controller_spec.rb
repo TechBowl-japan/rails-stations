@@ -25,7 +25,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
 
   describe 'Station4 PUT /admin/movies/:id' do
     let!(:movie) { create(:movie) }
-    let!(:movie_attributes) { { name: "TEST" } }
+    let!(:movie_attributes) { { name: "TEST", image_url: "https://techbowl.co.jp/_nuxt/img/19.png" }}
 
     it '302を返すこと' do
       post :update, params: { id: movie.id, movie: movie_attributes }, session: {}
@@ -34,13 +34,13 @@ RSpec.describe Admin::MoviesController, type: :controller do
 
     it 'エラー処理がされていて仮にRailsデフォルトのエラー画面が出ないこと' do
       # 今回はデータベースエラーで例外処理
-      post :update, params: { id: movie.id, image_url: "https://techbowl.co.jp/_nuxt/img/111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111lllllllllllll.png" }, session: {}
+      post :update, params: { id: movie.id, movie:{ image_url: "https://techbowl.co.jp/_nuxt/img/111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111lllllllllllll.png" }}, session: {}
       expect(response).to have_http_status(:ok)
     end
 
     it 'DBに保存されていること' do
       expect do
-        post :update, params: { id: movie.id, movie: movie_attributes }, session: {}
+        post :create, params: { id: movie.id, movie: movie_attributes }, session: {}
       end.to change(Movie, :count).by(1)
     end
   end

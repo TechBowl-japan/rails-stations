@@ -1,0 +1,36 @@
+<header>
+	<p>Tech Train</p>
+</header>
+<nav>
+	<p>menu</p>
+</nav>
+<main>
+	<div class="registration-form">
+		<%= form_with(model: [:admin, @movie]) do |form| %>
+			<%= render 'shared/flash' %>
+			<div class="block">
+				<%= form.label :name, "タイトル" %>
+				<%= form.text_field :name, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= form.label :year, "公開年" %>
+				<%= form.text_field :year, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= form.label :is_showing, "上映中" %>
+				<%= form.select :is_showing, [['上映中', 1], ['上映予定', 0]], {include_blank: '選択してください'}, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= form.label :description, "概要" %>
+				<%= form.text_area :description, class: 'form-control' %>
+			</div>
+			<div class="block">
+				<%= form.label :image_url , "画像URL" %>
+				<%= form.text_field :image_url, class: 'form-control' %>
+			</div>
+			<div class='btn'>
+				<%= form.submit "Save", class: 'btn-primary' %>
+			</div>
+		<% end %>
+	</div>
+</main>

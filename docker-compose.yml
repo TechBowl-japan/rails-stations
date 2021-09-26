@@ -28,6 +28,8 @@ services:
       - "3000:3000"
     links:
       - db
+    stdin_open: true
+    tty: true
 
 volumes:
   rails-railway-stations-volume:

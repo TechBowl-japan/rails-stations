@@ -1,0 +1,41 @@
+<header>
+	<p>Tech Train</p>
+</header>
+<nav>
+	<p>menu</p>
+</nav>
+<main>
+	<%= render 'shared/flash' %>
+	<div class="table">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>映画タイトル</th>
+				<th>公開年</th>
+				<th>上映中</th>
+				<th>概要</th>
+				<th>画像URL</th>
+				<th>作成日時</th>
+				<th>更新日時</th>
+				<th></th>
+			</tr>
+			<% @movies.each do |movie| %>
+				<tr>
+						<td> <%= link_to movie.id, edit_admin_movie_path(movie.id) %>  </td>
+						<td> <%= movie.name %> </td>
+						<td> <%= movie.year %> </td>
+						<% if movie.is_showing %>
+							<td>上映中</td>
+						<% else %>
+							<td>上映予定</td>
+						<% end %>
+						<td> <%= movie.description %> </td>
+						<td> <img src="<%= movie.image_url %>"> </td>
+						<td> <%= movie.created_at.to_s(:datetime_jp) %> </td>
+						<td> <%= movie.updated_at.to_s(:datetime_jp) %> </td>
+						<td> <%= link_to "削除", admin_movie_path(movie.id), method: :delete, data: {confirm: "削除しますか？"} %> </td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</main>

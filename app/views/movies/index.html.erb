@@ -1,0 +1,10 @@
+<h1>Movies#index</h1>
+
+<ul>
+	<% @movies.each do |movie| %>
+		<li>
+			<img src="<%= movie.image_url %>" >
+			<p><%= movie.name %></p>
+		</li>
+	<% end %>
+</ul>
