@@ -1,11 +1,5 @@
-<header>
-	<p>Tech Train</p>
-</header>
-<nav>
-	<p>menu</p>
-</nav>
+<% provide(:title, 'Movies Changes') %>
 <main>
-	<h2>Movies Changes</h2>
 	<div class="registration-form">
 		<%= form_with model: [:admin, @movie] do |f| %>
 			<%= render 'shared/flash' %>
@@ -29,8 +23,8 @@
 				<%= f.label :image_url , "画像URL" %>
 				<%= f.text_field :image_url, class: 'form-control' %>
 			</div>
-			<div class='btn'>
-				<%= f.submit "Save Changes", class: 'btn-primary' %>
+			<div class='submit'>
+				<%= f.submit "Save Changes", class: 'btn btn-primary' %>
 			</div>
 		<% end %>
 	</div>

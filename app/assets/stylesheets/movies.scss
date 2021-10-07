@@ -1,3 +1,65 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+main {
+	padding-top: 30px;
+}
+
+ul {
+	list-style: none;
+}
+
+h2 {
+	margin: 50px 50px;
+}
+
+.movie-list {
+	margin: 30px 50px;
+	height: auto;
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	li {
+		margin : 0 20px 30px 0;
+		width: 200px;
+	}
+}
+
+.movie-content {
+	background-color: #ffffff;
+	// margin: 15px auto;
+	text-align: center;
+	img {
+		margin: 10px auto;
+		width: 90%;
+	}
+}
+
+// 映画検索フォーム
+
+
+.search-box {
+	margin: 20px 100px;
+	width: 60%;
+	form {
+		margin: 30px auto;
+		.search-radio-btn {
+			margin: 40px auto 10px;
+			input {
+				margin: 0px 10px;
+			}
+		}
+		.search-text-form {
+			display: flex;
+			input {
+				&[type="text"]{
+					width: 300px;
+				}
+				margin-right: 10px;
+			}
+		}
+	}
+}

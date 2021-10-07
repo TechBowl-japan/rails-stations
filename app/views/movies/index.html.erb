@@ -1,10 +1,31 @@
-<h1>Movies#index</h1>
-
-<ul>
-	<% @movies.each do |movie| %>
-		<li>
-			<img src="<%= movie.image_url %>" >
-			<p><%= movie.name %></p>
-		</li>
-	<% end %>
-</ul>
+<% provide(:title, '映画作品一覧') %>
+<main>
+	<div class="search-box">
+		<%= form_with url: movies_path, method: :get do |f| %>
+			<div class="search-radio-btn">
+				<%= f.radio_button :is_showing, "" %>
+				<%= f.label :is_showing, "すべて", value: "" %>
+				<%= f.radio_button :is_showing, 'true' %>
+				<%= f.label :is_showing, "上映中", value: 'true' %>
+				<%= f.radio_button :is_showing, 'false' %>
+				<%= f.label :is_showing, "公開予定", value: 'false' %>
+			</div>
+			<div class="search-text-form">
+				<%= f.text_field :keyword %>
+				<%= f.submit '検索', keyword: nil, class: "btn btn-default" %>
+			</div>
+		<% end %>
+	</div>
+	<div class="movie-list">
+		<ul>
+			<% @movies.each do |movie| %>
+				<li class="border rounded">
+					<div class="movie-content">
+						<img src="<%= movie.image_url %>" >
+						<div><%= movie.name %></div>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</main>

@@ -1,5 +1,3 @@
-@import "bootstrap";
-
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+.debug_dump {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	margin-left: 30px;
+	@include box_sizing;
+}
+
+header {
+	height: 100px;
+}
