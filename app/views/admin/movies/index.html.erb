@@ -1,0 +1,32 @@
+<div class="table-center">
+  
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>公開年</th>
+        <th>概要</th>
+        <th>画像URL</th>
+        <th>上映中</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
+      </tr>
+      
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.id %></td>
+          <td><%= movie.name %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.description %></td>
+          <td><%= movie.image_url %></td>
+          <td><%= movie.is_showing ? "上映中": "上映予定" %></td>
+          <td><%= movie.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+          <td><%= movie.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </table>
+</div>
+
+
+
+
