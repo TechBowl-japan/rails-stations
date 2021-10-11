@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 93px;
+}
+
+.card{
+    width: 200px;
+    height: auto;
+    margin-right: 30px;
+  }
+  .card_imgframe{
+    width: 100%;
+    height: auto;
+    padding-top: 56.25%;
+    background-size: cover;
+    box-sizing: border-box;
+  }
+  .card_textbox{
+    width: 100%;
+    height: auto;
+    padding: 20px 18px;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+  .card__textbox > * + *{
+    margin-top: 10px;
+  }
+  .card_title{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125%;
+  }
+  .card_text{
+    font-size: 12px;
+    line-height: 150%;
+  }

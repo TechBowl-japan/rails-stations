@@ -1,0 +1,33 @@
+<% @movies.each do |movie| %>
+<div class="card card-skin">
+  <div class="card_imgframe">
+    <%= image_tag movie.image_url %>
+  </div>
+    <div class="card text_box">
+      <div class="card_title">
+        <%= movie.name %>
+      </div>
+      <div class="card_text">
+        <p>ユーザーID: <%= movie.id %></p>
+        <p>公開年: <%= movie.year %></p>
+        <p>説明: <%= movie.description %></p>
+        <p>フラグ: <%= movie.is_showing %></p>
+        <p>作成日: <%= movie.created_at %></p>
+        <p>更新日: <%= movie.updated_at %></p>
+      </div>  
+    </div>
+</div>
+<% end %>
+
+  
+  
+  
+  
+  
+ 
+  
+
+
+
+
+
