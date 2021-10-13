@@ -1,0 +1,9 @@
+  <% if @movie.errors.any? %>
+    <div class = "alert">
+      <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
