@@ -8,7 +8,8 @@ class Admin::MoviesController < ApplicationController
   end
 
   def create
-    if Movie.create(movie_params)
+    @movie = Movie.new(movie_params)
+    if @movie.save
       # binding.pry
       redirect_to admin_movies_path, notice: "投稿しました"
     else
@@ -16,6 +17,17 @@ class Admin::MoviesController < ApplicationController
       render :new
     end
   end
+
+  # def create
+  #   begin
+  #     Movie.create(movie_params)
+  #       redirect_to admin_movies_path, notice: "投稿しました"
+  #   rescue ActiveRecord::ValueTooLong => e
+  #     logger.error("エラー内容: #{e.message}")
+  #     flash.now[:alert] = "入力内容が間違っています"
+  #     render :new
+  #   end
+  # end
 
   private 
   def movie_params
