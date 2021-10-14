@@ -18,11 +18,7 @@
           <td><%= movie.name %></td>
           <td><%= movie.year %></td>
           <td><%= simple_format(movie.description) %></td>
-          <% begin %>
-            <td><%= image_tag movie.image_url, size: '80x60' %></td>
-          <% rescue %>
-            <p>画像はありません</p>
-          <% end %>
+          <td><%= image_tag movie.image_url, size: '80x60' %></td>
           <td><%= movie.is_showing ? "上映中": "上映予定" %></td>
           <td><%= movie.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
           <td><%= movie.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
