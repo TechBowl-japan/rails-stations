@@ -30,6 +30,11 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+# This will output the logs of Rails itself for the Railway.
+Rails.logger = Logger.new('log/railway_test.log', 3, 10 * 1024 * 1024)
+ActiveRecord::Base.logger = Logger.new('log/railway_test.log', 3, 10 * 1024 * 1024)
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
