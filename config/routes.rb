@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :movies, only: [ :index, :new, :create ]
+    resources :movies, only: [ :index, :new, :create, :edit, :update ]
   end
   resources :movies, only: [ :index ]
 

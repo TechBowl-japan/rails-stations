@@ -14,7 +14,7 @@
       
       <% @movies.each do |movie| %>
         <tr>
-          <td><%= movie.id %></td>
+          <td><%= link_to movie.id, edit_admin_movie_path(movie) %></td>
           <td><%= movie.name %></td>
           <td><%= movie.year %></td>
           <td><%= simple_format(movie.description) %></td>
