@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   end
   resources :movies, only: [ :index ]
 
-  # get '*path', to: 'application#rescue404'
+  get '*path', to: 'application#rescue404'
 end
