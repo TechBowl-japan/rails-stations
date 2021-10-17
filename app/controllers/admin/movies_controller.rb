@@ -28,7 +28,7 @@ class Admin::MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    if  @movie.update(movie_params)
+    if @movie.update(movie_params)
       # binding.pry
       redirect_to admin_movies_path, notice: "#{@movie.id}の情報を更新しました"
     else
@@ -38,7 +38,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   private 
-  
+
   def movie_params
     params.require(:movie).permit(:name, :year, :is_showing, :image_url, :description)
   end
