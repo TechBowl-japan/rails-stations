@@ -18,6 +18,10 @@ class Admin::MoviesController < ApplicationController
     end
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
   def edit
     @movie = Movie.find(params[:id])
   end
@@ -25,10 +29,11 @@ class Admin::MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if  @movie.update(movie_params)
+      # binding.pry
       redirect_to admin_movies_path, notice: "#{@movie.id}の情報を更新しました"
     else
       flash.now[:alert] = "入力内容が間違っています"
-      render :new
+      render :edit
     end
   end
 

@@ -6,7 +6,6 @@ class Movie < ApplicationRecord
     validates :year
     validates :description
     validates :image_url
-    validates :is_showing
     validates :name
   end
 end
