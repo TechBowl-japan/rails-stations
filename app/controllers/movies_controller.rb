@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
 
   def index
-    byebug
     @movies = Movie.search(search_params[:keyword],
                            search_params[:is_showing])
   end
@@ -9,6 +8,6 @@ class MoviesController < ApplicationController
   private
 
     def search_params
-      params.permit(:keyword, :is_showing, :commit, :controller, :action)
+      params.permit(:keyword, :is_showing)
     end
 end

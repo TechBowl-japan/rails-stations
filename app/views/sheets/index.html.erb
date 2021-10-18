@@ -1,0 +1,23 @@
+<% provide(:title, '座席表') %>
+<main>
+	<div class="seating_chart">
+		<table>
+				<tr>
+					<th></th>
+					<% @sheets.where(row: @sheets.first.row ).each do |sheet| %>
+						<th><%= sheet.column %></th>
+					<% end %>
+				</tr>
+			<% @sheets.where(column: @sheets.first.column ).each do |sheet| %>
+				<tr>
+					<th><%= sheet.row %></th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</main>

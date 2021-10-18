@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+n_column = 5
+
+('a'..'c').each do |char|
+	n_column.times do |n|
+		Sheet.create([
+			{ column: n + 1, row: char }
+		])
+	end
+end
