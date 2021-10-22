@@ -27,9 +27,13 @@
         <%= form.text_field :image_url, class: 'form-control' %></td>
       </div>
 
-      <div class="submit-btn">
-          <input type="button" value="Close" class="btn bg-light">
-          <%= form.submit "更新", class: 'btn btn-primary' %>
+      <div class="btn-group">
+        <div class="submit-btn">
+            <%= form.submit "更新", class: 'btn btn-primary' %>
+        </div>
+        <div class="delete-btn">
+          <%= link_to "削除", admin_movie_path, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class: 'btn btn-danger'%>
+        </div>
       </div>
     <% end %>
 </div>

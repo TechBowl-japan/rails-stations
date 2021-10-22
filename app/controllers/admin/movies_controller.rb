@@ -30,9 +30,19 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.update(movie_update_params)
       # binding.pry
-      redirect_to admin_movies_path, notice: "#{@movie.id}の情報を更新しました"
+      redirect_to admin_movies_path, notice: "#{@movie.id}の投稿を更新しました"
     else
       flash.now[:alert] = "入力内容が間違っています"
+      render :edit
+    end
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    if @movie.destroy
+      redirect_to admin_movies_path, notice: "#{@movie.id}の投稿を削除しました"
+    else
+      flash.now[:alert] = "やり直してください"
       render :edit
     end
   end
