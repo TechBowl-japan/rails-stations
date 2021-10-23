@@ -63,3 +63,53 @@ h2 {
 		}
 	}
 }
+
+.movie_info {
+	img {
+		width: 300px;
+		margin-right: 50px;
+		margin-bottom: 50px;
+	}
+	display: flex;
+	.movie_info_content {
+		width: 50%;
+		.is_showing {
+			width: 100%;
+			text-align: center;
+			color: honeydew;
+			background-color: rgb(234, 171, 253);
+		}
+		.title {
+			font-size: 130%;
+			margin: 20px 0px;
+			font-weight: bold;
+		}
+		.description {
+			font-size: 80%;
+			color: #666666;
+			margin: 20px 0px;
+		}
+	}
+}
+
+.movie_schedule {
+	h3 {
+		margin-bottom: 40px;
+	}
+	.movie_schedule_content {
+		ul { display: flex; }
+		li { margin: 0px 10px; }
+		.time {
+			font-size: 120%;
+			width: 150px;
+			text-align: center;
+			color: #ffffff;
+			background-color: #666666;
+		}
+		.reservation_btn {
+			color: #ffffff;
+			width: 150px;
+			background-color: #ce3fdb;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+<% provide(:title, '映画作品一覧') %>
+<main>
+	<div class="movie_info">
+		<img src="<%= @movie.image_url %>" alt="<%= @movie.name %>">
+		<div class="movie_info_content">
+			<% if @movie.is_showing %>
+				<div class="is_showing"> <p>公開中</p> </div>
+			<% else %>
+				<div class="is_showing"> <p>公開予定</p> </div>
+			<% end %>
+			<div class="title"> <%= @movie.name %> </div>
+			<div class="description">
+				<div> 【公開年】<%= @movie.year %>  </div>
+				<div> 【概要】<%= @movie.description %> </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="movie_schedule">
+		<h3>上映スケジュール</h3>
+		<div class="movie_schedule_content">
+			<ul>
+				<% @schedules.each do |s| %>
+					<li>
+						<div class="time"><%= s.start_time.strftime( "%H:%M" ) %>~<%= s.end_time.strftime( "%H:%M" ) %></div>
+						<div class="reservation_btn btn"> 予約する </div>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</main>

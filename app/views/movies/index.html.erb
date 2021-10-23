@@ -21,8 +21,10 @@
 			<% @movies.each do |movie| %>
 				<li class="border rounded">
 					<div class="movie-content">
-						<img src="<%= movie.image_url %>" >
-						<div><%= movie.name %></div>
+						<%= link_to movie_path(movie.id) do %>
+							<img src="<%= movie.image_url %>" >
+							<div><%= movie.name %></div>
+						<% end %>
 					</div>
 				</li>
 			<% end %>
