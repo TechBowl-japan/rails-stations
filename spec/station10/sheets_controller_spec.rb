@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe SheetsController, type: :controller do
   render_views
   describe 'Station10 GET  /movies/:movie_id/schedules/:schedule_id/sheets' do
-    let!(:sheets) { create_list(:sheet, 15) } 
-    let!(:movie) { create(:movie) } 
-    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let!(:success_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id , date: "2019-04-16" }, session: {} } 
-    let!(:failure_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} } 
+    let!(:sheets) { create_list(:sheet, 15) }
+    let!(:movie) { create(:movie) }
+    let!(:schedule) { create(:schedule, movie_id: movie.id) }
+    let(:success_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id , date: "2019-04-16" }, session: {} }
+    let(:failure_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} }
 
     it 'dateが渡されていれば200を返すこと' do
       success_request
