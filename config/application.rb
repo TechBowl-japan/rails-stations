@@ -14,13 +14,8 @@ module App
     # for rspec
     # Setting it to false will prevent unnecessary test files from being created.
     config.generators do |g|
-      g.test_framework :rspec, 
-            view_specs: false, 
-            helper_specs: false, 
-            controller_specs: false, 
-            routing_specs: false
+      g.test_framework false
     end
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
