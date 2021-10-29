@@ -1,6 +1,7 @@
 <p>検索フォーム</P>
+<%= notice %>
 
-<%= form_with scope: :search, url: search_movie_movies_path, method: :get, local: true do |form| %>
+<%= form_with scope: :search, url: movies_path, method: :get, local: true do |form| %>
   <div class="input-group mb-3 border">
     <%= form.label "キーワードを入力してください", class: "input-group-text" %>
     <%= form.text_field :keyword, class: 'form-control' %></td>
@@ -20,23 +21,23 @@
 
 <br>
 
-<% if @search_movies %>
+<% if @movies  %>
   <p>検索結果</P>
   <br>
-  <% @search_movies.each do |search_movie| %>
-  <%= search_movie.id %>
-  <%= search_movie.name %>
-  <%= search_movie.year %>
-  <%= search_movie.description %>
-  <%= search_movie.image_url %>
-  <%= search_movie.is_showing ? "公開中" : "未公開" %>
+  <% @movies.each do |movie| %>
+  <%= movie.id %>
+  <%= movie.name %>
+  <%= movie.year %>
+  <%= movie.description %>
+  <%= movie.image_url %>
+  <%= movie.is_showing ? "公開中" : "未公開" %>
   <% end %>
   <br>
 <%= link_to "閉じる", movies_path %>
 
 <% else %>
   <div class="movies-container">
-    <% @movies.each do |movie| %>
+    <% @movies_all.each do |movie| %>
       <div class="card card-skin">
         <div class="card_imgframe">
           <%= image_tag movie.image_url %>
@@ -49,7 +50,7 @@
               <p>ユーザーID: <%= movie.id %></p>
               <p>公開年: <%= movie.year %></p>
               <p>説明: <%= movie.description %></p>
-              <p>フラグ: <%= movie.is_showing %></p>
+              <p>フラグ: <%= movie.is_showing ? "公開中" : "未公開" %></p>
               <p>作成日: <%= movie.created_at %></p>
               <p>更新日: <%= movie.updated_at %></p>
             </div>  
