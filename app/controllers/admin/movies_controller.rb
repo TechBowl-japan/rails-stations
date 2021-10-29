@@ -28,8 +28,7 @@ class Admin::MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    if @movie.update(movie_update_params)
-      # binding.pry
+    if @movie.update(movie_params)
       redirect_to admin_movies_path, notice: "#{@movie.id}の投稿を更新しました"
     else
       flash.now[:alert] = "入力内容が間違っています"
