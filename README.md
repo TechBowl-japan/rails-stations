@@ -179,6 +179,14 @@ docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/00
 際にうまくいかないことが多いということが報告されています。
 もし上記のようなことが起こった場合には、Terminalなどの画面でSSHによるクローンを試していただき、その上で `yarn install` を実行していただくことで解決することが多いです。もし解決しなかった場合には、運営までお問い合わせいただくか、RailwayのSlackワークスペースにてご質問ください。
 
+### commitしないでテストを実行したいです
+以下のようなコマンドを実行するとstationXX（01〜13の2桁の数字が入ります）のテストだけを実行できます。
+エラーメッセージもより詳細に出力されるため、なぜエラーが出ているかわからない人はこちらで実行するのをおすすめします。
+
+```shell
+docker compose exec web rspec spec/stationXX
+```
+
 ## 自分のリポジトリの状態を最新の TechBowl-japan/rails-stations と合わせる
 
 Forkしたリポジトリは、Fork元のリポジトリの状態を自動的に反映してくれません。
