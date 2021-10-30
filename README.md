@@ -31,7 +31,7 @@ Dockerをお使いのPCにインストールしてください。
 Node.js, Yarnのインストールがまだの場合は[html-staions](https://github.com/TechBowl-japan/html-stations)を参考にインストールしてください。  
 また、使用PCがWindowsの場合は、WSLを[この記事](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10)を参考にインストールしてください。
 
-### 「必要な」インストール済みの場合
+### 「必要なツール」インストール済みの場合
 
 次の手順で取り組み始めてください。
 
@@ -101,12 +101,12 @@ Rails Railway に取り組み始めてください。
 
 SSHという仕組みを利用して繋ぐこともできますが、基本的には上記の設定で繋ぐのが一番簡単です。
 接続されないという方は、Dockerのビルドと起動がされていないかもしれません。
-解決についての詳細は、このREADMEにある 
+解決についての詳細は、このREADMEにある[DBに接続して中身を見たいです](#DBに接続して中身を見たいです)をご参照ください。
 
 ## トラブルシューティング
 
-### DBに接続して中身が見れないなのですが？
-
+### DBに接続して中身を見たいです
+以下を確認してみてください。
 #### Dockerが起動されているかを確かめる
 Macなら, iTerm.app, Terminal.app
 Windowsなら, PowerShell
