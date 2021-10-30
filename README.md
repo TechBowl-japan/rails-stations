@@ -103,10 +103,68 @@ SSHという仕組みを利用して繋ぐこともできますが、基本的�
 接続されないという方は、Dockerのビルドと起動がされていないかもしれません。
 解決についての詳細は、このREADMEにある[DBに接続して中身を見たいです](#DBに接続して中身を見たいです)をご参照ください。
 
-## トラブルシューティング
+
+## 自分のリポジトリの状態を最新の TechBowl-japan/rails-stations と合わせる
+
+Forkしたリポジトリは、Fork元のリポジトリの状態を自動的に反映してくれません。
+Stationの問題やエラーの修正などがなされておらず、自分で更新をする必要があります。
+何かエラーが出た、または運営から親リポジトリを更新してくださいと伝えられた際には、こちらを試してみてください。
+
+### 準備
+
+```shell
+# こちらは、自分でクローンした[GitHubユーザー名]/rails-stationsの作業ディレクトリを前提としてコマンドを用意しています。
+# 自分が何か変更した内容があれば、 stash した後に実行してください。
+git remote add upstream git@github.com:TechBowl-japan/rails-stations.git
+git fetch upstream
+```
+
+これらのコマンドを実行後にうまくいっていれば、次のような表示が含まれています。
+
+```shell
+git branch -a ←このコマンドを実行
+
+* master
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+  remotes/upstream/main ←こちらのような upstream という文字が含まれた表示の行があれば成功です。
+```
+
+こちらで自分のリポジトリを TechBowl-japan/rails-stations の最新の状態と合わせるための準備は終了です。
+
+### 自分のリポジトリの状態を最新に更新
+
+```shell
+# 自分の変更の状態を stash した上で次のコマンドを実行してください。
+
+# ↓main ブランチに移動するコマンド
+git checkout main
+
+# ↓ TechBowl-japan/rails-stations の最新の状態をオンラインから取得
+git fetch upstream
+
+# ↓ 最新の状態を自分のリポジトリに入れてローカルの状態も最新へ
+git merge upstream/main
+git push
+yarn install
+```
+
+## よくある質問
+
+### （GitHubアカウントでサインアップしたので）パスワードがわかりません
+
+https://techbowl.co.jp/techtrain/resetpassword
+
+上記のURLより自分の登録したメールアドレスより、パスワードリセットを行うことで、パスワードを発行してください。
+
+メールアドレスがわからない場合は、ログイン後にユーザー情報の編集画面で確認してください。
+ログインしていれば、次のURLから確認できます。
+
+https://techbowl.co.jp/techtrain/mypage/profile
 
 ### DBに接続して中身を見たいです
-以下を確認してみてください。
+以下の2点を確認してみてください。
+
 #### Dockerが起動されているかを確かめる
 Macなら, iTerm.app, Terminal.app
 Windowsなら, PowerShell
@@ -164,7 +222,7 @@ docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/00
 
 これで、 `app_development` と `app_test` が作成されていれば、問題なく接続できます。
 
-### commitしたのにチェックが実行されていないようなのですが？
+### commitしたのにチェックが実行されていないようです
 
 チェックのためには、次の二つの条件が必須となります。
 
@@ -186,59 +244,3 @@ docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/00
 ```shell
 docker compose exec web rspec spec/stationXX
 ```
-
-## 自分のリポジトリの状態を最新の TechBowl-japan/rails-stations と合わせる
-
-Forkしたリポジトリは、Fork元のリポジトリの状態を自動的に反映してくれません。
-Stationの問題やエラーの修正などがなされておらず、自分で更新をする必要があります。
-何かエラーが出た、または運営から親リポジトリを更新してくださいと伝えられた際には、こちらを試してみてください。
-
-### 準備
-
-```shell
-# こちらは、自分でクローンした[GitHubユーザー名]/rails-stationsの作業ディレクトリを前提としてコマンドを用意しています。
-# 自分が何か変更した内容があれば、 stash した後に実行してください。
-git remote add upstream git@github.com:TechBowl-japan/rails-stations.git
-git fetch upstream
-```
-
-これらのコマンドを実行後にうまくいっていれば、次のような表示が含まれています。
-
-```shell
-git branch -a ←このコマンドを実行
-
-* master
-  remotes/origin/HEAD -> origin/main
-  remotes/origin/main
-  remotes/upstream/main ←こちらのような upstream という文字が含まれた表示の行があれば成功です。
-```
-
-こちらで自分のリポジトリを TechBowl-japan/rails-stations の最新の状態と合わせるための準備は終了です。
-
-### 自分のリポジトリの状態を最新に更新
-
-```shell
-# 自分の変更の状態を stash した上で次のコマンドを実行してください。
-
-# ↓main ブランチに移動するコマンド
-git checkout main
-
-# ↓ TechBowl-japan/rails-stations の最新の状態をオンラインから取得
-git fetch upstream
-
-# ↓ 最新の状態を自分のリポジトリに入れてローカルの状態も最新へ
-git merge upstream/main
-git push
-yarn install
-```
-
-### GitHubアカウントでサインアップしたので、パスワードがないという方へ
-
-https://techbowl.co.jp/techtrain/resetpassword
-
-上記のURLより自分の登録したメールアドレスより、パスワードリセットを行うことで、パスワードを発行してください。
-
-メールアドレスがわからない場合は、ログイン後にユーザー情報の編集画面で確認してください。
-ログインしていれば、次のURLから確認できます。
-
-https://techbowl.co.jp/techtrain/mypage/profile
