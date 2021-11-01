@@ -244,3 +244,5 @@ docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/00
 ```shell
 docker compose exec web rspec spec/stationXX
 ```
+
+また、以下のようなエラーが出力されている際にはクラス名などが定義されていないか運営による不具合の可能性があるため、一度上のコマンドを実行しRspecとしてエラーを出力してどちらに当たるか判断していただくようお願いいたします。
