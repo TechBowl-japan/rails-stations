@@ -246,3 +246,8 @@ docker compose exec web rspec spec/stationXX
 ```
 
 また、以下のようなエラーが出力されている際にはクラス名などが定義されていないか運営による不具合の可能性があるため、一度上のコマンドを実行しRspecとしてエラーを出力してどちらに当たるか判断していただくようお願いいたします。
+```bash
+× エラー：有効なテストが存在しません．
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
