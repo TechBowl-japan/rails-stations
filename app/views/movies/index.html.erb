@@ -21,23 +21,8 @@
 
 <br>
 
-<% if @movies  %>
-  <p>検索結果</P>
-  <br>
-  <% @movies.each do |movie| %>
-  <%= movie.id %>
-  <%= movie.name %>
-  <%= movie.year %>
-  <%= movie.description %>
-  <%= movie.image_url %>
-  <%= movie.is_showing ? "公開中" : "未公開" %>
-  <% end %>
-  <br>
-<%= link_to "閉じる", movies_path %>
-
-<% else %>
   <div class="movies-container">
-    <% @movies_all.each do |movie| %>
+    <% @movies.each do |movie| %>
       <div class="card card-skin">
         <div class="card_imgframe">
           <%= image_tag movie.image_url %>
@@ -58,7 +43,6 @@
       </div>
     <% end %> 
   </div>
-<% end %>
 
 
 

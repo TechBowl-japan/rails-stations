@@ -11,7 +11,6 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     if @movie.save
       redirect_to admin_movies_path, notice: "投稿しました"
-      # binding.pry
     else
       flash.now[:alert] = "入力内容が間違っています"
       render :new
@@ -50,10 +49,6 @@ class Admin::MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(:name, :year, :is_showing, :image_url, :description)
-  end
-
-  def movie_update_params
-    params.permit(:name, :year, :is_showing, :image_url, :description)
   end
 
 end
