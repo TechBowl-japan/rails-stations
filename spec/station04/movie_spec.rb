@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
-
   before do
     @movie = create(:movie)
     @other = create(:movie)
