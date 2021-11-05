@@ -6,7 +6,7 @@ RSpec.describe ReservationsController, type: :controller do
     let!(:movie) { create(:movie) }
     let!(:sheets) { create_list(:sheet, 5) }
     let!(:schedule) { create(:schedule, movie_id: movie.id) }
-    let(:success_request) { get :new, params: { date: "2019-04-16", sheet_id: sheets.first.id , movie_id: movie.id, schedule_id: schedule.id }, session: {} 
+    let(:success_request) { get :new, params: { date: "2019-04-16", sheet_id: sheets.first.id , movie_id: movie.id, schedule_id: schedule.id }, session: {} }
     let(:failure_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} }
 
     it 'date, sheet_idの両方があるときだけ200を返すこと' do
