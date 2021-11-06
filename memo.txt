@@ -1,5 +1,7 @@
 docker compose exec web rails g controller sheets index
 
+docker compose exec web rails g controller schedules create
+
 ・データベース
 
 データベースコンテナへ入る
