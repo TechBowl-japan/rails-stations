@@ -14,6 +14,7 @@ RSpec.describe MoviesController, type: :controller do
     end
 
     it 'movies(:id)に紐づくschedulesのレコード全件分のデータが出力されていること' do
+      # binding.irb
       expect(response.body).to include(@schedules[0].start_time.to_s).and include(@schedules[2].start_time.to_s)
     end
   end
