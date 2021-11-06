@@ -58,3 +58,6 @@ docker compose exec web rails db:seed
 ・２つ前のmigrationファイル作成時に戻りたい
 docker compose exec web rails db:rollback STEP=2
 docker compose exec web rails db:migrate:status でdownを確認
+
+pryに接続
+docker attach 3ad88d22055b

@@ -1,0 +1,13 @@
+<%= @movie.id %>
+<%= @movie.name %>
+<%= @movie.year %>
+<%= @movie.description %>
+<%= image_tag @movie.image_url %>
+<%= @movie.is_showing %>
+
+<br>
+
+<% @schedules.each do |schedule|%>
+  <%= "上映開始時刻：#{schedule.start_time.strftime("%p %I:%M")}" %>
+  <%= "上映終了時刻：#{schedule.end_time.strftime("%p %I:%M")}" %>
+<% end %>

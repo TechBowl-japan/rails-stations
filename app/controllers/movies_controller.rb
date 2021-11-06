@@ -8,6 +8,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+    @schedules = @movie.schedules
+  end
+
   def movie_search_params
     params.fetch(:search, {}).permit(:keyword, :is_showing)
   end
