@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :sheets, only: [:index]
   namespace :admin do
     resources :movies do
-      resources :schedules, only: [:create]
+      resources :schedules, only: [:show, :create]
     end
   end
   resources :movies, only: [:index] do
