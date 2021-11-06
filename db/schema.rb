@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_11_06_093020) do
   end
 
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.time "start_time", null: false, comment: "上映開始時刻"
-    t.time "end_time", null: false, comment: "上映終了時刻"
+    t.datetime "start_time", null: false, comment: "上映開始時刻"
+    t.datetime "end_time", null: false, comment: "上映終了時刻"
     t.integer "movie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
