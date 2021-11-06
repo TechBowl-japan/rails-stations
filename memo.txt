@@ -32,10 +32,27 @@ PRIMARY KEY (`id`))
 
 docker compose exec web rails g model sheet
 
+docker compose exec web rails g model schedule movie:references start_time:time end_time:time 
+
+マイグレート
+docker compose exec web rails db:migrate
+
 docker compose exec web rails destroy model sheets
 
 docker compose exec web rails g controller sheets index
 
+docker compose exec web rails g migration DeleteOptionIdUniqIndexFromSchedules
+
+
+docker compose exec web rails g migration AddColumnNotnullFromSchedules
+
 
 コンソールに入る
 docker compose exec web rails c
+
+テストデータ挿入
+docker compose exec web rails db:seed
+
+・２つ前のmigrationファイル作成時に戻りたい
+docker compose exec web rails db:rollback STEP=2
+docker compose exec web rails db:migrate:status でdownを確認
