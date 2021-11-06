@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    |.|.|スクリーン|.|.|
+    <br>
+  </tr>
+  <tr>
+    |:-:|:-:|:-:|:-:|:-:|
+    <br>
+  </tr>
+  <tr>
+    <% @sheet_row_a.each do |sheet_row_a| %>
+        <%= sheet_row_a.row %>-<%= sheet_row_a.column %>
+    <% end %><br>
+  </tr>
+  <tr>
+  <% @sheet_row_b.each do |sheet_row_b| %>
+      <%= sheet_row_b.row %>-<%= sheet_row_b.column %>
+  <% end %><br>
+  </tr>
+  <tr>
+  <% @sheet_row_c.each do |sheet_row_c| %>
+      <%= sheet_row_c.row %>-<%= sheet_row_c.column %>
+  <% end %><br>
+  </tr>
+</table>

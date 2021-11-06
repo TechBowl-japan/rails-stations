@@ -1,0 +1,41 @@
+docker compose exec web rails g controller sheets index
+
+・データベース
+
+データベースコンテナへ入る
+docker container exec -it 6da4a72ed276 bash
+
+ログイン
+mysql -u root -p 
+→password入力
+
+データベースの選択
+use app_development;
+
+テーブル一覧表示
+show tables;
+
+さらに詳細を表示
+show table status;
+
+ログアウト
+quit
+
+
+sheetsテーブル作成
+CREATE TABLE IF NOT EXISTS `app_development`.`sheets` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`column` TINYINT(5) NOT NULL,
+`row` VARCHAR(1) NOT NULL,
+PRIMARY KEY (`id`))
+
+
+docker compose exec web rails g model sheet
+
+docker compose exec web rails destroy model sheets
+
+docker compose exec web rails g controller sheets index
+
+
+コンソールに入る
+docker compose exec web rails c
