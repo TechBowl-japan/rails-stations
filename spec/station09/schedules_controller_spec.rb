@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SchedulesController, type: :controller do
+RSpec.describe Admin::SchedulesController, type: :controller do
   render_views
   describe 'Station9 GET /admin/schedules/:id' do
     let!(:movie) { create(:movie) }
