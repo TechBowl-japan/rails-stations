@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
   render_views
-  describe 'Station10 GET /admin/movies' do
+  describe 'Station10 GET /movies' do
     let!(:movie) { create(:movie) }
     before do
       @schedules = create_list(:schedule, 3, movie_id: movie.id)
       get :show, params: { id: movie.id }, session: {}
-    end 
+    end
 
     it 'movies(:id)に対応するレコードの情報が含まれていること' do
       expect(response.body).to include(movie.name).and include("#{movie.year}").and include(movie.description).and include(movie.image_url)
