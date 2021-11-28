@@ -1,0 +1,29 @@
+<h1>Movies</h1>
+<table>
+  <thead>
+    <tr>
+      <th>　ID　</th>
+      <th>　映画タイトル　</th>
+      <th>　公開年　</th>
+      <th>　上映中か　</th>
+      <th>　概要　</th>
+      <th>　画像URL　</th>
+      <th>　作成日時　</th>
+      <th>　更新日時　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.id %></td>
+        <td><%= movie.name %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.is_showing ? "上映中" : "休演中" %>
+        <td><%= image_tag movie.image_url %></td>
+        <td><%= movie.description %></td>
+        <td><%= movie.created_at %></td>
+        <td><%= movie.updated_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

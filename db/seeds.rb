@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Movie.create([{ name: 'Star Wars',
+                year: '1977',
+                description: 'SF',
+                image_url:'star_wars.jpg',
+                is_showing: 1},
+              { name: 'Lord of the Rings',
+                year: '2001',
+                description: 'Action',
+                image_url:'lord_rings.jpg',
+                is_showing: 1}])
