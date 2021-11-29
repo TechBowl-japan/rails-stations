@@ -13,7 +13,7 @@ class Admin::MoviesController < ApplicationController
       flash[:success] = "Welcome!"
       redirect_to @movie
     else
-      flash[:warning] = "Error"
+      flash.now[:danger] = "Error"
       render 'new'
     end
   end
