@@ -25,10 +25,10 @@ class Admin::MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      flash[:success] = "Updated"
+      # flash[:success] = "Updated"
       redirect_to '/movies'
     else
-      flash[:danger] = "Error"
+      flash.now[:danger] = "Error"
       render 'edit'
     end
   end
