@@ -10,11 +10,26 @@ class Admin::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      flash[:success] = "Welcome!"
+      # flash[:success] = "Welcome!"
       redirect_to '/movies'
     else
       flash.now[:danger] = "Error"
       render 'new'
+    end
+  end
+
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      flash[:success] = "Updated"
+      redirect_to '/movies'
+    else
+      flash[:danger] = "Error"
+      render 'edit'
     end
   end
 
