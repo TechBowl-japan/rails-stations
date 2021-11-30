@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get 'movies/new', to:'movies#new'
     post 'movies', to:'movies#create'
     get 'movies/:id/edit', to:'movies#edit'
-    # patch 'movies/:id', to:'movies#update'
+    patch 'movies/:id', to:'movies#update'
     put 'movies/:id', to:'movies#update'
   end
   get '/', to: 'movies#index'
