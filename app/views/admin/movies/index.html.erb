@@ -11,12 +11,13 @@
       <th>　概要　</th>
       <th>　作成日時　</th>
       <th>　更新日時　</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= link_to "#{movie.id}", "movies/#{movie.id}/edit" %></td>
+        <td><%= movie.id %></td>
         <td><%= movie.name %></td>
         <td><%= movie.year %></td>
         <td><%= movie.is_showing ? "上映中" : "公開予定" %>
@@ -24,6 +25,7 @@
         <td><%= movie.description %></td>
         <td><%= movie.created_at %></td>
         <td><%= movie.updated_at %></td>
+        <td><%= link_to edit_admin_movie_path(movie) do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_movie_path(movie), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
       </tr>
     <% end %>
   </tbody>
