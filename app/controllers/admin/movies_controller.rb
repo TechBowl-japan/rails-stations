@@ -13,7 +13,7 @@ class Admin::MoviesController < ApplicationController
       # flash[:success] = "Welcome!"
       redirect_to admin_movies_path
     else
-      flash.now[:danger] = "Error"
+      flash.now[:alert] = "Error"
       render 'new'
     end
   end
@@ -26,9 +26,9 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       # flash[:success] = "Updated"
-      redirect_to admin_movies_path
+      redirect_to admin_movies_path, notice: "#{@movie.id}の情報を更新しました"
     else
-      flash.now[:danger] = "Error"
+      flash.now[:alert] = "Error"
       render 'edit'
     end
   end
