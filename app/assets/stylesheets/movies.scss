@@ -1,6 +1,76 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.table_index{
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body{
+  background-color: #D3E8C1;
+}
+
+/* index.html.erb */
+.index_container_parent{
   display: flex;
+  justify-content: center;
+ 
+}
+.index_container{
+  display: flex;
+  justify-content: left;
+  // justify-content: space-evenly;
+  flex-wrap: wrap;
+  width:50%;
+}
+.index_container div{
+  padding-bottom: 15px;
+  margin-right: 40px;
+  
+}
+.index_card{
+  background-color:white;
+  height: 250px;
+  margin-bottom: 20px;	
+  position: relative;
+}
+.index_card h5{
+  display: block;
+  height:35px;
+  margin-left:15px
+}
+.index_button{
+  display: flex;
+  margin-left:15px
+}
+.index_button a{
+  display: block;
+}
+.index_paginate{
+  display: flex;
+  justify-content: center;
+}
+div.pagination{
+  display: block;
+}
+
+.radio_button{
+  display: none;
+}
+.index_buttons{
+  display: flex;
+  justify-content: center;
+}
+.index_search_field{
+  width:700px;
+  background-color: lightgray;
+  border: none; 
+  //検索フォームを大きくする
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size:17px;
+}
+.index_button_tag{
+  background-color: transparent;
+  border: none; 
+  padding-top:8px;
+  margin-right:10px;
 }

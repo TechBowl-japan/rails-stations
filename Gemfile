@@ -8,6 +8,9 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 
 gem 'bootstrap-sass', '3.4.1'
 
+gem 'font-awesome-sass'
+
+gem 'ransack'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server
@@ -40,6 +43,10 @@ group :development, :test do
   gem "bullet"
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'faker'
+  gem 'will_paginate',  '3.1.8'
+  gem 'bootstrap-will_paginate', '1.0.0'
+
 end
 
 group :development do

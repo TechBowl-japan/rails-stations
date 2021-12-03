@@ -4,11 +4,11 @@
 <% end %>
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @movie, url: "/admin/movies/#{@movie.id}", local: true) do |f| %>
+<%= form_with(model: @movie, url: admin_movie_path(@movie), local: true) do |f| %>
   <%# <%= render 'shared/error_messages' %> 
   <%= f.label :name, '映画タイトル' %> <%= f.text_field :name, class: 'form-control' %></br>
   <%= f.label :year, '公開年' %> <%= f.text_field :year, class: 'form-control' %></br>
-  <%= f.label :is_showing, '上映中か'%> <%= f.select :is_showing, [["上映中", 1], ["公開予定", 0]], include_blank: "選択して下さい" %>
+  <%= f.label :is_showing, '上映中か'%> <%= f.select :is_showing, [["上映中", 1], ["公開予定", 0]], selected: 1%>
   <%= f.label :description, '概要' %> <%= f.text_area :description, class: 'form-control' %></br>
   <%= f.label :image_url, '画像URL' %> <%= f.text_field :image_url, class: 'form-control'%></br>
   <%= f.submit "save", class: "btn btn-primary"  %>

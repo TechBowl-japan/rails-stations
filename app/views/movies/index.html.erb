@@ -1,7 +1,37 @@
-<h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
+<h1>Moives</h1>
+</br>
+<div class="index_header">
+  <%= search_form_for @search, url: movies_path do |f| %>
+    <%= f.radio_button :is_showing_eq, 1%>上映中
+    <%= f.radio_button :is_showing_eq, 0%>公開予定
+    <%= f.radio_button :is_showing_eq, ''%>すべて
+  <div class="index_buttons">
+    <div class="index_search_button">
+      <%= button_tag :type => "submit", :class => "index_button_tag" do %>
+        <i class="fas fa-search fa-2x"></i>
+      <% end %>
+    </div>
+    <div class="index_search_fields">
+      <%= f.search_field :name_or_description_cont, class:"index_search_field", placeholder: "キーワードで検索する" %>
+    </div>
+  </div>
+  <% end %>  
+</div>
 
-<% @movies.each do |movie| %>
-  <p><%= movie.name %></p>
-  <%= link_to image_tag(movie.image_url, alt: "movie tag", width: "200px")%>
-<% end %>
+<div class="index_container_parent">
+  <div class="index_container">
+    <% @movies.each do |movie| %>
+        <div class="index_card" style="width: 200px;">
+          <%= link_to image_tag(movie.image_url, alt: "movie tag", :size => '200x150')%>
+          <h5><%= movie.name %></h5>
+            <div class="index_button"> 
+              <a href="#" class="btn btn-primary">予約/詳細</a>
+            </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="index_paginate">
+<%= will_paginate %>
+</div>

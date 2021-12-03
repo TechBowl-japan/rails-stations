@@ -15,3 +15,17 @@ Movie.create([{ name: 'Star Wars',
                 description: 'Action',
                 image_url:'lord_rings.jpg',
                 is_showing: 1}])
+# 追加のユーザーをまとめて生成する
+12.times do |n|
+  name  = Faker::Movie.title
+  year = "2000"
+  description = Faker::Movie.quote
+  image_url = "https://picsum.photos/id/#{n}/200/300"
+  is_showing = 1
+  Movie.create!(name: name,
+                year: year,
+                description: description,
+                image_url: image_url,
+                is_showing: is_showing)
+  
+  end

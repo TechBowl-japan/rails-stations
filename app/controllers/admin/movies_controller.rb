@@ -26,7 +26,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       # flash[:success] = "Updated"
-      redirect_to admin_movies_path, notice: "#{@movie.id}の情報を更新しました"
+      redirect_to admin_movies_path
     else
       flash.now[:alert] = "Error"
       render 'edit'
@@ -35,7 +35,7 @@ class Admin::MoviesController < ApplicationController
 
   def destroy
     Movie.find(params[:id]).destroy
-    flash[:success] = "Movie deleted"
+    flash.now[:success] = "Movie deleted"
     redirect_to admin_movies_path
   end
 
