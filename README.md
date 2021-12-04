@@ -262,4 +262,8 @@ standard_init_linux.go:228: exec user process caused: no such file or directory
 そのため、自動変換をしないようにして再度ローカルに`git clone`を再実行してください。
 ```bash
 git config --global core.autocrlf input
+
+git clone https://github.com/{GitHubのユーザー名}/rails-stations.git
+
+# 再度、パッケージのインストールのコマンドを実行しなおしてください。
 ```
