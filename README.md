@@ -251,3 +251,15 @@ docker compose exec web rspec spec/stationXX
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
+
+### WindowsでContainerが立ち上がらない
+WSLのインストールが済んでいて、buildは成功するが以下のようなエラーが出力される場合には改行コードがCRLFになっている可能性があります。
+```bash
+standard_init_linux.go:228: exec user process caused: no such file or directory
+```
+
+その場合には、`git clone`で改行コードがLFをCRLFに変換しないようにする必要があります。
+そのため、自動変換をしないようにして`git clone`を再実行してください。
+```bash
+git config --global core.autocrlf input
+```
