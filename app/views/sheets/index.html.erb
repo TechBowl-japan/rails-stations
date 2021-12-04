@@ -15,7 +15,5 @@
       </tr>
   </tbody>
 </table>
-
-       <% @sheets.each do |sheet| %>
-          <%= sheet.id%>
-        <% end %>
+<%= @sheet.first.column %>
+<%= @sheet.last.column %>
