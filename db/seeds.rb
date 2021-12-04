@@ -21,7 +21,7 @@ Movie.create([{ name: 'Star Wars',
   year = "2000"
   description = Faker::Movie.quote
   image_url = "https://picsum.photos/id/#{n}/200/300"
-  is_showing = 1
+  is_showing = 0
   Movie.create!(name: name,
                 year: year,
                 description: description,
