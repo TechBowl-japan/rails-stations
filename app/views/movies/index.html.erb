@@ -1,21 +1,33 @@
-<h1>Moives</h1>
+<h1>Movies</h1>
 </br>
 <div class="index_header">
   <%= search_form_for @search, url: movies_path do |f| %>
-    <%= f.radio_button :is_showing_eq, 1%>上映中
-    <%= f.radio_button :is_showing_eq, 0%>公開予定
-    <%= f.radio_button :is_showing_eq, ''%>すべて
-  <div class="index_buttons">
-    <div class="index_search_button">
-      <%= button_tag :type => "submit", :class => "index_button_tag" do %>
-        <i class="fas fa-search fa-2x"></i>
-      <% end %>
+    <div class="index_radio_buttons">
+      <!--forに指定しているのは、f.radio_buttonのid属性-->
+      <%= f.radio_button :is_showing_eq, ''%>
+      <%= f.radio_button :is_showing_eq, 1%>
+      <%= f.radio_button :is_showing_eq, 0%>
+      <label class="index_label" id="label3" for="q_is_showing_eq_">
+        すべて
+      </label>
+      <label class="index_label" id="label1" for="q_is_showing_eq_1">
+        上映中
+      </label>
+      <label class="index_label" id="label2" for="q_is_showing_eq_0">
+        公開予定
+      </label>
     </div>
-    <div class="index_search_fields">
-      <%= f.search_field :name_or_description_cont, class:"index_search_field", placeholder: "キーワードで検索する" %>
+    <div class="index_buttons">
+      <div class="index_search_fields">
+        <%= f.search_field :name_or_description_cont, class:"index_search_field", placeholder: "キーワードで検索する" %>
+      </div>
+      <div class="index_search_button">
+        <%= button_tag :type => "submit", :class => "index_button_tag" do %>
+          <i class="fas fa-search fa-2x index_search_icon"></i>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <% end %>  
+  <% end %>
 </div>
 
 <div class="index_container_parent">
@@ -25,13 +37,11 @@
           <%= link_to image_tag(movie.image_url, alt: "movie tag", :size => '200x150')%>
           <h5><%= movie.name %></h5>
             <div class="index_button"> 
-              <a href="#" class="btn btn-primary">予約/詳細</a>
+              <a href="#" class="reserve_detail_button">予約/詳細</a>
             </div>
         </div>
     <% end %>
   </div>
 </div>
 
-<div class="index_paginate">
 <%= will_paginate %>
-</div>

@@ -11,6 +11,8 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'font-awesome-sass'
 
 gem 'ransack'
+
+gem 'kaminari'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server

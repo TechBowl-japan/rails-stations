@@ -1,0 +1,2 @@
+class Sheet < ApplicationRecord
+end

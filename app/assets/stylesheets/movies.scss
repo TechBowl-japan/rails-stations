@@ -9,6 +9,7 @@ body{
 }
 
 /* index.html.erb */
+//映画一覧のコンテナ
 .index_container_parent{
   display: flex;
   justify-content: center;
@@ -16,7 +17,7 @@ body{
 }
 .index_container{
   display: flex;
-  justify-content: left;
+  justify-content: right;
   // justify-content: space-evenly;
   flex-wrap: wrap;
   width:50%;
@@ -44,17 +45,47 @@ body{
 .index_button a{
   display: block;
 }
-.index_paginate{
+/* ページネーション */
+.pagination {
   display: flex;
   justify-content: center;
 }
-div.pagination{
-  display: block;
+.pagination > li > a {
+  border: none;
+  color: #999;
+  font-weight: bold;
+}
+.pagination > li > a:hover {
+  color: #04a70c;
+  background-color: white;
+}
+.pagination > .active > a {
+  color: #04a70c;
+  background-color: white;
+}
+.pagination > .active > a:hover {
+  background-color: white;
+  color: #04a70c;
+}
+/* --ページネーション */
+
+.reserve_detail_button {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: white;
+  background: #04a70c;
+  transition: .2s;
+  border-radius: 3px;
+}
+.reserve_detail_button:hover {
+  background: #D3E8C1;
+  color: white;
 }
 
-.radio_button{
-  display: none;
-}
+//　検索フォーム
 .index_buttons{
   display: flex;
   justify-content: center;
@@ -72,5 +103,54 @@ div.pagination{
   background-color: transparent;
   border: none; 
   padding-top:8px;
-  margin-right:10px;
+  margin-left:10px;
+}
+.index_search_icon:hover{
+  transition: .2s;
+  color: #04a70c;/*ボタン色*/;
+}
+//ラジオボタン(radiobuttonとlabelタグ使って,radioボタンの見た目を変えている)
+.index_radio_buttons{
+  display: flex;
+  justify-content: center;
+}
+
+input[type=radio] {
+  display: none;     /* ラジオボタンを非表示にする */
+}
+
+#q_is_showing_eq_1:checked ~ #label1{
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  background: #04a70c;/*ボタン色*/
+  color: white;
+}
+#q_is_showing_eq_0:checked ~ #label2{
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  background: #04a70c;/*ボタン色*/
+  color: white;
+}
+#q_is_showing_eq_:checked ~ #label3{
+  -webkit-transform: translateY(1px);
+  transform: translateY(1px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  background: #04a70c;/*ボタン色*/
+  color: white;
+}
+// .index_label:hover {
+//   background-color: red;     /* マウスオーバー時の背景色を指定する */
+// }
+.index_label {
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: lightgray;/*ボタン色*/
+  color: gray;
+  border-bottom: solid 5px gray;
+  border-radius: 3px;
+  margin-left: 14px;
+  margin-bottom: 14px;
 }
