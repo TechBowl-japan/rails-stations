@@ -1,49 +1,19 @@
-<h1>Screen</h1>
-</br>
-<div class="sheets_screens">
-  <div class="sheets_screen_1">
-  </div>
-</div> %>
 
-<div class="sheets_chars_parents">
-  <div class="left_side_sheets">
-    A
-    B
-    C
-  </div>
-  <div class="sheets_char">
-    <table>
-      <thead>
-        <tr>
-          <th> 1 </th>
-          <th> 2 </th>
-          <th> 3 </th>
-          <th> 4 </th>
-          <th> 5 </th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <% for n in 1..5 do %>
-              <td><%= @sheets.find(n) %></td>
-            <% end %>
-          </tr>
-          <tr>
-            <% for n in 6..10 do %>
-              <td><%= @sheets.find(n) %></td>
-            <% end %>
-          </tr>
-          <tr>
-            <% for n in 11..15 do %>
-              <td><%= @sheets.find(n) %></td>
-            <% end %>
-          </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="right_side_sheets">
-    A
-    B
-    C
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th> 1 </th>
+      <th> 2 </th>
+      <th> 3 </th>
+      <th> 4 </th>
+      <th> 5 </th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <% @sheets.each do |sheet| %>
+          
+        <% end %>
+      </tr>
+  </tbody>
+</table>
