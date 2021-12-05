@@ -1,0 +1,10 @@
+<%= @movie.name %>
+<%= @movie.year %>
+<%= @movie.is_showing %>
+<%= link_to image_tag(@movie.image_url, alt: "movie tag", :size => '200x150')%>
+<%= @movie.description %>
+</br>
+<% @schedules.each do |schedule| %>
+  <%= schedule.start_time %>
+  <%= schedule.end_time %>
+<% end %>

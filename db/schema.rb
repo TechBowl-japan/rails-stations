@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_111038) do
+ActiveRecord::Schema.define(version: 2021_12_05_034145) do
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2021_12_04_111038) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_schedules_on_movie_id"
+  end
+
   create_table "sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "column", limit: 1
     t.string "row"
@@ -29,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_12_04_111038) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "schedules", "movies"
 end

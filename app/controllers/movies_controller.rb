@@ -7,4 +7,9 @@ class MoviesController < ApplicationController
     @search = @movies_pagination.ransack(params[:q])
     @movies = @search.result.page(params[:page]).order("created_at desc")
   end
+
+  def show
+    @movie = Movie.find(params[:id])
+    @schedules = @movie.schedules
+  end
 end

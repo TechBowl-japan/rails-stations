@@ -1,19 +1,49 @@
+<h1>Screen</h1>
+</br>
+<div class="sheets_screens">
+  <div class="sheets_screen_1"><div class="sheets_screen_1_title">スクリーン1</div></div>
+</div> 
 
-<table>
-  <thead>
-    <tr>
-      <th> 1 </th>
-      <th> 2 </th>
-      <th> 3 </th>
-      <th> 4 </th>
-      <th> 5 </th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
- 
-      </tr>
-  </tbody>
-</table>
+<div class="sheets_chars_parents">
+  <div class="side_sheets">
+    <div class="alphabet">A</div>
+    <div class="alphabet">B</div>
+    <div class="alphabet">C</div>
+  </div>
+  <div class="sheets_char">
+    <table>
+      <thead>
+        <tr>
+          <th><div class="number">1</div></th>
+          <th><div class="number">2</div></th>
+          <th><div class="number">3</div></th>
+          <th><div class="number">4</div></th>
+          <th><div class="number">5</div></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <% for n in 1..5 do %>
+              <td><div class="box"></div></td>
+            <% end %>
+          </tr>
+          <tr>
+            <% for n in 6..10 do %>
+              <td><div class="box"></div></td>
+            <% end %>
+          </tr>
+          <tr>
+            <% for n in 11..15 do %>
+              <td><div class="box"></div></td>
+            <% end %>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="side_sheets">
+    <div class="alphabet">A</div>
+    <div class="alphabet">B</div>
+    <div class="alphabet">C</div>
+  </div>
+</div>
 <%= @sheets.first.column %>
-<%= @sheets.last.column %>
