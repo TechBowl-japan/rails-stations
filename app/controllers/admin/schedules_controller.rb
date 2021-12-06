@@ -8,9 +8,25 @@ class Admin::SchedulesController < ApplicationController
     @movie = @schedule.movie
   end
 
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to @admin_schedules_path
+    else
+      flash.now[:alert] = "Error"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Schedule.find(params[:id]).destroy
+    flash.now[:success] = "Schedule deleted"
+    redirect_to @admin_movies_path
+  end
+
   private
 
-    def movie_params
+    def schedule_params
       params.require(:schedule).permit(:movie_id, :start_time, :end_time, movie_attributes: [:id, :name])
     end
 end

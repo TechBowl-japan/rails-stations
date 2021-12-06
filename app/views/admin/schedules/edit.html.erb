@@ -4,7 +4,7 @@
 <% end %>
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @schedule , url: schedule_path(@schedule), local: true) do |f| %>
+<%= form_with(model: @schedule, url: admin_schedule_path(@schedule), local: true) do |f| %>
   <%# <%= render 'shared/error_messages' %> 
   <%= f.label :movie_id, '映画ID' %> <%= f.text_field :movie_id, class: 'form-control' %></br>
   <%= f.fields_for 'parents_attributes', @schedule.movie do |parent_f|%>
