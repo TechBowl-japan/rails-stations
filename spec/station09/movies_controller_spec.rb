@@ -7,7 +7,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
     let!(:movies) { create_list(:movie, 3) }
     before do
       @schedules = create_list(:schedule, 3, movie_id: movies[0].id)
-      get 'index'
+      get 'show'
     end
 
     it 'movies(:id)に対応するscheduleを表示していること' do
