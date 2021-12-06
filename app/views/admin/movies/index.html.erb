@@ -4,36 +4,46 @@
     <%= link_to new_admin_movie_path do %><button type="button" class="btn btn-warning index_new_button">NEW</button><% end %>
   </div>
 </div>
-<%# <div class="table_index"> %>
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th>　ID　</th>
-      <th>　映画タイトル　</th>
-      <th>　公開年　</th>
-      <th>　上映中か　</th>
-      <th>　画像URL　</th>
-      <th>　概要　</th>
-      <th>　作成日時　</th>
-      <th>　更新日時　</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
+<div class="index_list">
+  <div class="index_side_bar">
+    <div class="movies_button">
+      <%= link_to admin_movies_path do %><button type="button" class="side_button">Movies</button><% end %>
+    </div>
+    <div class="movies_button">
+      <button type="button" class="side_button">Showtime</button>
+    </div>
+ 
+  </div>
+  <table class="table table-dark table-striped">
+    <thead>
       <tr>
-        <td><%= movie.id %></td>
-        <td><%= movie.name %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.is_showing ? "上映中" : "公開予定" %>
-        <td><%= image_tag movie.image_url, :size => '50x50' %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.created_at %></td>
-        <td><%= movie.updated_at %></td>
-        <td><%= link_to edit_admin_movie_path(movie) do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_movie_path(movie), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
+        <th>　ID　</th>
+        <th>　映画タイトル　</th>
+        <th>　公開年　</th>
+        <th>　上映中か　</th>
+        <th>　画像URL　</th>
+        <th>　概要　</th>
+        <th>　作成日時　</th>
+        <th>　更新日時　</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.id %></td>
+          <td><%= movie.name %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.is_showing ? "上映中" : "公開予定" %>
+          <td><%= image_tag movie.image_url, :size => '50x50' %></td>
+          <td><%= movie.description %></td>
+          <td><%= movie.created_at %></td>
+          <td><%= movie.updated_at %></td>
+          <td><%= link_to edit_admin_movie_path(movie) do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_movie_path(movie), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= will_paginate %>
