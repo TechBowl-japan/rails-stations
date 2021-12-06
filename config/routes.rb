@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :movies
-  resources :schedules
   get '/sheets', to: 'sheets#index'
   namespace :admin do
     resources :schedules
