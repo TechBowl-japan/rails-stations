@@ -1,4 +1,9 @@
 <h1>Movies</h1>
+<div class="admin_index_header">
+  <div class="admin_index_new_button">
+    <%= link_to new_admin_movie_path do %><button type="button" class="btn btn-warning index_new_button">NEW</button><% end %>
+  </div>
+</div>
 <%# <div class="table_index"> %>
 <table class="table table-dark table-striped">
   <thead>
@@ -30,4 +35,5 @@
     <% end %>
   </tbody>
 </table>
-<%# </div> %>
+
+<%= will_paginate %>

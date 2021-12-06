@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 /* admin forms */
 input, textarea, select, .uneditable-input {
@@ -20,3 +22,19 @@ input {
   display: flex;
 }
 
+/* amdin,index,schedules */
+.index_list{
+  display:flex;
+  margin-top: 10px;
+  border: 0.5px solid;
+  border-bottom: transparent;
+  border-left: transparent;
+  border-right: transparent;
+}
+.index_side_bar{
+  width:150px;
+}
+.side_button{
+  width:114px;
+  color:black;
+}

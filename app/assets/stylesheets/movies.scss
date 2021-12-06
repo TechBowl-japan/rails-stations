@@ -154,3 +154,14 @@ input[type=radio] {
   margin-left: 14px;
   margin-bottom: 14px;
 }
+.admin_index_header{
+  display: flex;
+  justify-content: flex-end;
+}
+.admin_index_new_button{
+  display: block;
+  padding-right: 30px;
+}
+.index_new_button{
+  width: 300px;
+}
