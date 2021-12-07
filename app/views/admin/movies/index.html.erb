@@ -25,6 +25,11 @@
           <td><%= movie.updated_at %></td>
           <td><%= link_to edit_admin_movie_path(movie) do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_movie_path(movie), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
         </tr>
+        <tr>
+          <% movie.schedules.each do |schedule| %>
+            <td><%= schedule.start_time%></td>
+            <td><%= schedule.end_time %></td>
+          <% end %>
       <% end %>
     </tbody>
 </table>
