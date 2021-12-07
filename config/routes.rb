@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   get '/sheets', to: 'sheets#index'
   namespace :admin do
     resources :movies
-    resources :schedules
+    resources :schedules, except: [:edit, :new]
     resources :movies do
-      resources :schedules, except: [:edit]
-      get '/schedules/:id', to: 'schedules#edit'
+      resources :schedules, only: [:edit, :new]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
