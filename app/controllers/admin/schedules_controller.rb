@@ -11,7 +11,7 @@ class Admin::SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_params)
-      redirect_to @admin_schedules_path
+      redirect_to admin_schedules_path
     else
       flash.now[:alert] = "Error"
       render 'edit'
@@ -21,7 +21,7 @@ class Admin::SchedulesController < ApplicationController
   def destroy
     Schedule.find(params[:id]).destroy
     flash.now[:success] = "Schedule deleted"
-    redirect_to @admin_movies_path
+    redirect_to admin_schedules_path
   end
 
   private
