@@ -4,7 +4,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
   render_views
   describe 'Station3 GET /admin/movies/new' do
     before do
-      get 'new'
+      get :new
     end
 
     it '200を返すこと' do
@@ -25,7 +25,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
   end
 
   describe 'Station3 POST /admin/movies' do
-    let!(:movie_attributes) { attributes_for(:movie) }
+    let(:movie_attributes) { attributes_for(:movie) }
 
     it '302を返すこと' do
       post :create, params: { movie: movie_attributes }, session: {}
@@ -33,9 +33,11 @@ RSpec.describe Admin::MoviesController, type: :controller do
     end
 
     it 'エラー処理がされていて仮にRailsデフォルトのエラー画面が出ないこと' do
-      # 今回はデータベースエラーで例外処理
-      post :create, params: { movie: { name: "test", is_showing: true ,image_url: "https://techbowl.co.jp/_nuxt/img/111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111lllllllllllll.png" } }, session: {}
-      expect(response).to have_http_status(:ok)
+      # nameの一意は条件に入っているため、わざと重複させてバリデーションエラーを起こす
+      create(:movie, name: "重複する名前")
+      post :create, params: { movie: { name: "重複する名前", is_showing: true ,image_url: "https://techbowl.co.jp/_nuxt/img/test.png" } }, session: {}
+
+      expect(response.body).not_to include('<div class="source hidden" id="frame-source-0-0">') # Railsのデフォルトのエラー画面のHTML要素
     end
 
     it 'DBに保存されていること' do
