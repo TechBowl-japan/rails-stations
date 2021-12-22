@@ -28,19 +28,19 @@ RSpec.describe MoviesController, type: :controller do
       end
     end
 
-    it 'method = getのformがある' do
-      expect(response.body).to include('method="get"')
-    end
-
-    context '検索時' do
-      # factoriesのis_showingのデフォルトでは1
-      let!(:show_estimated) { create(:movie, is_showing: 0 ) }
-      let!(:showed_movie) { create(:movie, is_showing: 1 ) }
+    context '映画作品リスト特有の仕様' do
+      it 'method = getのformがある' do
+        expect(response.body).to include('method="get"')
+      end
 
       it '検索キーワードを指定するとそれを含むものだけ表示' do
-        get :index, params: { name: show_estimated.name, is_showing: "" }
-        expect(response.body).to include(show_estimated.name)
-        expect(response.body).to not_include(showed_movie.name)
+        selected_movie = create(:movie)
+        get :index, params: { name: selected_movie.name, is_showing: "" }
+
+        expect(response.body).to include(selected_movie.name)
+        expect(response.body).to not_include(@movie[0].name)
+        expect(response.body).to not_include(@movie[1].name)
+        expect(response.body).to not_include(@movie[2].name)
       end
 
       it '公開中か公開前の切り替えができる' do
