@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_034145) do
+ActiveRecord::Schema.define(version: 2021_12_23_122015) do
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -22,10 +22,23 @@ ActiveRecord::Schema.define(version: 2021_12_05_034145) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reservations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "schedule_id", null: false
+    t.bigint "sheet_id", null: false
+    t.string "email", null: false
+    t.string "name", null: false
+    t.datetime "date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["date", "schedule_id", "sheet_id"], name: "index_reservations_on_date_and_schedule_id_and_sheet_id", unique: true
+    t.index ["schedule_id"], name: "index_reservations_on_schedule_id"
+    t.index ["sheet_id"], name: "index_reservations_on_sheet_id"
+  end
+
   create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "movie_id", null: false
-    t.time "start_time", null: false
-    t.time "end_time", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["movie_id"], name: "index_schedules_on_movie_id"
@@ -38,5 +51,7 @@ ActiveRecord::Schema.define(version: 2021_12_05_034145) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "reservations", "schedules"
+  add_foreign_key "reservations", "sheets"
   add_foreign_key "schedules", "movies"
 end

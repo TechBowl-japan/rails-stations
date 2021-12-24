@@ -3,6 +3,20 @@ class Admin::SchedulesController < ApplicationController
     @schedules = Schedule.paginate(page: params[:page], per_page: 16)
   end
 
+  def new
+    @schedule = Schedule.new
+  end
+
+  def create
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+      redirect_to admin_schedules_path
+    else
+      flash.now[:alert] = "Error"
+      render 'new'
+    end
+  end
+
   def edit
     @schedule = Schedule.find(params[:id])
     @movie = @schedule.movie
@@ -27,6 +41,6 @@ class Admin::SchedulesController < ApplicationController
   private
 
     def schedule_params
-      params.require(:schedule).permit(:movie_id, :start_time, :end_time, movie_attributes: [:id, :name])
+      params.require(:schedule).permit(:movie_id, Schedule::REGISTRABLE_ATTRIBUTES, movie_attributes: [:id, :name])
     end
 end

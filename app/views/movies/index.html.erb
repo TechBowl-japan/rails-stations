@@ -37,7 +37,7 @@
           <%= link_to image_tag(movie.image_url, alt: "movie tag", :size => '200x150')%>
           <h5><%= movie.name %></h5>
             <div class="index_button"> 
-              <a href="#" class="reserve_detail_button">予約/詳細</a>
+              <%= link_to movie_path(movie) do %><button type="button" class="reserve_detail_button">予約/詳細</button><% end %>
             </div>
         </div>
     <% end %>

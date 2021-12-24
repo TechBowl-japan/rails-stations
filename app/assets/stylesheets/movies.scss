@@ -13,11 +13,12 @@ body{
 .index_container_parent{
   display: flex;
   justify-content: center;
+  margin-top: 17px;
  
 }
 .index_container{
   display: flex;
-  justify-content: right;
+  justify-content: left;
   // justify-content: space-evenly;
   flex-wrap: wrap;
   width:50%;
@@ -79,6 +80,7 @@ body{
   background: #04a70c;
   transition: .2s;
   border-radius: 3px;
+  border: none;
 }
 .reserve_detail_button:hover {
   background: #D3E8C1;

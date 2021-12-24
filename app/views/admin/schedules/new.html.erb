@@ -1,15 +1,13 @@
-<h1>Showtime Changes</h1>
+<h1>Showtime Add</h1>
 <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @schedule, url: admin_schedule_path(@schedule), local: true) do |f| %>
+<%= form_with(model: @schedule, url: admin_schedules_path, local: true) do |f| %>
   <%# <%= render 'shared/error_messages' %> 
   <%= f.label :movie_id, '映画ID' %> <%= f.text_field :movie_id, class: 'form-control' %></br>
-  <%= f.fields_for 'parents_attributes', @schedule.movie do |parent_f|%>
-    <%= parent_f.label :name, '映画タイトル'%> <%= parent_f.text_field :name, class:"form-control"%></br>
-  <% end %>
+  <%= f.label :name, '映画タイトル' %> <%= f.text_field :name, class: 'form-control' %></br>
   <%= f.label :start_time, '開始日時' %> <%= f.datetime_select :start_time, {},class: 'form-control' %></br>
   <%= f.label :end_time, '終了日時' %> <%= f.datetime_select :end_time, {},class: 'form-control'%></br>
   <%= f.submit "save", class: "btn btn-primary"  %>

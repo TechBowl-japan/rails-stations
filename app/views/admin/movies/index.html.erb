@@ -1,4 +1,20 @@
-<table>
+<h1>Movies</h1>
+<div class="admin_index_header">
+  <div class="admin_index_new_button">
+    <%= link_to new_admin_movie_path do %><button type="button" class="btn btn-warning index_new_button">ADD NEW MOVIE</button><% end %>
+  </div>
+</div>
+<div class="index_list">
+  <div class="index_side_bar">
+    <div class="movies_button">
+      <%= link_to admin_movies_path do %><button type="button" class="side_button">Movies</button><% end %>
+    </div>
+    <div class="movies_button">
+      <%= link_to admin_schedules_path do %><button type="button" class="side_button">Showtime</button><% end %>
+    </div>
+ 
+  </div>
+  <table class="table table-dark table-striped">
     <thead>
       <tr>
         <th>　ID　</th>
@@ -16,7 +32,7 @@
       <% @movies.each do |movie| %>
         <tr>
           <td><%= movie.id %></td>
-          <td><%= movie.name %></td>
+          <td><%= link_to admin_movie_path(movie) do %><%= movie.name %><% end %></td>
           <td><%= movie.year %></td>
           <td><%= movie.is_showing ? "上映中" : "公開予定" %>
           <td><%= image_tag movie.image_url, :size => '50x50' %></td>
@@ -25,11 +41,23 @@
           <td><%= movie.updated_at %></td>
           <td><%= link_to edit_admin_movie_path(movie) do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_movie_path(movie), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
         </tr>
-        <tr>
           <% movie.schedules.each do |schedule| %>
-            <td><%= schedule.start_time%></td>
-            <td><%= schedule.end_time %></td>
+          <tr>
+            <td>上映開始時間　:　<%= schedule.start_time%></td>
+            <td>上映終了時間　:　<%= schedule.end_time %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          <tr>
           <% end %>
       <% end %>
     </tbody>
-</table>
+  </table>
+</div>
+
+<%= will_paginate %>

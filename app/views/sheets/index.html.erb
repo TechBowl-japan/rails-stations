@@ -24,17 +24,28 @@
       <tbody>
           <tr>
             <% for n in 1..5 do %>
-              <td><div class="box"></div></td>
+              <td>
+                  <%= link_to movies_path, class: "sheets_index_button_tag" do %>
+                    <button type="button" class="box"><div class="box"></div></button>
+                  <% end %>
+              </td>
             <% end %>
           </tr>
           <tr>
             <% for n in 6..10 do %>
-              <td><div class="box"></div></td>
+              <td>
+                <div class="box">
+                
+                </div>
+              </td>
             <% end %>
           </tr>
           <tr>
             <% for n in 11..15 do %>
-              <td><div class="box"></div></td>
+              <td>
+                <div class="box">
+                </div>
+              </td>
             <% end %>
           </tr>
       </tbody>
@@ -46,4 +57,3 @@
     <div class="alphabet">C</div>
   </div>
 </div>
-<%= @sheets.first.column %>

@@ -5,6 +5,10 @@
 <%= @movie.description %>
 </br>
 <% @schedules.each do |schedule| %>
+  <%= link_to movie_schedule_sheets_path(schedule.movie_id, schedule.id, start_time: schedule.start_time, end_time: schedule.end_time), class: "index_button_tag" do %>
+    <button type="button" class="reserve_detail_button">座席を予約</button>
+  <% end %>
   <%= schedule.start_time %>
-  <%= schedule.end_time %>
-<% end %>
+  <%= schedule.end_time %></br></br>
+<% end %> 
+

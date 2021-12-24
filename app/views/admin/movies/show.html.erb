@@ -1,13 +1,16 @@
 <h1><%= @movie.name %> Showtime</h1>
 <div class="admin_index_header">
   <div class="admin_index_new_button">
-    <%= link_to new_admin_movie_path do %><button type="button" class="btn btn-warning index_new_button">NEW</button><% end %>
+    <%= link_to "#{@movie.id}/schedules/new" do %><button type="button" class="btn btn-warning index_new_button">ADD NEW SCHEDULE</button><% end %>
   </div>
 </div>
 <div class="index_list">
   <div class="index_side_bar">
     <div class="movies_button">
       <%= link_to admin_movies_path do %><button type="button" class="side_button">Movies</button><% end %>
+    </div>
+    <div class="movies_button">
+      <%= link_to admin_schedules_path do %><button type="button" class="side_button">Showtime</button><% end %>
     </div>
  
   </div>
@@ -34,7 +37,7 @@
           <td><%= schedule.end_time %></td>
           <td><%= schedule.created_at %></td>
           <td><%= schedule.updated_at %></td>
-          <td><%= link_to "#{@movie.id}/schedules/#{schedule.id}" do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to schedule_path(schedule), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %>
+          <td><%= link_to "#{schedule.movie_id}/schedules/#{schedule.id}/edit" do %><span class="glyphicon glyphicon-pencil"></span><% end %><td><%= link_to admin_schedule_url(schedule), method: :delete , data: { confirm: "You sure?" } do%><span class="glyphicon glyphicon-trash"></span><% end %></td>
         </tr>
       <% end %>
     </tbody>
