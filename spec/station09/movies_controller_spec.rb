@@ -14,27 +14,6 @@ RSpec.describe Admin::MoviesController, type: :controller do
       expect(response.body).to include(@schedules[0].start_time.to_s).and include(@schedules[2].start_time.to_s)
     end
 
-    # 以下はStation2のテストも通ることを確認
-
-    it '200を返すこと' do
-      expect(response).to have_http_status(200)
-    end
-
-    it 'HTMLを返すこと' do
-      expect(response.body).to include('<!DOCTYPE html>')
-    end
-
-    it 'HTMLの中にはtableタグがあること' do
-      expect(response.body).to include('<table>')
-    end
-
-    it 'HTMLの中にはmoviesテーブルの件数と同じだけのデータがあること' do
-      expect(response.body).to include(movies[0].name).and include(movies[1].name).and include(movies[2].name).and include(movies[0].image_url).and include(movies[1].image_url).and include(movies[2].image_url)
-    end
-
-    it 'HTMLの中にはtrue/falseが含まれないこと' do
-      expect(response.body).to not_include('true').and not_include('false')
-    end
 
     describe 'HTMLの中にはmoviesテーブルのカラムすべてが表示されていること' do
       it 'moviesテーブルのname,year,descriptionカラムが表示されていること' do
@@ -43,6 +22,28 @@ RSpec.describe Admin::MoviesController, type: :controller do
 
       it 'moviesテーブル内のimage_urlが画像として表示されていること' do
         expect(response.body).to include("<img src=\"#{movies.first.image_url}\"")
+      end
+    end
+
+    context "Station02の仕様" do
+      it '200を返すこと' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'HTMLを返すこと' do
+        expect(response.body).to include('<!DOCTYPE html>')
+      end
+
+      it 'HTMLの中にはtableタグがあること' do
+        expect(response.body).to include('<table>')
+      end
+
+      it 'HTMLの中にはmoviesテーブルの件数と同じだけのデータがあること' do
+        expect(response.body).to include(movies[0].name).and include(movies[1].name).and include(movies[2].name).and include(movies[0].image_url).and include(movies[1].image_url).and include(movies[2].image_url)
+      end
+
+      it 'HTMLの中にはtrue/falseが含まれないこと' do
+        expect(response.body).to not_include('true').and not_include('false')
       end
     end
   end
