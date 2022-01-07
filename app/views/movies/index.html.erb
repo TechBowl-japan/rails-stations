@@ -1,7 +1,6 @@
-<% @movies.each do |movie| %>
+<% @movies.each_with_index do |movie, i| %>
   <div>
     <%= movie.name %>
-    <%= image_tag 'image1.jpeg' %>
-    <img src="https://picsum.photos/200">
+    <img src="https://techbowl.co.jp/_nuxt/img/<%= i + 7 %>.png">
   </div>
 <% end %>
