@@ -40,10 +40,6 @@ RSpec.describe Admin::MoviesController, type: :controller do
         expect(response.body).to include("#{@movies.first.year}")
         expect(response.body).to include(@movies.first.description)
       end
-
-      it 'moviesテーブル内のimage_urlが画像として表示されていること' do
-        expect(response.body).to include("<img src=\"#{@movies.first.image_url}\"")
-      end
     end
   end
 end
