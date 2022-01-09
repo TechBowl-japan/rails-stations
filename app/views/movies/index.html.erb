@@ -1,6 +1,6 @@
 <% @movies.each_with_index do |movie, i| %>
   <div>
     <%= movie.name %>
-    <img src="https://techbowl.co.jp/_nuxt/img/<%= i + 7 %>.png">
+    <%= movie.image_url %>
   </div>
 <% end %>
