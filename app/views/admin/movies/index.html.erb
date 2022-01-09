@@ -20,7 +20,7 @@
         <td><%= movie.year %></td>
         <td><%= movie.is_showing ? "上映中" : "上映予定" %></td>
         <td><%= movie.description %></td>
-        <td><%= link_to '画像', movie.image_url %></td>
+        <td><%= image_tag movie.image_url %></td>
         <td><%= movie.created_at %></td>
         <td><%= movie.updated_at %></td>
       </tr>
