@@ -214,14 +214,6 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------------------+
 ```
 
-もし、 `app_development` と `app_test` が作成されていないようであれば、次のコマンドを実行しましょう。
-
-```
-docker exec -i rails-stations_db_1 mysql -h127.0.0.1 -uroot -ppassword < init/001_ddl.sql
-```
-
-これで、 `app_development` と `app_test` が作成されていれば、問題なく接続できます。
-
 ### commitしたのにチェックが実行されていないようです
 
 チェックのためには、次の二つの条件が必須となります。
