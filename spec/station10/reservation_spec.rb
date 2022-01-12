@@ -2,10 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   describe 'station10 attribute: email' do
-    let!(:movie) { create(:movie) } 
-    let!(:sheet) { create(:sheet) } 
-    let!(:schedule) { create(:schedule, movie_id: movie.id) } 
-    let!(:reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let(:schedule) { create(:schedule, movie_id: create(:movie).id) }
+    let(:reservation) { build(:reservation, { sheet_id: create(:sheet).id, schedule_id: schedule.id }) }
 
     example "メールアドレスの形式のバリデーションができていること" do
       reservation.email = 'techbowl@example.com'

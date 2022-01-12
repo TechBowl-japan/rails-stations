@@ -37,7 +37,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
     describe 'HTMLの中にはmoviesテーブルのカラムすべてが表示されていること' do
       it 'moviesテーブルのname,year,descriptionカラムが表示されていること' do
         expect(response.body).to include(@movies.first.name)
-        expect(response.body).to include("#{@movies.first.year}")
+        expect(response.body).to include(@movies.first.year.to_s)
         expect(response.body).to include(@movies.first.description)
       end
     end
