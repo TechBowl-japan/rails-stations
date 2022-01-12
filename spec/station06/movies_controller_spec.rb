@@ -35,10 +35,13 @@ RSpec.describe MoviesController, type: :controller do
       end
 
       it '検索キーワードを指定するとそれを含むものだけ表示' do
-        selected_movie = create(:movie)
-        get :index, params: { name: selected_movie.name }
+        keyword = 'selected_movie'
+        selected_movie_by_name = create(:movie, name: keyword)
+        selected_movie_by_description = create(:movie, description: keyword)
+        get :index, params: { keyword: keyword }
 
-        expect(response.body).to include(selected_movie.name)
+        expect(response.body).to include(selected_movie_by_name.name)
+        expect(response.body).to include(selected_movie_by_description.name)
         expect(response.body).to not_include(@movies[0].name)
         expect(response.body).to not_include(@movies[1].name)
         expect(response.body).to not_include(@movies[2].name)
