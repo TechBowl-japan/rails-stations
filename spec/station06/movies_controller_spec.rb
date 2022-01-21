@@ -47,12 +47,8 @@ RSpec.describe MoviesController, type: :controller do
         expect(response.body).to not_include(@movies[2].name)
       end
 
-      it '公開中か公開前の切り替えができる' do
-        create(:movie, is_showing: true)
-        get :index, params: { is_showing: 1 }
-
-        expect(response.body).to include("公開中")
-        expect(response.body).to not_include("公開予定")
+      it 'ラジオボタンで公開中か公開前の切り替えができる' do
+        expect(response.body).to include('type="radio"')
       end
     end
   end
