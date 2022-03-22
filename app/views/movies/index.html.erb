@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Movies List</title>
+	</head>
+
+	<body>
+		<div>
+			<% @movies.each do |movie| %>
+				<div>
+					<img src = "<%= movie.image_url %>">
+					<p><%= movie.name %></p>
+				<div>
+			<% end %>
+		</div>
+	</body>
+</html>
