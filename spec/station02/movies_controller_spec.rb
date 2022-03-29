@@ -18,7 +18,7 @@ RSpec.describe Admin::MoviesController, type: :controller do
     end
 
     it 'HTMLの中にはtableタグがあること' do
-      expect(response.body).to include('<table>')
+      expect(response.body).to include('</table>')
     end
 
     it 'HTMLの中にはmoviesテーブルのレコード数と同じ件数のデータがあること' do
