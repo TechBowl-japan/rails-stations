@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      movie: 映画
+      admin: 管理者
+    attributes:
+      movie:
+        id: ID
+        name: 名
+        year: 公開年
+        description: 概要
+        image_url: 画像URL
+        is_showing: 上映中
+      admin:
+        id: ID

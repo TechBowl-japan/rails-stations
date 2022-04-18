@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Admin Movie Register</title>
+	</head>
+	<body>
+		<h1>管理画面</h1>
+		<div>
+			<h2>映画登録</h2>
+			<%= form_with model: @movie, url:  admin_movies_path do |f| %>
+				<p>
+					<%= f.label :name, "タイトル" %>
+					<%= f.text_field :name %>
+				</p>
+				<p>
+					<%= f.label :year, "公開年" %>
+					<%= f.text_field :year %>
+				</p>
+				<p>
+					<%= f.label :is_showing, "上映中か" %>
+					<%= f.check_box :is_showing, {}, checked_value='1', unchecked_value='0' %>
+				</p>
+				<p>
+					<%= f.label :description,"概要" %>
+					<%= f.text_area :description %>
+				</p>
+				<p>
+					<%= f.label :image_url, "画像URL" %>
+					<%= f.text_field :image_url %>
+				</p>
+				<%= f.submit "登録" %>
+			<% end %>
+		</div>
+	</body>
+</html>
