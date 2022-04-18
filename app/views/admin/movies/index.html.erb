@@ -8,7 +8,7 @@
 
 	<body>
 
-		<table>
+		<table border ="1">
 			<tr>
 				<th>ID</th>
 				<th>タイトル</th>
@@ -19,7 +19,7 @@
 				<th>登録日時</th>
 				<th>更新日時</th>
 			</tr>
-			<% @movies.each do |movie| %>
+			<% @movie.each do |movie| %>
 				<tr>
 					<th><%= movie.id %></th>
 					<th><%= movie.name %></th>
