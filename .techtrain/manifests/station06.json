@@ -4,7 +4,8 @@
   "prepare": [],
   "tests": [
     {
-      "type": "interview"
+      "type": "rspec",
+      "specFile": "./spec/station06"
     }
   ]
 }
