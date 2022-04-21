@@ -4,18 +4,13 @@ class Admin::MoviesController < ApplicationController
 		@movie = Movie.all
 	end
 
+	def show
+		@movie = Movie.find(params[:id])
+	end
+
 	def new
 		@movie = Movie.new()
 	end
-
-	# def create
-  #   @movie = Movie.new(movie_params)
-  #   if @movie.save
-  #     redirect_to admin_movies_path	, notice: 'Movie created'
-  #   else
-  #     render :new
-  #   end
-  # end
 
 	def create
 		@movie = Movie.new(movie_params)
@@ -27,6 +22,8 @@ class Admin::MoviesController < ApplicationController
 			flash[:alert]= "データの登録に失敗しました"
 			redirect_to new_admin_movie_path
 		end
+
+	end
 
 	private
 
