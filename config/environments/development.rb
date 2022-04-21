@@ -14,7 +14,8 @@ Rails.application.configure do
   # Show full error reports.
   # config.consider_all_requests_local = true
   # falseにすると、本番環境用のエラーが表示されるようになる
-  config.consider_all_requests_local = false
+  # config.consider_all_requests_local = false
+    config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

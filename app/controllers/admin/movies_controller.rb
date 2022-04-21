@@ -4,8 +4,21 @@ class Admin::MoviesController < ApplicationController
 		@movie = Movie.all
 	end
 
-	def show
+	def edit
 		@movie = Movie.find(params[:id])
+	end
+
+	def update
+		@movie = Movie.find(params[:id])
+		begin
+			# 更新処理
+			@movie.update!(movie_params)
+			flash[:notice] = "データの更新が完了しました"
+			redirect_to admin_movies_path
+		rescue ActiveRecord::RecordInvalid
+			flash[:alert]= "データの更新に失敗しました"
+			redirect_to edit_admin_movie_url(@movie.id)
+		end
 	end
 
 	def new
