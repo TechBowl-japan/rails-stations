@@ -7,7 +7,8 @@ RSpec.describe SheetsController, type: :controller do
     let(:movie) { create(:movie) }
     let(:schedule) { create(:schedule, movie_id: movie.id) }
     let(:success_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id , date: "2021-12-21 14:53:56" }, session: {} }
-    let(:failure_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} }
+    let(:no_schedule_request) { get :index, params: { movie_id: movie.id, date: "2021-12-21 14:53:56" }, session: {} }
+    let(:no_date_request) { get :index, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} }
 
     context "クエリについて" do
       it 'dateが渡されていれば200を返すこと' do
@@ -15,8 +16,13 @@ RSpec.describe SheetsController, type: :controller do
         expect(response).to have_http_status(200)
       end
 
-      it 'dateがないときに500を返していない' do
-        failure_request
+      it 'パラメーターにschedule_idがないときに302を返していること' do
+        no_schedule_request
+        expect(response).to have_http_status(302)
+      end
+
+      it 'パラメーターにdateがないときに500を返していないこと' do
+        no_date_request
         expect(response).not_to have_http_status(500)
       end
     end
