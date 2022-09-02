@@ -1,6 +1,6 @@
 # TechTrain Rails Railway について
 
-Railway では Git で自分が取り組んだ内容を記録するときに、自動でテストが実行されます。この際、Station の内容に即した実装になっているかを最低限のラインとして確認します。
+Railway ではVSCodeの拡張機能を使ってクリア判定を行います。この際、Station の内容に即した実装になっているかを最低限のラインとして確認します。
 テストが通れば Station クリアとなります。
 クリア後、TechTrain の画面に戻り、クリアになっているかを確認してみてください。
 ※テスト(Rspec)を書くことはクリア判定がうまく機能しないことがあるのでお控えください。
@@ -16,7 +16,7 @@ Ruby| 2.7
 MySQL| 8.*
 
 ## 初期設定
-
+[ユーザーマニュアル](https://docs.google.com/presentation/d/1x5-ZTntDDwKZOFPTJVHK13yDmrPWimg9R3nX5zwjUFw/edit?usp=sharing)
 ### 必要なツール
 
 |ツール名|目安となるバージョン|
