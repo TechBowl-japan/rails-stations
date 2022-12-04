@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<table>
+<div class= "row">
+
+    <% @movies.each do |movie| %>
+    <div class="col-md-3">
+        <div class="thumbnail">
+        <a href=<%= movie.image_url %>>画像</a>
+            <div class= "caption">
+            <p><%= movie.id%>: ID</p>
+            <h3><%= movie.name%>: タイトル</h3>
+            <p><%= movie.year%>: 公開年</p>
+            <p><%= movie.description%>: 概要</p>
+            <p><%=movie.is_showing = true ? "上映中" : "上映予定" %>: 上映中</p>
+            <p><%= movie.created_at%>: 登録日時</p>
+            <p><%= movie.updated_at%>: 更新日時</p>
+            </div>
+        </div>
+    </div>
+    <% end%>
+</div>
+</table>
+</html>
