@@ -49,11 +49,12 @@ RSpec.describe ReservationsController, type: :controller do
       expect(response).to have_http_status(302)
     end
 
-    it 'DBのunique制約にかかったときに座席一覧に飛ぶ' do
+    it 'DBのunique制約にかかったときにリダイレクトテスト' do
       # 同じ日付の同じ映画の座席を予約してみる
       create(:reservation, { sheet_id: sheets.first.id, schedule_id: schedule.id, date: "2019-04-16" })
       post :create, params: { reservation: { name: "TEST_NAME", email: "test@test.com", date: "2019-04-16", sheet_id: sheets.first.id , schedule_id: schedule.id, movie_id: movie.id }}, session: {}
-      expect(response).to redirect_to("http://test.host/movies/#{movie.id}/schedules/#{schedule.id}/sheets?date=2019-04-16")
+      # NOTE: movie_reservation_pathとして指定したいが、実装の揺れに対応するために文字列で指定している
+      expect(response).to redirect_to("http://test.host/movies/#{movie.id}/reservation?schedule_id=#{schedule.id}&date=2019-04-16") or redirect_to("http://test.host/movies/#{movie.id}/reservation?date=2019-04-16&schedule_id=#{schedule.id}")
     end
   end
 end
