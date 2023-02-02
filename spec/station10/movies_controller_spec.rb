@@ -54,7 +54,7 @@ RSpec.describe MoviesController, type: :controller do
         expect(response).to have_http_status(302)
       end
 
-      it 'パラメーターにdateとschedule_idがないときにリダイレクトされること' do
+      it 'パラメーターにdateとschedule_idがないときに302を返していること' do
         no_date_and_sheet_request
         expect(response).to have_http_status(302)
       end
