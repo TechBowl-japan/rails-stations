@@ -16,23 +16,33 @@ RSpec.describe User, type: :request do
         end
 
         it '名前が入力されていないときはユーザー登録ができないこと' do
-            post user_registration_path, params: { user: invalid_no_name_user_params }
-        end.to_not change(User, :count)
+            expect do
+                post user_registration_path, params: { user: invalid_no_name_user_params }
+            end.to_not change(User, :count)
+        end
 
         it 'メールアドレスが入力されていないときはユーザー登録ができないこと' do
-            post user_registration_path, params: { user: invalid_no_email_user_params }
-        end.to_not change(User, :count)
+            expect do
+                post user_registration_path, params: { user: invalid_no_email_user_params }
+            end.to_not change(User, :count)
+        end
 
         it 'パスワードが入力されていないときはユーザー登録ができないこと' do
-            post user_registration_path, params: { user: invalid_no_password_user_params }
-        end.to_not change(User, :count)
+            expect do
+                post user_registration_path, params: { user: invalid_no_password_user_params }
+            end.to_not change(User, :count)
+        end
 
         it '確認用パスワードが入力されていないときはユーザー登録ができないこと' do
-            post user_registration_path, params: { user: invalid_no_password_confirmation_user_params }
-        end.to_not change(User, :count)
+            expect do
+                post user_registration_path, params: { user: invalid_no_password_confirmation_user_params }
+            end.to_not change(User, :count)
+        end
 
         it 'パスワードと確認用パスワードが一致しないときはユーザー登録ができないこと' do
-            post user_registration_path, params: { user: attributes_for(:user, password: "testuser", password_confirmation: "testuser2") }
-        end.to_not change(User, :count)
+            expect do
+                post user_registration_path, params: { user: attributes_for(:user, password: "testuser", password_confirmation: "testuser2") }
+            end.to_not change(User, :count)
+        end
     end
 end
