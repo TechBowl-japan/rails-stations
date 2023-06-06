@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
   render_views
-  describe 'Station11 GET /movies/:id/reservation' do
+  describe 'Station12 GET /movies/:id/reservation' do
     let!(:sheets) { create_list(:sheet, 15) }
     let!(:movie) { create(:movie) }
     let!(:schedule) { create(:schedule, movie_id: movie.id) }

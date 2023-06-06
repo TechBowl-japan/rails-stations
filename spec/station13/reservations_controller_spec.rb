@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Admin::ReservationsController, type: :controller do
   render_views
-  describe 'Station12 GET /admin/reservations' do
+  describe 'Station13 GET /admin/reservations' do
     before do
       sheets = create_list(:sheet, 3)
       schedule = create(:schedule, movie_id: create(:movie).id)
@@ -22,7 +22,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
   end
 
-  describe 'Station12 GET /admin/reservations/new' do
+  describe 'Station13 GET /admin/reservations/new' do
     before { get :new }
 
     it '200が返ること' do
@@ -37,7 +37,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
   end
 
-  describe 'Station12 POST /admin/reservations/' do
+  describe 'Station13 POST /admin/reservations/' do
     it 'schedule_id, sheet_id, name, email, dateのすべてがあるときに302を返す' do
       movie = create(:movie)
       sheet = create(:sheet)
@@ -59,7 +59,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
   end
 
-  describe 'Station12 GET /admin/reservations/:id' do
+  describe 'Station13 GET /admin/reservations/:id' do
     before do
       movie = create(:movie)
       sheet = create(:sheet)
@@ -82,7 +82,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
   end
 
-  describe 'Station12 PUT /admin/reservations/:id' do
+  describe 'Station13 PUT /admin/reservations/:id' do
 
     it 'schedule_id, sheet_id, name, emailのすべてがあるときだけ302にすること' do
       # NOTE: とりあえず更新が成功するかだけ確認する
@@ -96,7 +96,7 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
   end
 
-  describe 'Station12 DELETE /admin/reservations/:id' do
+  describe 'Station13 DELETE /admin/reservations/:id' do
 
     it 'reservationテーブルから:idのレコードを物理削除していること' do
       movie = create(:movie)

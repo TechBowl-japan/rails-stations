@@ -6,7 +6,7 @@ RSpec.describe User, type: :request do
   let(:user_params) { attributes_for(:user) }
   let(:attributes) { %w[name email password password_confirmation] }
 
-describe 'Staton14 POST /users' do
+describe 'Staton15 POST /users' do
     it '必須項目（名前、メールアドレス、パスワード、確認用パスワード）が全て入力されていて、ユーザー登録ができること' do
         post user_registration_path, params: { user: user_params }
         expect(response.status).to eq 302

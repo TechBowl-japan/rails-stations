@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
-  describe 'Station12 Are date&schedule_id&sheet_id unique?' do
+  describe 'Station13 Are date&schedule_id&sheet_id unique?' do
     let(:movie) { create(:movie) }
     let(:sheet) { create(:sheet) }
     let(:schedule) { create(:schedule, movie_id: movie.id) }
