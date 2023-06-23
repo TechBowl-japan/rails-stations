@@ -65,7 +65,7 @@ RSpec.describe ReservationsController, type: :controller do
       expect(response).to have_http_status(302)
     end
 
-    it 'DBのunique制約にかかったときにリダイレクトテスト' do
+    it 'DBのunique制約にかかったときにリダイレクトテストされること' do
       # 同じ日付の同じ映画の座席を予約してみる
       create(:reservation, { sheet_id: sheets.first.id, schedule_id: schedule.id, date: date })
       success_request
