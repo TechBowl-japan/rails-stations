@@ -54,8 +54,7 @@ RSpec.describe ReservationsController, type: :controller do
     let!(:duplicated_date_reservation_test) do
       create(:reservation, { sheet_id: sheets.first.id, schedule_id: schedule.id, date: date })
     end
-
-    let(:success_request) do
+    let!(:success_request) do
       post :create,
            params: { reservation: { name: 'TEST_NAME', email: 'test@test.com', date: date, sheet_id: sheets.first.id, schedule_id: schedule.id, movie_id: movie.id } }, session: {}
     end
