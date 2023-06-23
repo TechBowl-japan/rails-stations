@@ -5,14 +5,21 @@ RSpec.describe ReservationsController, type: :controller do
   describe 'Station12 GET /movies/:movie_id/schedules/:schedule_id/reservations/new' do
     let(:movie) { create(:movie) }
     let(:sheets) { create_list(:sheet, 5) }
-    let(:date) { "2023-01-31" }
+    let(:date) { '2023-01-31' }
     let(:schedule) { create(:schedule, movie_id: movie.id) }
-    let(:success_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id, date: date, sheet_id: sheets.first.id }, session: {} }
+    let(:success_request) do
+      get :new, params: { movie_id: movie.id, schedule_id: schedule.id, date: date, sheet_id: sheets.first.id },
+                session: {}
+    end
     let(:no_date_and_sheet_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id }, session: {} }
-    let(:no_date_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id, sheet_id: sheets.first.id }, session: {} }
-    let(:no_sheet_request) { get :new, params: { movie_id: movie.id, schedule_id: schedule.id, date: date }, session: {} }
+    let(:no_date_request) do
+      get :new, params: { movie_id: movie.id, schedule_id: schedule.id, sheet_id: sheets.first.id }, session: {}
+    end
+    let(:no_sheet_request) do
+      get :new, params: { movie_id: movie.id, schedule_id: schedule.id, date: date }, session: {}
+    end
 
-    context "クエリについて" do
+    context 'クエリについて' do
       it 'date, sheet_idの両方があるときだけ200を返すこと' do
         success_request
         expect(response).to have_http_status(200)
@@ -36,19 +43,22 @@ RSpec.describe ReservationsController, type: :controller do
 
     it 'form送信時にmovie_id, schedule_id, sheet_id, name, emailのすべてを送信するようになっていること' do
       success_request
-      expect(response.body).to include("name")
-      expect(response.body).to include("email")
-      expect(response.body).to include("schedule_id")
-      expect(response.body).to include("sheet_id")
+      expect(response.body).to include('name')
+      expect(response.body).to include('email')
+      expect(response.body).to include('schedule_id')
+      expect(response.body).to include('sheet_id')
     end
   end
 
   describe 'Station12 POST /reservation/' do
     let(:movie) { create(:movie) }
     let(:sheets) { create_list(:sheet, 5) }
-    let(:date) { "2023-01-31" }
+    let(:date) { '2023-01-31' }
     let(:schedule) { create(:schedule, movie_id: movie.id) }
-    let(:success_request) { post :create, params: { reservation: { name: "TEST_NAME", email: "test@test.com", date: date, sheet_id: sheets.first.id , schedule_id: schedule.id, movie_id: movie.id }}, session: {} }
+    let(:success_request) do
+      post :create,
+           params: { reservation: { name: 'TEST_NAME', email: 'test@test.com', date: date, sheet_id: sheets.first.id, schedule_id: schedule.id, movie_id: movie.id } }, session: {}
+    end
 
     it 'schedule_id, sheet_id, name, email, dateのすべてがあるときに302を返す' do
       success_request
