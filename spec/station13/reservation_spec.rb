@@ -6,9 +6,11 @@ RSpec.describe Reservation, type: :model do
     let(:sheet) { create(:sheet) }
     let(:schedule) { create(:schedule, movie_id: movie.id) }
     let(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
-    let(:duplicated_reservation) { build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id, date: reservation.date }) }
+    let(:duplicated_reservation) do
+      build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id, date: reservation.date })
+    end
 
-    it "変更することで他の予約と全く同じような予約になること" do
+    it '変更することで他の予約と全く同じような予約になること' do
       expect(duplicated_reservation).not_to be_valid
     end
   end
