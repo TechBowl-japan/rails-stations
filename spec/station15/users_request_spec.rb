@@ -2,9 +2,9 @@ require 'rails_helper'
 
 # ユーザー登録周りのテスト
 RSpec.describe User, type: :request do
-  let(:user) { create(:user) }
-  let(:user_params) { attributes_for(:user) }
-  let(:attributes) { %w[name email password password_confirmation] }
+  let!(:user) { create(:user) }
+  let!(:user_params) { attributes_for(:user) }
+  let!(:attributes) { %w[name email password password_confirmation] }
 
   describe 'Staton15 POST /users' do
     it '必須項目（名前、メールアドレス、パスワード、確認用パスワード）が全て入力されていて、ユーザー登録ができること' do

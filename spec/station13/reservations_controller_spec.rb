@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Admin::ReservationsController, type: :controller do
   render_views
   describe 'Station13 GET /admin/reservations' do
+    let!(:sheets) { create_list(:sheet, 3) }
+    let!(:schedule) { create(:schedule, movie_id: create(:movie).id) }
+    let!(:first_reservation) { create(:reservation, schedule_id: schedule.id, sheet_id: sheets.first.id) }
+    let!(:reservation) { create(:reservation, schedule_id: schedule.id, sheet_id: sheets[1].id) } # 予約を3つ作成する
+    let!(:last_reservation) { create(:reservation, schedule_id: schedule.id, sheet_id: sheets.last.id) }
     before do
-      sheets = create_list(:sheet, 3)
-      schedule = create(:schedule, movie_id: create(:movie).id)
-      @first_reservation = create(:reservation, schedule_id: schedule.id, sheet_id: sheets.first.id)
-      create(:reservation, schedule_id: schedule.id, sheet_id: sheets[1].id) # 予約を3つ作成する
-      @last_reservation = create(:reservation, schedule_id: schedule.id, sheet_id: sheets.last.id)
       get :index
     end
 
@@ -17,8 +17,8 @@ RSpec.describe Admin::ReservationsController, type: :controller do
     end
 
     it '予約を全件出力していること' do
-      expect(response.body).to include(@first_reservation.name).and include(@first_reservation.name)
-      expect(response.body).to include(@last_reservation.email).and include(@last_reservation.email)
+      expect(response.body).to include(first_reservation.name).and include(first_reservation.name)
+      expect(response.body).to include(last_reservation.email).and include(last_reservation.email)
     end
   end
 

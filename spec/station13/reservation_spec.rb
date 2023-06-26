@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Reservation, type: :model do
   describe 'Station13 Are date&schedule_id&sheet_id unique?' do
-    let(:movie) { create(:movie) }
-    let(:sheet) { create(:sheet) }
-    let(:schedule) { create(:schedule, movie_id: movie.id) }
-    let(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
-    let(:duplicated_reservation) do
+    let!(:movie) { create(:movie) }
+    let!(:sheet) { create(:sheet) }
+    let!(:schedule) { create(:schedule, movie_id: movie.id) }
+    let!(:reservation) { create(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id }) }
+    let!(:duplicated_reservation) do
       build(:reservation, { sheet_id: sheet.id, schedule_id: schedule.id, date: reservation.date })
     end
 
