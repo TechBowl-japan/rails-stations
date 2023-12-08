@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "/assets/builds/application.js", "data-turbo-track": "reload", defer: true %>
   </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <div class="wrap">
+    <div class="page">
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
