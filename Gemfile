@@ -11,7 +11,7 @@ gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# Turbo makes navigating your web application faster. Read more: https://github.com/hotwired/turbo-rails
 gem 'turbo-rails', '~> 1.5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
@@ -46,8 +46,6 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'rubocop', require: false
-  gem 'solargraph', require: false
   gem 'spring'
 end
 
