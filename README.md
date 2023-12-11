@@ -1,59 +1,58 @@
 # TechTrain Rails Railway について
 
-Railway ではVSCodeの拡張機能を使ってクリア判定を行います。この際、Station の内容に即した実装になっているかを最低限のラインとして確認します。
+Railway では VSCode の拡張機能を使ってクリア判定を行います。この際、Station の内容に即した実装になっているかを最低限のラインとして確認します。
 テストが通れば Station クリアとなります。
 クリア後、TechTrain の画面に戻り、クリアになっているかを確認してみてください。
 ※テスト(Rspec)を書くことはクリア判定がうまく機能しないことがあるのでお控えください。
 
-
 ## バージョン情報
 
-
-|言語、フレームワークなど|バージョン|
-|:---:|:---:|
-Rails| 6.*
-Ruby| 2.7
-MySQL| 8.*
+| 言語、フレームワークなど | バージョン |
+| :----------------------: | :--------: |
+|          Rails           |    6.\*    |
+|           Ruby           |   3.2.\*   |
+|          MySQL           |    8.\*    |
 
 ## 初期設定
+
 [ユーザーマニュアル](https://docs.google.com/presentation/d/1x5-ZTntDDwKZOFPTJVHK13yDmrPWimg9R3nX5zwjUFw/edit?usp=sharing)
+
 ### 必要なツール
 
-|ツール名|目安となるバージョン|
-|:---:|:---:|
-|Node.js| 14.*  [ 12.* ,  16.* では動作しません]|
-|Yarn|1.22.*|
-|Docker|20.10.*|
-|Docker Compose|1.29.*|
+|    ツール名    |      目安となるバージョン       |
+| :------------: | :-----------------------------: |
+|    Node.js     | 18.\_ [ 16.\* では動作しません] |
+|      Yarn      |             1.22.\*             |
+|     Docker     |             24.0.\*             |
+| Docker Compose |             2.23.\*             |
 
-Dockerをお使いのPCにインストールしてください。
+Docker をお使いの PC にインストールしてください。
 バージョンが異なる場合、動作しない場合があります。
-Node.js, Yarnのインストールがまだの場合は[html-staions](https://github.com/TechBowl-japan/html-stations)を参考にインストールしてください。  
-また、使用PCがWindowsの場合は、WSLを[この記事](https://docs.microsoft.com/ja-jp/windows/wsl/install-win10)を参考にインストールしてください。
+Node.js, Yarn のインストールがまだの場合は[html-staions](https://github.com/TechBowl-japan/html-stations)を参考にインストールしてください。  
+また、使用 PC が Windows の場合は、WSL を[この記事](https://learn.microsoft.com/ja-jp/windows/wsl/install)を参考にインストールしてください。
 
 ### 「必要なツール」インストール済みの場合
 
 次の手順で取り組み始めてください。
 
-####  `rails-stations`リポジトリのFork
+#### `rails-stations`リポジトリの Fork
 
-画面右上にあるForkより [Rails Railway](https://github.com/TechBowl-japan/rails-stations)のリポジトリを自分のアカウントにForkしてください。
+画面右上にある Fork より [Rails Railway](https://github.com/TechBowl-japan/rails-stations)のリポジトリを自分のアカウントに Fork してください。
 
 #### `rails-stations`リポジトリのクローン
 
 作成したリポジトリを作業するディレクトリにクローンしましょう。
 
-* Macなら Terminal.app(iTerm2などでも良い)
-* Windowsなら PowerShell(GitBashなどのインストールしたアプリでもう良いです。アプリによってはコマンドが異なることがあります)
+- Mac なら Terminal.app(iTerm2 などでも良い)
+- Windows なら PowerShell(GitBash などのインストールしたアプリでもう良いです。アプリによってはコマンドが異なることがあります)
 
-で作業するディレクトリを開き、次のコマンドでForkしたReact.js　Railwayのリポジトリをローカルにクローンしてください。
-
+で作業するディレクトリを開き、次のコマンドで Fork した React.js 　 Railway のリポジトリをローカルにクローンしてください。
 
 ```powershell
 git clone https://github.com/{GitHubのユーザー名}/rails-stations.git
 ```
 
-SSHでクローンを行う場合には、次のようになります
+SSH でクローンを行う場合には、次のようになります
 
 ```
 git clone git@github.com:[GitHubのユーザー名]/rails-stations.git
@@ -75,41 +74,41 @@ docker compose up -d
 docker compose exec web rails db:create
 docker compose exec web rails db:migrate
 docker compose exec web yarn install // ←こちらを実行した後に「TechTrainにログインします。GitHubでサインアップした方はお手数ですが、パスワードリセットよりパスワードを発行してください」と出てくるため、ログインを実行してください。出てこない場合は、コマンドの実行に失敗している可能性があるため、TechTrainの問い合わせかRailwayのSlackより問い合わせをお願いいたします。
+docker compose exec web yarn build
 ```
 
-上記のコマンドを実行すると、techtrainにログインするように表示が行われます。
-GitHubでサインアップしており、パスワードがない方がいましたら、そのかたはパスワードを再発行することでパスワードを作成してください。
+上記のコマンドを実行すると、techtrain にログインするように表示が行われます。
+GitHub でサインアップしており、パスワードがない方がいましたら、そのかたはパスワードを再発行することでパスワードを作成してください。
 
 ログインが完了すれば、ひとまず事前準備はおしまいです。お疲れ様でした。
-TechTrainの画面からチャレンジを始めることもお忘れなく！
+TechTrain の画面からチャレンジを始めることもお忘れなく！
 Rails Railway に取り組み始めてください。
 
-## DBと接続をしたいという方へ
+## DB と接続をしたいという方へ
 
-* Sequel Pro
-* Sequel Ace
-* Table Plus
-* MySQL Workbench
+- Sequel Pro
+- Sequel Ace
+- Table Plus
+- MySQL Workbench
 
-などでDBの中身を確認したいという方は次の接続情報を利用してください
+などで DB の中身を確認したいという方は次の接続情報を利用してください
 
-|項目名|情報|説明|
-|:---:|:---:|:---|
-|Host|127.0.0.1|接続先のDBが存在するホストを指します。|
-|Port|3306|DB接続に利用するポート番号です。|
-|DB User|root|DB内のユーザーになります。他のユーザーも用意してあるので、勉強に使いたい時は使ってみてください。|
-|DB Password|password|DBに接続する際のパスワードです。root用のパスワードなので、他のユーザーを利用したい場合には、Dockerまわりの内容を勉強し、設定を確認してみてください。|
-|DB Name|app_development|接続するDB名です。他にapp_testというRailsのテストをする際に利用するDBを用意しています。|
+|   項目名    |      情報       | 説明                                                                                                                                                    |
+| :---------: | :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|    Host     |    127.0.0.1    | 接続先の DB が存在するホストを指します。                                                                                                                |
+|    Port     |      3306       | DB 接続に利用するポート番号です。                                                                                                                       |
+|   DB User   |      root       | DB 内のユーザーになります。他のユーザーも用意してあるので、勉強に使いたい時は使ってみてください。                                                       |
+| DB Password |    password     | DB に接続する際のパスワードです。root 用のパスワードなので、他のユーザーを利用したい場合には、Docker まわりの内容を勉強し、設定を確認してみてください。 |
+|   DB Name   | app_development | 接続する DB 名です。他に app_test という Rails のテストをする際に利用する DB を用意しています。                                                         |
 
-SSHという仕組みを利用して繋ぐこともできますが、基本的には上記の設定で繋ぐのが一番簡単です。
-接続されないという方は、Dockerのビルドと起動がされていないかもしれません。
-解決についての詳細は、このREADMEにある[DBに接続して中身を見たいです](#DBに接続して中身を見たいです)をご参照ください。
-
+SSH という仕組みを利用して繋ぐこともできますが、基本的には上記の設定で繋ぐのが一番簡単です。
+接続されないという方は、Docker のビルドと起動がされていないかもしれません。
+解決についての詳細は、この README にある[DB に接続して中身を見たいです](#DBに接続して中身を見たいです)をご参照ください。
 
 ## 自分のリポジトリの状態を最新の TechBowl-japan/rails-stations と合わせる
 
-Forkしたリポジトリは、Fork元のリポジトリの状態を自動的に反映してくれません。
-Stationの問題やエラーの修正などがなされておらず、自分で更新をする必要があります。
+Fork したリポジトリは、Fork 元のリポジトリの状態を自動的に反映してくれません。
+Station の問題やエラーの修正などがなされておらず、自分で更新をする必要があります。
 何かエラーが出た、または運営から親リポジトリを更新してくださいと伝えられた際には、こちらを試してみてください。
 
 ### 準備
@@ -153,28 +152,30 @@ yarn install
 
 ## よくある質問
 
-### （GitHubアカウントでサインアップしたので）パスワードがわかりません
+### （GitHub アカウントでサインアップしたので）パスワードがわかりません
 
 https://techtrain.dev/resetpassword
 
-上記のURLより自分の登録したメールアドレスより、パスワードリセットを行うことで、パスワードを発行してください。
+上記の URL より自分の登録したメールアドレスより、パスワードリセットを行うことで、パスワードを発行してください。
 
 メールアドレスがわからない場合は、ログイン後にユーザー情報の編集画面で確認してください。
-ログインしていれば、次のURLから確認できます。
+ログインしていれば、次の URL から確認できます。
 
 https://techtrain.dev/mypage/profile
 
-### DBに接続して中身を見たいです
-以下の2点を確認してみてください。
+### DB に接続して中身を見たいです
 
-#### Dockerが起動されているかを確かめる
-Macなら, iTerm.app, Terminal.app
-Windowsなら, PowerShell
+以下の 2 点を確認してみてください。
+
+#### Docker が起動されているかを確かめる
+
+Mac なら, iTerm.app, Terminal.app
+Windows なら, PowerShell
 
 などのアプリケーションを立ち上げ、このリポジトリが存在するディレクトリに移動してください。
-わからない方は、 `カレントディレクトリ 移動` などで調べてみてください。(Macなら、cdコマンド、Windowsなら一部dirコマンドを利用します)
-このリポジトリをCloneしたディレクトリがカレントディレクトリになるように移動してください。
-その上で `docker compose ps` を実行して次のようにDockerが起動されていることを確認してください。
+わからない方は、 `カレントディレクトリ 移動` などで調べてみてください。(Mac なら、cd コマンド、Windows なら一部 dir コマンドを利用します)
+このリポジトリを Clone したディレクトリがカレントディレクトリになるように移動してください。
+その上で `docker compose ps` を実行して次のように Docker が起動されていることを確認してください。
 
 ```shell
 $ docker compose ps
@@ -185,13 +186,13 @@ rails-stations_db_1    docker-entrypoint.sh --def ...   Up      0.0.0.0:3306->33
 rails-stations_web_1   entrypoint.sh bash -c rm - ...   Up      0.0.0.0:3000->3000/tcp,:::3000->3000/tcp
 ```
 
-`Exit` という文字が見えたのであれば、何らかの原因でDockerの起動がうまく動作していません。
-`docker compose logs` コマンドを起動してその内容をコピペし、 RailwayのSlackワークスペースに入ってみてください。
+`Exit` という文字が見えたのであれば、何らかの原因で Docker の起動がうまく動作していません。
+`docker compose logs` コマンドを起動してその内容をコピペし、 Railway の Slack ワークスペースに入ってみてください。
 そちらで質問すると、回答があるかもしれません。自分で調べられるのがベストです。
 
-#### Dockerが起動されているが、接続されない
+#### Docker が起動されているが、接続されない
 
-Exitがない状態にも関わらず、接続できない場合は、Databaseの作成がうまくいっていない可能性があります。
+Exit がない状態にも関わらず、接続できない場合は、Database の作成がうまくいっていない可能性があります。
 次のコマンドで動作するかどうかを確認してみてください。
 
 ```
@@ -216,44 +217,49 @@ mysql: [Warning] Using a password on the command line interface can be insecure.
 +--------------------+
 ```
 
-### commitしたのにチェックが実行されていないようです
+### commit したのにチェックが実行されていないようです
 
 チェックのためには、次の二つの条件が必須となります。
 
-1. 黒い画面（CLI,コマンドライン）からTechTrainへのログイン
-2. pre-commit hook と呼ばれるcommit時に実行されるGitの仕組みが仕込まれていること
+1. 黒い画面（CLI,コマンドライン）から TechTrain へのログイン
+2. pre-commit hook と呼ばれる commit 時に実行される Git の仕組みが仕込まれていること
 
-特に2については
+特に 2 については
 
-* SourceTreeやGitHubAppでクローンした
-* httpsでクローンした
+- SourceTree や GitHubApp でクローンした
+- https でクローンした
 
 際にうまくいかないことが多いということが報告されています。
-もし上記のようなことが起こった場合には、Terminalなどの画面でSSHによるクローンを試していただき、その上で `yarn install` を実行していただくことで解決することが多いです。もし解決しなかった場合には、運営までお問い合わせいただくか、RailwayのSlackワークスペースにてご質問ください。
+もし上記のようなことが起こった場合には、Terminal などの画面で SSH によるクローンを試していただき、その上で `yarn install` を実行していただくことで解決することが多いです。もし解決しなかった場合には、運営までお問い合わせいただくか、Railway の Slack ワークスペースにてご質問ください。
 
-### commitしないでテストを実行したいです
-以下のようなコマンドを実行するとstationXX（01〜13の2桁の数字が入ります）のテストだけを実行できます。
+### commit しないでテストを実行したいです
+
+以下のようなコマンドを実行すると stationXX（01〜13 の 2 桁の数字が入ります）のテストだけを実行できます。
 エラーメッセージもより詳細に出力されるため、なぜエラーが出ているかわからない人はこちらで実行するのをおすすめします。
 
 ```shell
 docker compose exec web rspec spec/stationXX
 ```
 
-また、以下のようなエラーが出力されている際にはクラス名などが定義されていないか運営による不具合の可能性があるため、一度上のコマンドを実行しRspecとしてエラーを出力してどちらに当たるか判断していただくようお願いいたします。
+また、以下のようなエラーが出力されている際にはクラス名などが定義されていないか運営による不具合の可能性があるため、一度上のコマンドを実行し Rspec としてエラーを出力してどちらに当たるか判断していただくようお願いいたします。
+
 ```bash
 × エラー：有効なテストが存在しません．
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
 
-### WindowsでContainerが立ち上がらない
-WSLのインストールが済んでいて、buildは成功するが以下のようなエラーが出力される場合には改行コードがCRLFになっている可能性があります。
+### Windows で Container が立ち上がらない
+
+WSL のインストールが済んでいて、build は成功するが以下のようなエラーが出力される場合には改行コードが CRLF になっている可能性があります。
+
 ```bash
 standard_init_linux.go:228: exec user process caused: no such file or directory
 ```
 
-その場合には、`git clone`で改行コードがLFをCRLFに変換しないようにする必要があります。
+その場合には、`git clone`で改行コードが LF を CRLF に変換しないようにする必要があります。
 そのため、自動変換をしないようにして再度ローカルに`git clone`を再実行してください。
+
 ```bash
 git config --global core.autocrlf input
 
