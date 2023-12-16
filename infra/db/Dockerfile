@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 mysql:8
+FROM mysql:8.2
 
 # COPY init /docker-entrypoint-initdb.d
 EXPOSE 3306
