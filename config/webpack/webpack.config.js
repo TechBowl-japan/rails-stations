@@ -6,9 +6,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // in this example, entry.custom will create a corresponding empty custom.js file
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 
+const mode =
+  process.env.NODE_ENV === "development" ? "development" : "production";
+
 module.exports = {
-  mode: "production",
-  devtool: "source-map",
+  mode,
   entry: {
     // add your css or sass entries
     application: [
@@ -19,7 +21,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx|)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
@@ -37,7 +39,7 @@ module.exports = {
   resolve: {
     modules: ["app/javascript", "node_modules"],
     // Add additional file types
-    extensions: [".js", ".jsx", ".scss", ".css"],
+    extensions: [".js", ".scss", ".css"],
   },
   output: {
     filename: "[name].js",
@@ -51,4 +53,7 @@ module.exports = {
     new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin(),
   ],
+  optimization: {
+    moduleIds: "deterministic",
+  },
 };
