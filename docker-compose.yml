@@ -27,7 +27,19 @@ services:
       - "3000:3000"
     links:
       - db
-
+    environment:
+      NODE_OPTIONS: --openssl-legacy-provider
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    ports:
+      - "3001:80"
 volumes:
   rails-railway-stations-volume:
   bundle:

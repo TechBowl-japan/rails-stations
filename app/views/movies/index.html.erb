@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center mb-4">Movies</h1>
+<div class="container">
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= movie.image_url %>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.name %></h5>
+            <p class="card-text"><%= movie.description %></p>
+            <p class="card-text"><small class="text-muted"><%= movie.year %></small></p>
+            <p class="card-text"><%= movie.is_showing ? '上映中' : '上映していません' %></p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to 'Show', movie, class: "btn btn-primary" %>
+              <%= link_to 'Edit', edit_movie_path(movie), class: "btn btn-warning mx-1" %>
+              <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to 'New Movie', new_movie_path, class: "btn btn-success" %>
+</div>
