@@ -37,3 +37,6 @@ yarn-debug.log*
 
 # For techtrain clie
 .techtrain/config.toml
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
