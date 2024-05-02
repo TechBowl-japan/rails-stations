@@ -22,7 +22,7 @@ TechTrain Railway の問題を解くために必要な下記ツールのイン�
     ![TechTrain Railwayの拡張機能をインストール](./images/install-extensions.gif)
 4. GitHubリポジトリのフォークとダウンロード
     1. GitHubリポジトリのフォーク
-        - [TechBowl-japan/laravel-stations-2 | GitHub](https://github.com/TechBowl-japan/laravel-stations-2) にアクセスし、右上の"Fork"ボタンをクリックして、リポジトリを自分のGitHubアカウントにフォークします。  
+        - [TechBowl-japan/rails-stations | GitHub](https://github.com/TechBowl-japan/rails-stations) にアクセスし、右上の"Fork"ボタンをクリックして、リポジトリを自分のGitHubアカウントにフォークします。  
         ![GitHubリポジトリのフォーク](./images/fork-repository.gif)
     2. Gitのインストール
         - GitHubからリポジトリをクローンするためには、Gitが必要です。  
@@ -31,7 +31,7 @@ TechTrain Railway の問題を解くために必要な下記ツールのイン�
         - フォークが完了したら、自分のGitHubアカウント上でフォークされたリポジトリを選択し、"Code"ボタンをクリックして、リポジトリのURLをコピーします。  
         - そして、PowerShellを開いて以下のコマンドを実行してリポジトリをダウンロードします。
         ```bash
-        git clone https://github.com/{{あなたのGitHubID}}/laravel-stations-2.git
+        git clone https://github.com/{{あなたのGitHubID}}/rails-stations.git
         ```
 5. Visual Studio Codeでダウンロードしたリポジトリを開く
     - リポジトリをダウンロードしたディレクトリで右クリックし、"Open with Code"または"Visual Studio Code で開く"を選択します。
@@ -40,21 +40,15 @@ TechTrain Railway の問題を解くために必要な下記ツールのイン�
     code ダウンロードしたリポジトリのディレクトリ
     ```
     - Visual Studio Codeが起動したら、左上のファイル -> フォルダを開くを選択して、ダウンロードしたリポジトリのディレクトリを選択します。
-6. Visual Studio Codeからターミナルを起動し環境構築する
-    - 左上のターミナル -> 新しいターミナルを選択して、ターミナルを起動します。  
-    - 以下のコマンドを実行し、アプリケーションの環境固有（データベースへの接続情報等）の設定や機密情報を格納する `.env` ファイルを作成します。
-    ```bash
-    cp .env.example .env
-    ```
-    - 以下のコマンドを実行し、Dockerコンテナのビルドを行います。
-    ```bash
-    docker compose build --no-cache
-    ```  
-   ※ Dockerコンテナのビルドおよび起動には時間がかかる場合があります。コマンドが正常に完了するまで待ってください。
-7. Dockerコマンドでコンテナを起動
+6. Dockerコマンドでコンテナを起動、パッケージのインストール
     - ターミナルでリポジトリのディレクトリに移動し、以下のコマンドを実行してDockerコンテナを起動します。
     ```bash
+    docker compose build
+    docker compose run --rm web bundle install
     docker compose up -d
+    docker compose exec web rails db:create
+    docker compose exec web rails db:migrate
+    docker compose exec web yarn install // ←こちらを実行した後に「TechTrainにログインします。GitHubでサインアップした方はお手数ですが、パスワードリセットよりパスワードを発行してください」と出てくるため、ログインを実行してください。出てこない場合は、コマンドの実行に失敗している可能性があるため、TechTrainの問い合わせかRailwayのSlackより問い合わせをお願いいたします。
     ```
     ※ Dockerコンテナのビルドおよび起動には時間がかかる場合があります。コマンドが正常に完了するまで待ってください。
 8. Dockerコマンドでコンテナの起動を確認
