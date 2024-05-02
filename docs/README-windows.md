@@ -51,31 +51,17 @@ TechTrain Railway の問題を解くために必要な下記ツールのイン�
     docker compose exec web yarn install // ←こちらを実行した後に「TechTrainにログインします。GitHubでサインアップした方はお手数ですが、パスワードリセットよりパスワードを発行してください」と出てくるため、ログインを実行してください。出てこない場合は、コマンドの実行に失敗している可能性があるため、TechTrainの問い合わせかRailwayのSlackより問い合わせをお願いいたします。
     ```
     ※ Dockerコンテナのビルドおよび起動には時間がかかる場合があります。コマンドが正常に完了するまで待ってください。
-8. Dockerコマンドでコンテナの起動を確認
-    - 以下のコマンドを実行し、手順7.で起動したDockerコンテナのプロセスが起動しているかを確認してください。
+7. Dockerコマンドでコンテナの起動を確認
+    - 以下のコマンドを実行し、手順6.で起動したDockerコンテナのプロセスが起動しているかを確認してください。
     ```bash
     docker compose ps
     ```
     ※ Dockerが使用するポートが他のアプリケーションと競合していないか確認してください。
-9. Laravelに必要なライブラリをインストール  
-    - 以下のコマンドを実行し、ライブラリをインストールします。
-    ```bash
-    docker compose exec php-container composer install
-    ```
-10. .envファイルの確認
-    - .env ファイル内の `APP_KEY=` の右辺が空白の場合、下記のコマンドを実行しLaravel アプリケーションのセキュリティに関するキーを生成します。
-    ```bash
-    docker compose exec php-container php artisan key:generate
-    ```
-    - .env ファイル内の `APP_KEY=` にキーが登録されたことを確認し、以下のコマンドを実行します。
-    ```bash
-    docker compose up -d
-    ```
-11. ローカルサーバが立ち上がっていることを確認
-    - [http://localhost:8888](http://localhost:8888) にアクセスし、ローカルサーバが立ち上がっていることを確認します。
-12. 環境構築完了後の確認  
+8. ローカルサーバが立ち上がっていることを確認
+    - [http://localhost:3000](http://localhost:3000) にアクセスし、ローカルサーバが立ち上がっていることを確認します。
+9. 環境構築完了後の確認  
     - 環境構築が正常に終了したことを確認するために、Visual Studio Codeでリポジトリを開いてから、ファイルの変更や追加ができるか確認してください。  
     - また、TechTrain Railwayの拡張機能が正しく機能しているかも確認してください。
 ---
-以上でLaravel Railwayに取り組むための環境が整いました。
+以上でRails Railwayに取り組むための環境が整いました。
 Visual Studio Codeを使用してコードを編集し、「TechTrain Railway」という拡張機能から「できた!」と書かれた青いボタンをクリックすると判定が始まります。
