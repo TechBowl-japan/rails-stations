@@ -1,0 +1,58 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
+<h1>予約フォーム</h1>
+
+<%= form_with model: @reservation, url: '/reservations', local: true do |form| %>
+
+  <div>
+    <label>映画作品:</label>
+    <%= form.hidden_field :movie_id, value: @movie.id %>
+    <%= @movie.name %>
+  </div>
+
+  <div>
+    <label>スクリーン:</label>
+    <%= form.hidden_field :screen_id, value: params[:screen_id] %>
+    <%= @screen %>
+  </div>
+  
+  <div>
+    <label>上映スケジュール:</label>
+    <%= form.hidden_field :schedule_id, value: params[:schedule_id] %>
+    <%= @schedule.start_time %> - <%= @schedule.end_time %>
+  </div>
+  
+  <div>
+    <label>座席:</label>
+    <%= form.hidden_field :sheet_id, value: params[:sheet_id] %>
+    <%= @sheet.row %> - <%= @sheet.column %>
+  </div>
+  
+  <div>
+    <label>日付:</label>
+    <%= form.hidden_field :date, value: params[:date] %>
+    <%= @date %>
+  </div>
+  
+  <div>
+    <label>ユーザID:</label>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= current_user.id %>
+  </div>
+
+  <div>
+    <label>予約者氏名:</label>
+    <%= form.hidden_field :name, value: current_user.name %>
+    <%= current_user.name %>
+  </div>
+
+  <div>
+    <label>予約者メールアドレス:</label>
+    <%= form.hidden_field :email, value: current_user.email %>
+    <%=  current_user.email %>
+  </div>
+
+    <%= form.submit "予約する" %>
+<% end %>

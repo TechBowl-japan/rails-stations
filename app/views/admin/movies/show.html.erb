@@ -1,0 +1,43 @@
+<h1><%= @movie.name %></h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @movie.id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+
+<h2>上映スケジュール</h2>
+<table>
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>作品ID</th>
+    <th>開始時刻</th>
+    <th>終了時刻</th>
+    <th>作成日時</th>
+    <th>更新日時</th>
+  </tr>
+</thead>
+<tbody>
+  <% @movie.schedules.each do |schedule| %>
+    <tr>
+      <td><%= link_to schedule.id, edit_admin_schedule_path(schedule) %></td>
+      <td><%= schedule.movie_id %></td>
+      <td><%= schedule.start_time %></td>
+      <td><%= schedule.end_time %></td>
+      <td><%= schedule.created_at %></td>
+      <td><%= schedule.updated_at %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<!--
+<%= link_to 'スケジュールを追加する', new_admin_movie_schedule_path(@movie), class: 'btn btn-primary' %>
+-->
+<%= link_to '映画情報を修正する', edit_admin_movie_path %>
+<%= link_to '映画一覧に戻る', admin_movies_path %>

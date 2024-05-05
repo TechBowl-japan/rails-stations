@@ -1,0 +1,45 @@
+<div>
+<% if flash.any? %>
+  <div id="flash_messages">
+    <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+  <h1>予約一覧</h1>
+  <%= link_to '新規予約作成', new_admin_reservation_path, class: 'btn btn-primary' %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>映画タイトル</th>
+        <th>座席番号</th>
+        <th>日時</th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.id %></td>
+          <td><%= reservation.schedule.movie.name %></td>
+          <td><%= reservation.sheet_id %></td>
+          <td><%= reservation.date.strftime("%Y-%m-%d %H:%M") %></td> <!-- Formatting the date for better readability -->
+          <td><%= reservation.name %></td>
+          <td><%= reservation.email %></td>
+          <td><%= reservation.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= reservation.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td>
+            <%= link_to '編集', edit_admin_reservation_path(reservation), class: 'btn btn-warning' %>
+            <%= link_to '削除', admin_reservation_path(reservation), method: :delete, data: { confirm: 'この予約を削除してもよろしいですか？' }, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

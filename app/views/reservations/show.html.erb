@@ -1,0 +1,11 @@
+<h1>スクリーン</h1>
+
+<table>
+  <% @sheets.group_by(&:row).each do |row, sheets| %>
+    <tr>
+      <% sheets.each do |sheet| %>
+        <td><%= "#{sheet.row}-#{sheet.column}" %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約</title>
+    <style>
+        .reserved {
+            background-color: #ccc; /* グレー色 */
+        }
+    </style>
+</head>
+
+
+<% flash.each do |key, message| %>
+    <div class="<%= key %>"><%= message %></div>
+<% end %>
+
+<h1>座席予約</h1>
+<p>映画タイトル: <%= @movie.name %></p>
+<p>日付: <%= @date %>, スケジュール: <%= @schedule.start_time %> - <%= @schedule.end_time %></p>
+<p>スクリーンID: <%= @movie.screen_id %></p>
+
+<table>
+  <% @sheets.group_by(&:row).each do |row, sheets_in_row| %>
+    <tr>
+      <% sheets_in_row.each do |sheet| %>
+        <td class="<%= 'reserved' if @reserved_sheet_ids.include?(sheet.id) %>">
+          <% if @reserved_sheet_ids.include?(sheet.id) %>
+            <%= "#{sheet.row}-#{sheet.column}" %>
+          <% else %>
+            <%= link_to "#{sheet.row}-#{sheet.column}",
+                        new_movie_schedule_reservation_path(movie_id: @movie.id, schedule_id: @schedule.id, date: @date, sheet_id: sheet.id, screen_id: @movie.screen_id) %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

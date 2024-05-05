@@ -1,0 +1,35 @@
+<div>
+    <div>
+        <p>予約作成</p>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+
+        <div>
+            <%= form_with model: [:admin, @reservation_new] do |f|%>
+                <%= f.label :name, '予約者氏名' %>
+                <%= f.text_field :name %>
+
+                <%= f.label :email, '予約者Email' %>
+                <%= f.text_field :email %>
+
+                <%= f.label :movie_id, '予約映画タイトル' %>
+                <%= f.select :movie_id, options_from_collection_for_select(@movies, :id, :name) %>
+
+                <%= f.label :date, '予約時間' %>
+                <%= f.date_field :date %>
+
+                <%= f.label :schedule_id, '予約スケジュール' %>
+                <%= f.select :schedule_id, options_from_collection_for_select(@schedules, :id, :id), {} %>
+
+                <%= f.label :sheet_id, '座席' %>
+                <%= f.select :sheet_id, options_from_collection_for_select(@sheets, :id, :id), {} %>
+
+                <%= f.label :sheet_id, 'ユーザID' %>
+                <%= f.select :user_id, options_from_collection_for_select(@users, :id, :id), {} %>
+
+                <%= f.submit "予約", class: 'btn btn-primary mt-3'%>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<!-- app/views/admin/movies/new.html.erb -->
+<% if flash.any? %>
+  <div id="flash_messages">
+    <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with(model: [:admin, @movie]) do |form| %>
+    
+  <div>
+    <%= form.label :name, "タイトル" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+  <%= form.label :year, "公開年" %>
+  <%= form.text_field :year %>
+</div>
+  <div>
+    <%= form.label :description, "概要" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :image_url, "画像URL" %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+  <%= form.label :screen_id, "スクリーン" %>
+  <%= form.number_field :screen_id %>
+  </div>
+
+  <div>
+    <%= form.label :is_showing, "上映中" %>
+    <%= form.check_box :is_showing %>
+  </div>
+
+  <div>
+    <%= form.submit "更新" %>
+  </div>
+
+  <div>
+  <%= link_to '削除', admin_movie_path(@movie), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'delete-button' %>
+  </div>
+  
+  <% end %>

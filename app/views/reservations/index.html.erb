@@ -1,0 +1,12 @@
+<h1><%= @movie.name %>の座席予約</h1>
+<p>日付: <%= @date %>, スケジュール: <%= @schedule.start_time %> - <%= @schedule.end_time %></p>
+
+<table>
+  <% @sheets.each do |sheet| %>
+    <tr>
+      <td>
+        <%= link_to "座席 #{sheet.row}-#{sheet.column}", new_movie_schedule_reservation_path(@movie, @schedule, date: @date, sheet_id: sheet.id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

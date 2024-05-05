@@ -1,0 +1,30 @@
+<div class="container text-center mt-5">
+    <div class="row justify-content-center">
+        <p class="fs-2 fw-bold">予約詳細・編集</p>
+        <div class = "col-4">
+            <%= form_with model: [:admin, @reservation], url: admin_reservation_path, method: :patch do |f|%>
+                <%= f.label :name, '予約者氏名', class: 'form-label'%>
+                <%= f.text_field :name, class: 'form-control text-center'%>
+
+                <%= f.label :email, '予約者Email', class: 'form-label'%>
+                <%= f.text_field :email, class: 'form-control text-center'%>
+
+                <%= f.label :movie_id, '予約映画タイトル', class: 'form-label'%>
+                <%= f.select :movie_id, options_from_collection_for_select(@movies, :id, :name), {},  class: "form-select text-center" %>
+
+                <%= f.label :date, '予約時間', class: 'form-label'%>
+                <%= f.date_field :date, class: 'form-control text-center'%>
+
+                <%= f.label :schedule_id, '予約スケジュール', class: 'form-label'%>
+                <%= f.select :schedule_id, options_from_collection_for_select(@schedules, :id, :id), {},  class: "form-select text-center" %>
+
+                <%= f.label :sheet_id, '座席', class: 'form-label'%>
+                <%= f.select :sheet_id, options_from_collection_for_select(@sheets, :id, :id), {},  class: 'form-select text-center'%>
+
+                <%= f.submit "編集", class: 'btn btn-primary mt-3'%>
+            <% end %>
+
+            <%= link_to '削除', admin_reservation_path, method: :delete, 'data-confirm' => '本当に削除しますか？', class: 'btn btn-secondary mt-3'%>
+        </div>
+    </div>
+</div>
