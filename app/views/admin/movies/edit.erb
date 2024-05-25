@@ -1,0 +1,16 @@
+<%= form_with model: [:admin, @movie], local: true do |form| %>
+  <%= form.label :タイトル %>
+  <%= form.text_field :name %>
+
+  <%= form.label :公開年 %>
+  <%= form.text_field :year %>
+  <%= form.label :概要 %>
+  <%= form.text_area :description %>
+  <%= form.label :画像URL %>
+  <%= form.text_field :image_url %>
+  <%= form.label :上映中 %>
+  <%= form.select :is_showing, [["上映してない", false], ["上映中", true]], include_blank: "選択して下さい" %>
+  <%= form.submit "更新" %>
+<% end %>
+
+<%= button_to '削除', [:admin, @movie], method: :delete, data: { confirm: "映画を削除します。よろしいですか？" }, class: 'btn btn-danger' %>
