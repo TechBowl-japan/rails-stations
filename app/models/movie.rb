@@ -6,6 +6,8 @@ class Movie < ApplicationRecord
   # 更新時のユニークバリデーション
   validate :unique_name_on_update, on: :update
 
+  has_many :schedules
+
   private
   def unique_name_on_update
     # nameカラムが変更されている場合のみバリデーションを実行

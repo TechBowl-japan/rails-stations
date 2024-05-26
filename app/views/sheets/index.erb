@@ -17,7 +17,7 @@
             <% sheet = sheets.find { |s| s.column == column } %>
             <td class="sheet">
               <% if sheet %>
-                  <%= sheet.id %> <!-- シートのIDなど、必要な情報をここに表示 -->
+                  <%= sheet.column %>
               <% end %>
             </td>
           <% end %>
