@@ -21,4 +21,9 @@ class MoviesController < ApplicationController
       @movies = Movie.all
     end
   end
+
+  def show
+    @movie = Movie.find(params[:id])
+    @schedules = @movie.schedules
+  end
 end

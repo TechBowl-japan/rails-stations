@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <div>
+      <%= image_tag(@movie.image_url) %>
+    </div>
+    <div>
+      <%= @movie.name %>
+      <%= @movie.year %>
+      <%= @movie.description %>
+    </div>  
+  </div>
+  <div clss="schedules">
+    <div>上映スケジュール</div>
+
+    <ul>
+      <% @schedules.each do |schedule|%>
+        <li>
+          <%= "#{schedule.start_time.strftime("%Y年 %m %d")} #{schedule.start_time.strftime("%H:%M")}~ #{schedule.end_time.strftime("%H:%M")}" %>      
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

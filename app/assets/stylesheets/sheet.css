@@ -52,3 +52,8 @@ body {
     background-color: #ccc;
     cursor: pointer;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
