@@ -1,18 +1,5 @@
 
-<%= form_with(url: movies_path, local: true, method: :get) do |form| %>
-  <%= form.text_field :keyword %>
-  <%= form.label :全て %>
-  <%= form.radio_button :is_showing, nil, checked: params[:is_showing].nil? %>
-  
-  <%= form.label :公開中 %>
-  <%= form.radio_button :is_showing, true, checked: params[:is_showing] == "true" %>
-  
-  <%= form.label :非公開中 %>
-  <%= form.radio_button :is_showing, false, checked: params[:is_showing] == "false" %>
-  
-  <%= form.submit '検索' %>
-<%end%>
-
+<div>
 
 <div class="container">
   <h1 class="mt-4">映画一覧</h1>

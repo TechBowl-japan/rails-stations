@@ -34,7 +34,7 @@ class Admin::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     if @movie.destroy
-      redirect_to admin_movies_path(@movie)
+      redirect_to admin_movies_path
     else
       render :edit
     end

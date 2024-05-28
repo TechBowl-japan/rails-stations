@@ -1,3 +1,5 @@
+<%= link_to 'New', new_admin_movie_schedule_path(@movie) %>
+
 <%= form_with model: [:admin, @movie], local: true do |form| %>
   <%= form.label :タイトル %>
   <%= form.text_field :name %>
