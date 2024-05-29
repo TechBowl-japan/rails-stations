@@ -1,0 +1,8 @@
+<%= form_with model: [:admin, @schedule], local: true do |form| %>
+  <p><strong>映画:</strong> <%= @schedule.movie.name %></p>
+  <%= form.datetime_field :start_time %>
+  <%= form.datetime_field :end_time %>
+  <%= form.submit "更新" %>
+<% end %>
+
+<%= button_to '削除', [:admin, @schedule], method: :delete, data: { confirm: "映画を削除します。よろしいですか？" }, class: 'btn btn-danger' %>

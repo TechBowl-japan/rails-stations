@@ -1,0 +1,7 @@
+<%= link_to 'New', new_admin_movie_schedule_path(@movie) %>
+
+<%= @movie.name %>
+<%= @movie.year %>
+<%= @movie.description %>
+<%= image_tag(@movie.image_url) %>
+<%= @movie.is_showing ? '公開' : '非公開' %>

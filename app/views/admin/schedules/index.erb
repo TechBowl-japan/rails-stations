@@ -16,8 +16,8 @@
     <% @schedules.each do |schedule|%>
       <tr>
         <th><%= schedule.id %></th>
-        <th><%= link_to "#{schedule.movie.name}", edit_admin_movie_path(schedule.movie) %></th>
-        <th><%= schedule.start_time.strftime('%Y-%m-%d %H:%M:%S') %></th>
+        <th><%= link_to "#{schedule.movie.name}", admin_movie_path(schedule.movie) %></th>
+        <th><%= link_to(schedule.start_time.strftime('%Y-%m-%d %H:%M:%S'), admin_schedule_path(schedule)) %></th>
         <th><%= schedule.end_time.strftime('%Y-%m-%d %H:%M:%S') %></th>
         <th><%= schedule.created_at.strftime('%Y-%m-%d %H:%M:%S') %></th>
         <th><%= schedule.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></th>
