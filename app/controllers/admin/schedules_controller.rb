@@ -8,6 +8,10 @@ class Admin::SchedulesController < ApplicationController
     @schedule = Schedule.new
   end
 
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
+
   def edit
     @schedule = Schedule.find(params[:id])
   end
@@ -22,11 +26,11 @@ class Admin::SchedulesController < ApplicationController
   end
 
   def update
-    @schedule = Schedule.new(schedule_params)
-    if @schedule.update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
       redirect_to admin_schedules_path
     else
-      render :new
+      render :show
     end
   end
 
