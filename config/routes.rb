@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :new, :show, :edit, :update, :create, :destroy] do
       resources :schedules, only: [:new]
     end
-    resources :schedules, only: [:index, :show, :edit, :create, :update]
+    resources :schedules, only: [:index, :show, :edit, :create, :update, :destroy]
   end
 end
