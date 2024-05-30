@@ -9,6 +9,7 @@ WORKDIR /app
 # ログインなどの処理を挟む必要があるため。
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
+RUN bundle install
 COPY . /app
 
 COPY entrypoint.sh /usr/bin/
