@@ -26,4 +26,15 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @schedules = @movie.schedules
   end
+
+  def reservation
+    @movie = Movie.find(params[:id])
+    if params[:schedule_id].blank? || params[:date].blank?
+      redirect_to movie_path(@movie), status: :found # 302リダイレクト
+      return
+    end
+    @schedule = Schedule.find(params[:schedule_id])
+    @sheets = Sheet.all
+    @columns = Sheet.all.pluck(:column).uniq.sort
+  end
 end

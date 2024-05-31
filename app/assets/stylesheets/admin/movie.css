@@ -1,0 +1,9 @@
+/* .container {
+ border: 1px solid black 
+} */
+
+
+.table-responsive {
+  overflow-x: auto;
+  height: 1000px;
+}

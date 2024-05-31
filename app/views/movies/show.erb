@@ -9,6 +9,7 @@
       <%= @movie.description %>
     </div>  
   </div>
+
   <div clss="schedules">
     <div>上映スケジュール</div>
 
@@ -16,6 +17,9 @@
       <% @schedules.each do |schedule|%>
         <li>
           <%= "#{schedule.start_time.strftime("%Y年 %m %d")} #{schedule.start_time.strftime("%H:%M")}~ #{schedule.end_time.strftime("%H:%M")}" %>      
+          <%= link_to reservation_movie_path(@movie, schedule_id: schedule.id, date: schedule.start_time.strftime("%Y-%m-%d")), method: :get do%>
+             <button type="button">座席を予約する</button>
+          <%end%>
         </li>
       <% end %>
     </ul>
