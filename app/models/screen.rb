@@ -1,0 +1,2 @@
+class Screen < ApplicationRecord
+end

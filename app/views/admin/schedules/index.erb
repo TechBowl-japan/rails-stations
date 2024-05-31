@@ -5,6 +5,7 @@
     <tr>
       <th>ID</th>
       <th>映画名</th>
+      <th>スクリーン</th>
       <th>開始時間</th>
       <th>終了時間</th>
       <th>作成日時</th>
@@ -17,6 +18,7 @@
       <tr>
         <th><%= schedule.id %></th>
         <th><%= link_to "#{schedule.movie.name}", admin_movie_path(schedule.movie) %></th>
+        <th><%= schedule.screen.name %></th>
         <th><%= link_to(schedule.start_time.strftime('%Y-%m-%d %H:%M:%S'), admin_schedule_path(schedule)) %></th>
         <th><%= schedule.end_time.strftime('%Y-%m-%d %H:%M:%S') %></th>
         <th><%= schedule.created_at.strftime('%Y-%m-%d %H:%M:%S') %></th>

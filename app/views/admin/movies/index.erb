@@ -1,5 +1,6 @@
 <h1 class="mt-4">映画一覧</h1>
 
+<%= link_to "映画作成", new_admin_movie_path%>
 <div class="table table-responsive">
   <table>
     <thead>
@@ -20,7 +21,7 @@
       <% @movies.each do |movie| %>
         <tr>
           <td><%= movie.id %></td>
-          <td><%= movie.name %></td>
+          <td><%= link_to movie.name, edit_admin_movie_path(movie) %></td>
           <td><%= movie.year %></td>
           <td><%= movie.is_showing ? '上映中' : '上映終了' %></td>
           <td><%= movie.description %></td>

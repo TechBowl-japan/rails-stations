@@ -18,7 +18,7 @@ class Admin::SchedulesController < ApplicationController
 
   def create
     @schedule = Schedule.new(schedule_params)
-    if @schedule.save
+    if @schedule.save!
       redirect_to admin_schedules_path
     else
       render :new
@@ -46,6 +46,6 @@ class Admin::SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:movie_id,:start_time, :end_time)
+    params.require(:schedule).permit(:movie_id,:start_time, :end_time, :screen_id)
   end
 end

@@ -2,5 +2,6 @@
   <%= form.select :movie_id, Movie.all.map { |m|  [m.name, m.id] }, include_blank: "選択して下さい" %>
   <%= form.datetime_field :start_time %>
   <%= form.datetime_field :end_time %>
+  <%= form.collection_select :screen_id, Screen.all, :id, :name, include_blank: "選択して下さい" %>
   <%= form.submit "作成" %>
 <% end %>

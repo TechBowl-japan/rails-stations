@@ -10,18 +10,17 @@
     </div>  
   </div>
 
-  <div clss="schedules">
-    <div>上映スケジュール</div>
+  <h2>スケジュール一覧</h2>
 
-    <ul>
-      <% @schedules.each do |schedule|%>
-        <li>
-          <%= "#{schedule.start_time.strftime("%Y年 %m %d")} #{schedule.start_time.strftime("%H:%M")}~ #{schedule.end_time.strftime("%H:%M")}" %>      
-          <%= link_to reservation_movie_path(@movie, schedule_id: schedule.id, date: schedule.start_time.strftime("%Y-%m-%d")), method: :get do%>
-             <button type="button">座席を予約する</button>
-          <%end%>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<% @movie.schedules.group_by(&:screen).each do |screen, schedules| %>
+  <h3><%= screen.name %></h3>
+  <ul>
+    <% schedules.each do |schedule| %>
+      <li>
+        <%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %> - <%= schedule.end_time.strftime("%Y-%m-%d %H:%M") %>
+        <%= link_to '予約', reservation_movie_path(schedule_id: schedule.id, date: schedule.start_time.to_date) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 </div>

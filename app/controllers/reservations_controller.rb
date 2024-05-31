@@ -1,16 +1,16 @@
 class ReservationsController < ApplicationController
   def new
-    @movie = Movie.find(params[:movie_id])
     if params[:sheet_id].blank?
-      redirect_to movie_path(@movie), status: :found # 302リダイレクト
+      redirect_to movies_path, status: :found # 302リダイレクト
       return
     end
 
     if params[:date].blank?
-      redirect_to movie_path(@movie), status: :found # 302リダイレクト
+      redirect_to movies_path, status: :found # 302リダイレクト
       return
     end
 
+    @movie = Movie.find(params[:movie_id])
     @schedule = Schedule.find(params[:schedule_id])
     @sheet = Sheet.find(params[:sheet_id])
     @eservation = Reservation.new
