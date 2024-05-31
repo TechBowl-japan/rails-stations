@@ -10,19 +10,21 @@
       </tr>
     </thead>
     <tbody>
-      <% @sheets.group_by(&:row).each do |row, sheets| %>
-        <tr>
-          <td class="label"><%= row.upcase %></td>
-          <% @columns.each do |column| %>
-            <% sheet = sheets.find { |s| s.column == column } %>
-            <td class="sheet">
-              <% if sheet %>
-                  <%= link_to("#{sheet.row}-#{sheet.column}",new_movie_schedule_reservation_path(@movie.id,@schedule.id, sheet_id: sheet.id, date: @schedule.start_time.to_date)) %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
+    <% @sheets.group_by(&:row).each do |row, sheets| %>
+      <tr>
+        <td class="label"><%= row.upcase %></td>
+        <% @columns.each do |column| %>
+          <% sheet = sheets.find { |s| s.column == column } %>
+          <td class="sheet">
+            <% if sheet && !sheet.reserved?(@schedule) %>
+              <%= link_to("#{sheet.row}-#{sheet.column}", new_movie_schedule_reservation_path(@movie.id, @schedule.id, sheet_id: sheet.id, date: @schedule.start_time.to_date)) %>
+            <% else %>
+              <%= "#{sheet.row}-#{sheet.column}" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

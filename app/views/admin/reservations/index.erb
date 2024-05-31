@@ -1,0 +1,54 @@
+<h1 class="mt-4">予約一覧</h1>
+
+
+<%= link_to "予約作成", new_admin_reservation_path, id: 'reservation_link' %>
+<%= form_with url: '#', local: true do %>
+  <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :name), id: 'movie_select' %>
+<% end %>
+
+<div class="table table-responsive">
+  <table>
+    <thead>
+      <tr>
+        <th>作品ID</th>
+        <th>映画タイトル</th>
+        <th>公開年</th>
+        <th>上映中</th>
+        <th>概要</th>
+        <th>画像URL</th>
+        <th>開始時刻</th>
+        <th>終了時刻</th>
+        <th>作成日時</th>
+        <th>更新日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.id %></td>
+          <td><%= link_to reservation.schedule.movie.name, admin_reservation_path(reservation) %></td>
+          <td><%= reservation.sheet.id %></td>
+          <td><%= reservation.date %></td>
+          <td><%= reservation.name %></td>
+          <td><%= reservation.email %></td>
+          <td><%= reservation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+          <td><%= reservation.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const movieSelect = document.getElementById('movie_select');
+    const reservationLink = document.getElementById('reservation_link');
+
+    movieSelect.addEventListener('change', function() {
+      const selectedMovieId = movieSelect.value;
+      const newHref = `/admin/reservations/new?movie_id=${selectedMovieId}`;
+      reservationLink.href = newHref;
+    });
+  });
+</script>

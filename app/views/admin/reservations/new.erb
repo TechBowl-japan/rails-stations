@@ -1,0 +1,28 @@
+予約フォーム
+
+<%= form_with model: [:admin, @reservation], local: true, scope: :reservation do |form| %>
+
+    <% if @movie.presence %>
+      <p><strong>選択中の映画:</strong> <%= @movie.name %></p>
+      <%= form.hidden_field :movie_id, value: @movie.id  %>
+    <% else %>
+      <p><strong>movie_id:</strong></p>
+      <%= form.collection_select :movie_id, Movie.all, :id, :id, include_blank: "選択して下さい" %>
+    <% end %>
+
+    <p><strong>sheet_id:</strong></p>
+    <%= form.collection_select :sheet_id, Sheet.all, :id, :id, include_blank: "選択して下さい" %>
+
+    <p><strong>選択中のschedule_id:</strong> </p>
+    <%= form.collection_select :schedule_id, Schedule.all, :id, :id, include_blank: "選択して下さい" %>
+
+    <%= form.label :氏名 %>
+    <%= form.text_field :name %>
+    <%= form.label :メールアドレス %>
+    <%= form.text_field :email %>
+  <%= form.submit "予約" %>
+<% end %>
+
+<%= form_with url: '#', local: true do %>
+  <%= select_tag :movie_id, options_from_collection_for_select(Movie.all, :id, :name), id: 'movie_select' %>
+<% end %>

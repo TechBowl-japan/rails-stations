@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
       return
     end
     @schedule = Schedule.find(params[:schedule_id])
-    @sheets = Sheet.all
+    @sheets = Sheet.includes(:reservations).all
     @columns = Sheet.all.pluck(:column).uniq.sort
   end
 end

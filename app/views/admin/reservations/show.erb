@@ -1,0 +1,23 @@
+<%= form_with model: [:admin, @reservation], local: true, scope: :reservation do |form| %>
+  <% if @reservation.schedule.movie.present? %>
+    <p><strong>選択中の映画:</strong> <%= @reservation.schedule.movie.name %></p>
+    <%= form.hidden_field :movie_id, value: @reservation.schedule.movie.id %>
+  <% else %>
+    <p><strong>movie_id:</strong></p>
+    <%= form.collection_select :movie_id, @movies, :id, :name, include_blank: "選択して下さい", id: 'movie_select' %>
+  <% end %>
+
+  <p><strong>sheet_id:</strong></p>
+  <%= form.collection_select :sheet_id, Sheet.all, :id, :id, include_blank: "選択して下さい" %>
+
+  <p><strong>選択中のschedule_id:</strong> </p>
+  <%= form.collection_select :schedule_id, @schedules, :id, :id, include_blank: "選択して下さい", id: 'schedule_select' %>
+
+  <%= form.label :氏名 %>
+  <%= form.text_field :name %>
+  <%= form.label :メールアドレス %>
+  <%= form.text_field :email %>
+  <%= form.submit "更新" %>
+<% end %>
+
+<%= button_to '削除', [:admin, @reservation], method: :delete, data: { confirm: "映画を削除します。よろしいですか？" }, class: 'btn btn-danger' %>
