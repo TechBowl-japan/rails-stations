@@ -1,0 +1,18 @@
+予約フォーム
+
+<%= form_with model: @reservation, local: true, url: reservations_path, scope: :reservation do |form| %>
+    <p><strong>選択中の映画:</strong> <%= @movie.name %></p>
+    <%= form.hidden_field :movie_id, value: @movie.id  %>
+
+    <p><strong>選択中の日付:</strong> <%= @schedule.start_time.strftime("%Y年-%m-%d") %></p>
+    <p><strong>選択中のsheet_id:</strong> <%= @sheet.id %></p>
+    <%= form.hidden_field :sheet_id, value: @sheet.id  %>
+    <p><strong>選択中のschedule_id:</strong> <%= @schedule.id %></p>
+    <%= form.hidden_field :schedule_id, value: @schedule.id  %>
+
+    <%= form.label :氏名 %>
+    <%= form.text_field :name %>
+    <%= form.label :メールアドレス %>
+    <%= form.text_field :email %>
+  <%= form.submit "予約" %>
+<% end %>

@@ -1,0 +1,28 @@
+<div class="sheet-layout">
+  <div class="screen">スクリーン1</div>
+  <table class="sheets">
+    <thead>
+      <tr>
+        <th></th>
+          <% @columns.each do |column| %>
+            <th><%= column %></th>
+          <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sheets.group_by(&:row).each do |row, sheets| %>
+        <tr>
+          <td class="label"><%= row.upcase %></td>
+          <% @columns.each do |column| %>
+            <% sheet = sheets.find { |s| s.column == column } %>
+            <td class="sheet">
+              <% if sheet %>
+                  <%= link_to("#{sheet.row}-#{sheet.column}",new_movie_schedule_reservation_path(@movie.id,@schedule.id, sheet_id: sheet.id, date: @schedule.start_time.to_date)) %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

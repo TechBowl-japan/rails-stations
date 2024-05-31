@@ -12,6 +12,13 @@
 
   <body>
     <div class="container-fluid">
+      <% flash.each do |message_type, message|%>
+        <% if message_type == 'success' %>
+          <p class='success'><%= message %></p>
+        <% else %>
+          <p class='failed'><%= message %></p>
+        <% end %>
+      <%end%>
       <div class="row">
         <div class="col-2">
           <%= render 'layouts/sidebar' %>
