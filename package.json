@@ -1,20 +1,12 @@
 {
   "name": "app",
   "private": true,
-  "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "5.3.0",
-    "@techtrain/cli-railway": "^0.1.8",
-    "turbolinks": "^5.2.0",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
-  },
   "version": "0.1.0",
+  "dependencies": {
+    "@techtrain/cli-railway": "^0.2.3"
+  },
   "devDependencies": {
-    "simple-git-hooks": "^2.4.1",
-    "webpack-dev-server": "^3.11.2"
+    "simple-git-hooks": "^2.11.1"
   },
   "scripts": {
     "login:techtrain": "techtrain-railway login",
