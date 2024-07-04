@@ -3,7 +3,6 @@ services:
     build:
       context: ./infra/db
       dockerfile: Dockerfile
-    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_DATABASE: app_test
       MYSQL_ROOT_PASSWORD: password
