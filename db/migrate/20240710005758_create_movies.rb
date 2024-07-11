@@ -1,4 +1,4 @@
-class CreateMovie < ActiveRecord::Migration[6.1]
+class CreateMovies < ActiveRecord::Migration[7.1]
   def change
     create_table :movies do |t|
       t.string "name", limit: 160, null: false, index: true ,comment: "映画のタイトル。邦題・洋題は一旦考えなくてOK"
