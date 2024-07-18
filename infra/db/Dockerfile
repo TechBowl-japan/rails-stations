@@ -1,5 +1,7 @@
-FROM mysql:8.4.1
-# FROM --platform=linux/x86_64 mysql:5.7
+FROM mysql:8.4.1-oraclelinux9
 
-# COPY init /docker-entrypoint-initdb.d
+# Set MySQL configuration (optional if you have custom config)
+COPY infra/db/conf/my.cnf /etc/mysql/my.cnf
+
+# Expose MySQL port
 EXPOSE 3306

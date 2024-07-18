@@ -1,8 +1,8 @@
 services:
   db:
     build:
-      context: ./infra/db
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./infra/db/Dockerfile
     environment:
       MYSQL_DATABASE: app_test
       MYSQL_ROOT_PASSWORD: password
@@ -12,7 +12,6 @@ services:
       - "3306:3306"
     volumes:
       - rails-railway-stations-volume:/var/lib/mysql
-
   web:
     build:
       context: .
@@ -21,6 +20,7 @@ services:
     volumes:
       - .:/app
       - bundle:/usr/local/bundle
+      - rails-railway-stations-volume:/var/lib/mysql
     ports:
       - "3000:3000"
     links:
