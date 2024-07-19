@@ -8,7 +8,7 @@ WORKDIR /app
 # このDockerfileでgemのインストールやyarnによるパッケージのインストールをしていないのは、
 # ログインなどの処理を挟む必要があるため。
 COPY Gemfile /app/Gemfile
-# COPY Gemfile.lock /app/Gemfile.lock
+COPY Gemfile.lock /app/Gemfile.lock
 COPY . /app
 
 COPY entrypoint.sh /usr/bin/

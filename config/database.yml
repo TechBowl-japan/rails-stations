@@ -5,6 +5,10 @@ default: &default
   username: root
   password: "password"
   host: db
+  sslverify: true
+  sslca: /var/lib/mysql/ca.pem
+  sslcert: /var/lib/mysql/client-cert.pem
+  sslkey: /var/lib/mysql/client-key.pem
 
 development:
   <<: *default
