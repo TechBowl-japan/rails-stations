@@ -1,0 +1,6 @@
+<h1>映画一覧</h1>
+<%= @movies.each do |movie| %>
+    <p><%= movie.name %></p>
+    <p><%= movie.image_url %></p>
+
+<% end %>
