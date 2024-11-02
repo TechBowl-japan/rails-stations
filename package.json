@@ -6,6 +6,8 @@
     "@techtrain/cli-railway": "^0.2.3"
   },
   "devDependencies": {
+    "@prettier/plugin-ruby": "^4.0.4",
+    "prettier": "^3.3.3",
     "simple-git-hooks": "^2.11.1"
   },
   "scripts": {
