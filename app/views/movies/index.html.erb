@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .movies-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    
+    .movie-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .movie-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    
+    .movie-title {
+      padding: 10px;
+      margin: 0;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>映画一覧</h1>
+
+  <div class="movies-container">
+    <% @movies.each do |movie| %>
+      <div class="movie-card">
+        <img 
+          src="<%= movie.image_url.presence || 'https://picsum.photos/300/450' %>" 
+          alt="<%= movie.name %>"
+          class="movie-image"
+          onerror="this.src='https://picsum.photos/300/450'"
+        >
+        <h2 class="movie-title"><%= movie.name %></h2>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
