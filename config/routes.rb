@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index]
 
+  namespace :admin do
+    resources :movies, only: [:index]
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end
