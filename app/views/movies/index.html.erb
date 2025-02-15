@@ -18,6 +18,7 @@
     .movie-image {
       width: 100%;
       height: auto;
+      max-height: 200px;
       object-fit: cover;
     }
     
@@ -26,10 +27,40 @@
       margin: 0;
       font-size: 1.1em;
     }
+
+    .movie-description, .movie-year, .movie-is_showing {
+      padding: 10px;
+      margin: 0;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
   <h1>映画一覧</h1>
+
+  <div class="search-section">
+    <%= form_with url: movies_path, method: :get, local: true do |f| %>
+      <div class="search-field">
+        <%= f.text_field :keyword, 
+          placeholder: "タイトルで検索",
+          value: params[:keyword]
+        %>
+      </div>
+
+      <div class="filter-field">
+        <%= f.radio_button :is_showing, "", checked: params[:is_showing].blank? %>
+        <%= f.label :is_showing, "全て" %>
+
+        <%= f.radio_button :is_showing, "1", checked: params[:is_showing] == "1" %>
+        <%= f.label :is_showing_1, "上映中" %>
+
+        <%= f.radio_button :is_showing, "0", checked: params[:is_showing] == "0" %>
+        <%= f.label :is_showing_0, "上映予定" %>
+      </div>
+
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
 
   <div class="movies-container">
     <% @movies.each do |movie| %>
@@ -40,9 +71,16 @@
           class="movie-image"
           onerror="this.src='https://picsum.photos/300/450'"
         >
-        <h2 class="movie-title"><%= movie.name %></h2>
+        <h2 class="movie-title">映画タイトル：<%= movie.name %></h2>
+        <p class="movie-description">概要：<%= movie.description %></p>
+        <p class="movie-year">上映年：<%= movie.year %></p>
+        <p class="movie-is_showing">上映状況：<%= movie.is_showing ? "上映中" : "上映予定" %></p>
       </div>
     <% end %>
+  </div>
+
+  <div>
+    <p><%= link_to '新規登録画面', new_admin_movie_path %></p>
   </div>
 </body>
 </html>
