@@ -6,6 +6,13 @@
   <body>
     <h1>映画情報の編集</h1>
     <%= render "form", submit_text: "更新" %>
+
+    <div class="delete-section">
+      <%= button_to "削除", admin_movie_path(@movie),
+      method: :delete,
+      data: { confirm: "映画「#{@movie.name}」を削除しますか？"},
+      class: "btn btn-danger" %>
+    </div>
     <%= link_to "一覧に戻る", admin_movies_path %>
   </body>
 </html>
