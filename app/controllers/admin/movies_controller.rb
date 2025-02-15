@@ -4,10 +4,12 @@ class Admin::MoviesController < ApplicationController
       @movies = Movie.all
     end
 
+    # 新規登録フォーム
     def new
       @movie = Movie.new
     end
 
+    # 新規登録
     def create
       @movie = Movie.new(movie_params)
       if @movie.save
@@ -18,10 +20,12 @@ class Admin::MoviesController < ApplicationController
       end
     end
 
+    # 編集フォーム
     def edit
       @movie = Movie.find(params[:id])
     end
 
+    # 編集
     def update
       @movie = Movie.find(params[:id])
       if @movie.update(movie_params)
@@ -32,6 +36,7 @@ class Admin::MoviesController < ApplicationController
       end
     end
 
+    # 削除
     def destroy
       @movie = Movie.find(params[:id])
       @movie.destroy
@@ -40,6 +45,7 @@ class Admin::MoviesController < ApplicationController
 
     private
 
+    # パラメータ
     def movie_params
       params.require(:movie).permit(:name, :year, :description, :image_url, :is_showing)
     end
