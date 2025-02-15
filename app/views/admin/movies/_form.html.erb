@@ -1,0 +1,30 @@
+<%= form_with model: [:admin, @movie], local: true do |f| %>
+  <div>
+    <%= f.label :name, "タイトル" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :year, "公開年" %>
+    <%= f.number_field :year %>
+  </div>
+
+  <div>
+    <%= f.label :description, "概要" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :image_url, "画像URL" %>
+    <%= f.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= f.label :is_showing, "上映中" %>
+    <%= f.check_box :is_showing %>
+  </div>
+
+  <div>
+    <%= f.submit submit_text %>
+  </div>
+<% end %>
