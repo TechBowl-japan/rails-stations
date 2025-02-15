@@ -17,6 +17,7 @@
                 <th>上映状態</th>
                 <th>登録日時</th>
                 <th>更新日時</th>
+                <th>削除</th>
             </tr>
         </thead>
 
@@ -31,6 +32,7 @@
                     <td><%= movie.is_showing ? "上映中" : "上映予定" %></td>
                     <td><%= movie.created_at %></td>
                     <td><%= movie.updated_at %></td>
+                    <td><%= button_to "削除", admin_movie_path(movie), method: :delete, data: { confirm: "映画「#{movie.name}」を削除しますか？"} %></td>
                 </tr>
             <% end %>
         </tbody>
