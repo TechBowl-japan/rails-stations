@@ -5,35 +5,7 @@
 </head>
 <body>
   <h1>映画の新規登録</h1>
-  <%= form_with model: @movie, url: admin_movies_path, local: true do |f| %>
-    <div>
-      <%= f.label :name, "タイトル" %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div>
-      <%= f.label :year, "公開年" %>
-      <%= f.number_field :year %>
-    </div>
-
-    <div>
-      <%= f.label :description, "概要" %>
-      <%= f.text_area :description %>
-    </div>
-
-    <div>
-      <%= f.label :image_url, "画像URL" %>
-      <%= f.text_field :image_url %>
-    </div>
-
-    <div>
-      <%= f.label :is_showing, "上映中" %>
-      <%= f.check_box :is_showing %>
-    </div>
-
-    <div>
-      <%= f.submit "登録" %>
-    </div>
-  <% end %>
+  <%= render "form", submit_text: "登録" %>
+  <%= link_to "一覧に戻る", admin_movies_path %>
 </body>
 </html>
