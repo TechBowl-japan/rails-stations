@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :movies, only: [:index]
+  resources :sheets, only: [:index]
 
   namespace :admin do
     resources :movies, only: [:index, :new, :create, :edit, :update, :destroy]
