@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>座席表</title>
+</head>
+<body>
+    <h1>座席表</h1>
+    <table border="1">
+        <thead>
+            <th colspan="5">スクリーン</th>
+        </thead>
+        <tbody>
+            <% grouped_sheets = @sheets.group_by(&:row) %>
+            <% grouped_sheets.each do |row, sheets| %>
+                <tr>
+                    <% sheets.each do |sheet| %>
+                        <td><%= "#{sheet.row}-#{sheet.column}" %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</body>
+</html>
