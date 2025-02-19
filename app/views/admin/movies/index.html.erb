@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>映画一覧（管理画面）</title>
-</head>
-<body>
-    <h1>映画一覧（管理画面）</h1>
+<h1>映画一覧（管理画面）</h1>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>タイトル</th>
-                <th>公開年</th>
-                <th>概要</th>
-                <th>画像URL</th>
-                <th>上映状態</th>
-                <th>登録日時</th>
-                <th>更新日時</th>
-                <th>削除</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <% @movies.each do |movie| %>
-                <tr>
-                    <td><%= link_to movie.id, edit_admin_movie_path(movie) %></td>
-                    <td><%= movie.name %></td>
-                    <td><%= movie.year %></td>
-                    <td><%= movie.description %></td>
-                    <td><%= link_to "画像", movie.image_url, target: "_blank" %></td>
-                    <td><%= movie.is_showing ? "上映中" : "未上映" %></td>
-                    <td><%= movie.created_at %></td>
-                    <td><%= movie.updated_at %></td>
-                    <td><%= button_to "削除", admin_movie_path(movie), method: :delete, data: { confirm: "映画「#{movie.name}」を削除しますか？"} %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <div>
-        <p><%= link_to '映画一覧', movies_path %></p>
-        <p><%= link_to '新規登録フォーム', new_admin_movie_path %></p>
-    </div>
-</body>
-</html>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>画像</th>
+      <th>タイトル</th>
+      <th>説明</th>
+      <th>公開年</th>
+      <th>上映状況</th>
+      <th>スケジュール</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.id %></td>
+        <td><img src="<%= movie.image_url %>" alt="<%= movie.name %>"></td>
+        <td><%= movie.name %></td>
+        <td><%= movie.description %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.is_showing ? "上映中" : "未上映" %></td>
+        <td>
+          <% movie.schedules.each do |schedule| %>
+            <div>
+              <%= schedule.start_time.strftime("%Y/%m/%d %H:%M") %> - 
+              <%= schedule.end_time.strftime("%H:%M") %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "詳細", admin_movie_path(movie) %>
+          <%= link_to "編集", edit_admin_movie_path(movie) %>
+          <%= link_to "新規スケジュール追加", new_admin_movie_schedule_path(movie) %>
+          <%= button_to "削除", admin_movie_path(movie), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
