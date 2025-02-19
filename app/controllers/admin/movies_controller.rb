@@ -4,6 +4,10 @@ class Admin::MoviesController < ApplicationController
       @movies = Movie.all
     end
 
+    def show
+      @movie = Movie.find(params[:id])
+    end
+
     # 新規登録フォーム
     def new
       @movie = Movie.new
