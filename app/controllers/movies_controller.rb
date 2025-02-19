@@ -5,6 +5,11 @@ class MoviesController < ApplicationController
       @movies = filter_by_keyword(@movies)
     end
 
+    def show
+      @movie = Movie.find(params[:id])
+      @schedules = @movie.schedules ? @movie.schedules.order(:start_time) : nil
+    end
+
     # 上映フィルタリング
     def filter_by_showing_status(movies)
       case params[:is_showing]
