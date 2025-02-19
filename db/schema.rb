@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_16_084146) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_19_110307) do
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 160, null: false, comment: "映画のタイトル。邦題・洋題は一旦考えなくてOK"
     t.string "year", limit: 45, comment: "公開年"
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_16_084146) do
     t.index ["name"], name: "index_movies_on_name"
   end
 
+  create_table "schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.time "start_time", null: false, comment: "上映開始時刻"
+    t.time "end_time", null: false, comment: "上映終了時刻"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_schedules_on_movie_id"
+  end
+
   create_table "sheets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "column", limit: 1, null: false
     t.string "row", limit: 1, null: false
@@ -29,4 +38,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_16_084146) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "schedules", "movies"
 end
