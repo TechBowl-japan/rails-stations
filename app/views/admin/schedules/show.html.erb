@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<h1>スケジュール詳細</h1>
+
+<p>作品ID: <%= @schedule.movie.id %></p>
+<p>作品名: <%= @schedule.movie.name %></p>
+<p>開始時刻: <%= @schedule.start_time.strftime("%H:%M") %></p>
+<p>終了時刻: <%= @schedule.end_time.strftime("%H:%M") %></p>
+<p>作成日時: <%= @schedule.created_at %></p>
+<p>更新日時: <%= @schedule.updated_at %></p>
+
+<a href="<%= edit_admin_schedule_path(@schedule) %>">編集</a>
+<%= button_to "削除", admin_schedule_path(@schedule), method: :delete, data: { confirm: "本当に削除しますか？" } %>
