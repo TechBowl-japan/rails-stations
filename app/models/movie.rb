@@ -8,7 +8,7 @@ class Movie < ApplicationRecord
   validates :year, presence: true
   validates :description, presence: true
   validates :image_url, presence: true
-  validates :is_showing, presence: true
+  validates :is_showing, inclusion: { in: [true, false] }
 
   # フィルタリング
   scope :showing, -> { where(is_showing: true)}
