@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<h1>上映スケジュール一覧</h1>
+
+<% @schedules_by_movie.each do |movie, schedules| %>
+  <h2><%= movie.name %>（作品ID: <%= movie.id %>）</h2>
+  <ul>
+    <% schedules.each do |schedule| %>
+      <li>
+        開始: <%= schedule.start_time.strftime("%H:%M") %> - 終了: <%= schedule.end_time.strftime("%H:%M") %>
+        <a href="<%= admin_schedule_path(schedule) %>">詳細</a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
