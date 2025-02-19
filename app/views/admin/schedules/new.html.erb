@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<h1><%= @movie.name %>の上映スケジュール登録</h1>
+
+<%= form_with(model: [:admin, @movie, @schedule], local: true) do |f| %>
+  <% if @schedule.errors.any? %>
+    <div class="error-messages">
+      <ul>
+        <% @schedule.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_time, "開始時刻" %>
+    <%= f.datetime_local_field :start_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_time, "終了時刻" %>
+    <%= f.datetime_local_field :end_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
+
+<%= link_to "戻る", admin_schedules_path %>
