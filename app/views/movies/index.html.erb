@@ -2,6 +2,16 @@
 <html>
 <head>
   <style>
+    .movie-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s;
+    }
+    .movie-card-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
     .movies-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -55,7 +65,7 @@
         <%= f.label :is_showing_1, "上映中" %>
 
         <%= f.radio_button :is_showing, "0", checked: params[:is_showing] == "0" %>
-        <%= f.label :is_showing_0, "上映予定" %>
+        <%= f.label :is_showing_0, "未上映" %>
       </div>
 
       <%= f.submit "検索" %>
@@ -64,18 +74,20 @@
 
   <div class="movies-container">
     <% @movies.each do |movie| %>
-      <div class="movie-card">
-        <img 
-          src="<%= movie.image_url.presence || 'https://picsum.photos/300/450' %>" 
-          alt="<%= movie.name %>"
-          class="movie-image"
-          onerror="this.src='https://picsum.photos/300/450'"
-        >
-        <h2 class="movie-title">映画タイトル：<%= movie.name %></h2>
-        <p class="movie-description">概要：<%= movie.description %></p>
-        <p class="movie-year">上映年：<%= movie.year %></p>
-        <p class="movie-is_showing">上映状況：<%= movie.is_showing ? "上映中" : "上映予定" %></p>
-      </div>
+      <%= link_to movie_path(movie), class: "movie-card-link" do %>
+        <div class="movie-card">
+          <img 
+            src="<%= movie.image_url.presence || 'https://picsum.photos/300/450' %>" 
+            alt="<%= movie.name %>"
+            class="movie-image"
+            onerror="this.src='https://picsum.photos/300/450'"
+          >
+          <h2 class="movie-title">映画タイトル：<%= movie.name %></h2>
+          <p class="movie-description">概要：<%= movie.description %></p>
+          <p class="movie-year">上映年：<%= movie.year %></p>
+          <p class="movie-is_showing">上映状況：<%= movie.is_showing ? "上映中" : "未上映" %></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
