@@ -1,32 +1,22 @@
-<!DOCTYPE html>
 <h1><%= @movie.name %></h1>
 <p>公開年: <%= @movie.year %></p>
 <p><%= @movie.description %></p>
+<img src="<%= @movie.image_url %>" alt="<%= @movie.name %>">
 
-<% if @movie.image_url.present? %>
-  <img src="<%= @movie.image_url %>" alt="<%= @movie.name %>" width="300">
-<% end %>
+<form action="<%= movie_reservation_path(@movie) %>" method="get">
+  <label for="date">予約日:</label>
+  <select name="date" id="date">
+    <% (0..6).each do |i| %>
+      <option value="<%= Date.today + i %>"><%= (Date.today + i).strftime("%Y-%m-%d") %></option>
+    <% end %>
+  </select>
 
-<% if @movie.is_showing && @schedules.present? %>
-  <h2>上映スケジュール</h2>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>開始時間</th>
-        <th>終了時間</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @schedules.each do |schedule| %>
-        <tr>
-          <td><%= schedule.start_time.strftime("%H:%M") %></td>
-          <td><%= schedule.end_time.strftime("%H:%M") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>現在、この映画の上映スケジュールはありません。</p>
-<% end %>
+  <label for="schedule">上映スケジュール:</label>
+  <select name="schedule_id" id="schedule">
+    <% @movie.schedules.each do |schedule| %>
+      <option value="<%= schedule.id %>"><%= schedule.start_time.strftime("%H:%M") %></option>
+    <% end %>
+  </select>
 
-<%= link_to "一覧に戻る", movies_path %>
+  <input type="submit" value="座席を予約する">
+</form>
