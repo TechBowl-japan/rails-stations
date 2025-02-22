@@ -33,4 +33,13 @@ class MoviesController < ApplicationController
       end
     end
 
+    def reservation
+      if params[:date].blank? || params[:schedule_id].blank?
+        redirect_to movie_path(params[:movie_id]), alert: "日付とスケジュールを選択してください。" and return
+      end
+
+      @movie = Movie.find(params[:movie_id])
+      @schedule = Schedule.find(params[:schedule_id])
+      @sheets= Sheet.all
+    end
 end
