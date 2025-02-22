@@ -16,6 +16,11 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+
+    if Reservation.exists?(schedule_id: @reservation.schedule_id, sheet_id: @reservation.sheet_id, date: @reservation.date)
+      redirect_to movie_reservation_path(@reservation.schedule.movie, schedule_id: @reservation.schedule_id, date: @reservation.date), alert: "その座席はすでに予約済みです。" and return
+    end
+
     if @reservation.save
       redirect_to movie_path(@reservation.schedule.movie), notice: "予約が完了しました。"
     else
