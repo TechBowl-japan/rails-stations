@@ -41,5 +41,9 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:movie_id])
       @schedule = Schedule.find(params[:schedule_id])
       @sheets= Sheet.all
+      @reserved_sheets = Reservation.where(
+        date: params[:date],
+        schedule_id: params[:schedule_id]
+        ).pluck(:sheet_id)
     end
 end
