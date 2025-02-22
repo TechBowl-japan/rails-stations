@@ -4,11 +4,17 @@
   <% @sheets.group_by(&:row).each do |row, sheets| %>
     <tr>
       <% sheets.each do |sheet| %>
-        <td>
-          <a href="<%= new_movie_schedule_reservation_path(@movie, @schedule, sheet_id: sheet.id, date: params[:date]) %>">
-            <%= "#{row}-#{sheet.column}" %>
-          </a>
-        </td>
+        <% if @reserved_sheets.include?(sheet.id) %>
+            <td style="background-color: gray; color: white;">
+                <%= "#{row}-#{sheet.column} (予約済み)" %>
+            </td>
+        <% else %>
+            <td>
+              <a href="<%= new_movie_schedule_reservation_path(@movie, @schedule, sheet_id: sheet.id, date: params[:date]) %>">
+                <%= "#{row}-#{sheet.column}" %>
+              </a>
+            </td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
