@@ -3,14 +3,19 @@ class ReservationsController < ApplicationController
     if params[:date].blank? || params[:sheet_id].blank?
       redirect_to movie_reservation_path(params[:movie_id], schedule_id: params[:schedule_id], date: params[:date]), alert: "座席を選択してください。" and return
     end
+
     @reservation = Reservation.new
     @movie = Movie.find(params[:movie_id])
     @schedule = Schedule.find(params[:schedule_id])
     @sheet = Sheet.find(params[:sheet_id])
+
+    if Reservation.exists?(schedule_id: @schedule.id, sheet_id: @sheet.id, date: params[:date])
+      redirect_to movie_reservation_path(@movie, schedule_id: @schedule.id, date: params[:date]), alert: "その座席はすでに予約済みです。" and return
+    end
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)  
+    @reservation = Reservation.new(reservation_params)
     if @reservation.save
       redirect_to movie_path(@reservation.schedule.movie), notice: "予約が完了しました。"
     else
