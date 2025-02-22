@@ -1,0 +1,42 @@
+<h1>予約を追加</h1>
+
+<%= form_with(model: [:admin, @reservation], local: true) do |f| %>
+  <div>
+    <label>日付:</label>
+    <%= f.date_field :date, required: true %>
+  </div>
+
+  <div>
+    <label>上映スケジュール:</label>
+    <%= f.collection_select :schedule_id, 
+        Schedule.includes(:movie).all, 
+        :id, 
+        ->(s) { "#{s.movie.name} (#{s.start_time.strftime('%H:%M')})" }, 
+        { prompt: "選択してください" }, 
+        { required: true } %>
+  </div>
+
+  <div>
+    <label>座席:</label>
+    <%= f.collection_select :sheet_id, 
+        Sheet.all, 
+        :id, 
+        ->(s) { "#{s.row}-#{s.column}" }, 
+        { prompt: "選択してください" }, 
+        { required: true } %>
+  </div>
+
+  <div>
+    <label>名前:</label>
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <label>メールアドレス:</label>
+    <%= f.email_field :email, required: true %>
+  </div>
+
+  <%= f.submit "予約する" %>
+<% end %>
+
+<%= link_to "戻る", admin_reservations_path %>

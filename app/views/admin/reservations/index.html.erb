@@ -1,0 +1,31 @@
+<h1>予約一覧</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>映画作品</th>
+      <th>座席</th>
+      <th>予約日</th>
+      <th>予約者</th>
+      <th>メールアドレス</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.schedule.movie.name %></td>
+        <td><%= "#{reservation.sheet.row}-#{reservation.sheet.column}" %></td>
+        <td><%= reservation.date %></td>
+        <td><%= reservation.name %></td>
+        <td><%= reservation.email %></td>
+        <td>
+          <%= link_to "編集", edit_admin_reservation_path(reservation) %>
+          <%= button_to "削除", admin_reservation_path(reservation), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "新規予約", new_admin_reservation_path %>
