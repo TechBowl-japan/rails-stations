@@ -1,0 +1,20 @@
+<h1>座席予約</h1>
+
+<p>映画: <%= @movie.name %></p>
+<p>上映時刻: <%= @schedule.start_time.strftime("%H:%M") %></p>
+<p>座席: <%= @sheet.row %>-<%= @sheet.column %></p>
+<p>日付: <%= params[:date] %></p>
+
+<%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+  <%= f.hidden_field :date, value: params[:date] %>
+  <%= f.hidden_field :schedule_id, value: @schedule.id %>
+  <%= f.hidden_field :sheet_id, value: @sheet.id %>
+
+  <label>名前:</label>
+  <%= f.text_field :name, required: true %>
+
+  <label>メールアドレス:</label>
+  <%= f.email_field :email, required: true %>
+
+  <%= f.submit "予約する" %>
+<% end %>
