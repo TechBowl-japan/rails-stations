@@ -9,6 +9,12 @@ class ReservationsController < ApplicationController
     @schedule = Schedule.find(params[:schedule_id])
     @sheet = Sheet.find(params[:sheet_id])
 
+    # スケジュールに関連するスクリーンの座席を取得
+    @sheets = Sheet.where(screen_id: @schedule.screen_id)
+
+    # デバッグ用ログ出力
+    Rails.logger.debug "Sheets for Screen #{@schedule.screen_id}: #{@sheets.map { |s| "#{s.row}-#{s.column}" }.join(', ')}"
+
     if Reservation.exists?(schedule_id: @schedule.id, sheet_id: @sheet.id, date: params[:date])
       redirect_to movie_reservation_path(@movie, schedule_id: @schedule.id, date: params[:date]), alert: "その座席はすでに予約済みです。" and return
     end

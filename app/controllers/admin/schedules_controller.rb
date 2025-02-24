@@ -61,6 +61,6 @@ class Admin::SchedulesController < ApplicationController
   
     # 許可されたパラメータのみを取得（セキュリティ対策）
     def schedule_params
-      params.require(:schedule).permit(:start_time, :end_time)
+      params.require(:schedule).permit(:start_time, :end_time, :screen_id)
     end
   end
