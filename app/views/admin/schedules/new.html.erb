@@ -11,6 +11,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <div>
+    <label>スクリーン:</label>
+    <%= f.collection_select :screen_id, Screen.all, :id, :name, { prompt: "スクリーンを選択してください" }, { required: true } %>
+  </div>
+
 
   <div class="field">
     <%= f.label :start_time, "開始時刻" %>
