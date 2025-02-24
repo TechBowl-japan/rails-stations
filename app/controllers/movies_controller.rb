@@ -40,16 +40,22 @@ class MoviesController < ApplicationController
 
       @movie = Movie.find(params[:movie_id])
       @schedule = Schedule.find(params[:schedule_id])
-      @sheets= Sheet.all
-
       # スケジュールに関連するスクリーンの座席を取得
       @sheets = Sheet.where(screen_id: @schedule.screen_id)
       # デバッグ用ログ出力
       Rails.logger.debug "Sheets for Screen #{@schedule.screen_id}: #{@sheets.map { |s| "#{s.row}-#{s.column}" }.join(', ')}"
 
       @reserved_sheets = Reservation.where(
-        date: params[:date],
-        schedule_id: params[:schedule_id]
+        schedule_id: params[:schedule_id],
+        # screen_id: @schedule.screen_id,
+        sheet_id: @sheets.pluck(:id),
+        date: Date.parse(params[:date]) # `params[:date]` を `Date` 型に変換
         ).pluck(:sheet_id)
+
+        # デバック用コード
+        puts "Schedule ID: #{@schedule.id}, Expected: #{params[:schedule_id]}"
+        puts "Date Type: #{params[:date].class}, Expected: String"
+        puts "Sheets for Screen #{@schedule.screen_id}: #{@sheets.map { |s| "#{s.row}-#{s.column}" }.join(', ')}"
+        puts "Reservations Found: #{@reserved_sheets}"
     end
 end

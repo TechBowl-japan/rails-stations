@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_24_092530) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_24_121806) do
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", limit: 160, null: false, comment: "映画のタイトル。邦題・洋題は一旦考えなくてOK"
     t.string "year", limit: 45, comment: "公開年"
@@ -30,8 +30,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_24_092530) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "screen_id", null: false
     t.index ["date", "schedule_id", "sheet_id"], name: "index_reservations_on_date_and_schedule_id_and_sheet_id", unique: true
     t.index ["schedule_id"], name: "index_reservations_on_schedule_id"
+    t.index ["screen_id"], name: "index_reservations_on_screen_id"
     t.index ["sheet_id"], name: "index_reservations_on_sheet_id"
   end
 
@@ -63,6 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_24_092530) do
   end
 
   add_foreign_key "reservations", "schedules"
+  add_foreign_key "reservations", "screens"
   add_foreign_key "reservations", "sheets"
   add_foreign_key "schedules", "movies"
   add_foreign_key "schedules", "screens"

@@ -1,5 +1,7 @@
 <h1>座席表 - <%= @movie.name %> (<%= params[:date] %>)</h1>
 
+<p>予約済みの座席: <%= @reserved_sheets.inspect %></p>
+
 <table border="1">
   <% @sheets.group_by(&:row).each do |row, sheets| %>
     <tr>
