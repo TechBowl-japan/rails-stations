@@ -7,10 +7,13 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @movie = Movie.find(params[:movie_id])
     @schedule = Schedule.find(params[:schedule_id])
-    @sheet = Sheet.find(params[:sheet_id])
-
-    # スケジュールに関連するスクリーンの座席を取得
+    
+    # スケジュールに関連するスクリーンの座席を取得（これを先にやる）
     @sheets = Sheet.where(screen_id: @schedule.screen_id)
+    
+    # 取得した座席のリストから、指定された `sheet_id` の座席を探す
+    @sheet = @sheets.find_by(id: params[:sheet_id]) 
+    
 
     # デバッグ用ログ出力
     Rails.logger.debug "Sheets for Screen #{@schedule.screen_id}: #{@sheets.map { |s| "#{s.row}-#{s.column}" }.join(', ')}"

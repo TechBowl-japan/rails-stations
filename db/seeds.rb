@@ -5,12 +5,12 @@
 # Example:
 #
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
+#     MovieGenre.first_or_create!(name: genre_name)
 #   end
 # IDを指定せずにシードデータを登録し、一貫性を保つ
-screen1 = Screen.find_or_create_by!(name: 'スクリーン1')
-screen2 = Screen.find_or_create_by!(name: 'スクリーン2')
-screen3 = Screen.find_or_create_by!(name: 'スクリーン3')
+screen1 = Screen.first_or_create!(name: 'スクリーン1')
+screen2 = Screen.first_or_create!(name: 'スクリーン2')
+screen3 = Screen.first_or_create!(name: 'スクリーン3')
 
 # 座席マスターデータ（全スクリーン共通）
 sheets = [
@@ -22,6 +22,6 @@ sheets = [
 # 各スクリーンに対して座席データを作成
 [screen1, screen2, screen3].each do |screen|
   sheets.each do |sheet|
-    Sheet.find_or_create_by!(column: sheet[:column], row: sheet[:row], screen_id: screen.id)
+    Sheet.first_or_create!(column: sheet[:column], row: sheet[:row], screen_id: screen.id)
   end
 end
