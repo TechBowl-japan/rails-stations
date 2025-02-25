@@ -5,19 +5,8 @@
   "dependencies": {
     "@techtrain/cli-railway": "^0.2.3"
   },
-  "devDependencies": {
-    "simple-git-hooks": "^2.11.1"
-  },
   "scripts": {
     "login:techtrain": "techtrain-railway login",
-    "hook:pre-commit": "techtrain-railway hook:pre-commit",
-    "hook:update": "simple-git-hooks",
-    "prepare": "simple-git-hooks",
-    "postinstall": "mkdir -p .git/hooks && yarn hook:update && yarn login:techtrain"
-  },
-  "simple-git-hooks": {
-    "pre-commit": [
-      "if [ -e /.dockerenv ]; then \n\n echo execute in Docker\nyarn hook:pre-commit\nelse\necho execute in local\ndocker-compose exec -T web yarn hook:pre-commit\n\nfi"
-    ]
+    "postinstall": "yarn login:techtrain"
   }
 }
