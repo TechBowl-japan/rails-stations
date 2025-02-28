@@ -6,3 +6,6 @@ FactoryBot.define do
     password_confirmation { "testuser" }
   end
 end
+
+
+# メモ：Step 2: ユーザー登録フォームの作成から
