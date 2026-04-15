@@ -3,11 +3,11 @@ RSpec::Matchers.define_negated_matcher :not_include, :include
 
 RSpec.describe Admin::MoviesController, type: :controller do
   render_views
-  describe 'Station9 GET /admin/movies' do
+  describe 'Station9 GET /admin/movies/:id' do
     let!(:movies) { create_list(:movie, 3) }
     let!(:schedules) { create_list(:schedule, 3, movie_id: movies.first.id) }
     before do
-      get :index
+      get :show, params: { id: movies.first.id }
     end
 
     it 'movies(:id)に対応するscheduleを表示していること' do
